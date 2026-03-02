@@ -1164,17 +1164,25 @@ Hoje vivo separado.`
 
 // --- MULTIMEDIA ---
 function renderMultimedia() {
-    window.playVideoInline = function(playerDiv, id) {
-        playerDiv.className = 'video-full-container';
-        playerDiv.innerHTML = `
-            <iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" 
-                    class="w-full h-full" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
+    window.playVideoInline = function(element, videoId) {
+        // Desativa cliques repetidos
+        element.onclick = null;
+        element.style.pointerEvents = 'none';
+        
+        // Container limpo para iframe
+        element.innerHTML = `
+            <div style="position:relative;width:100%;height:100%;padding-bottom:56.25%;height:0;overflow:hidden;">
+                <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&wmode=opaque" 
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe>
+            </div>
         `;
-        const text = playerDiv.closest('.flex-none').querySelector('p');
-        if (text) text.textContent = 'REPRODUZINDO...';
+        
+        // Feedback visual
+        const textNode = element.closest('.flex-none').querySelector('p');
+        if (textNode) textNode.textContent = 'REPRODUZINDO...';
     };
 
     const videos = [
@@ -1183,18 +1191,18 @@ function renderMultimedia() {
         { title: "DOCUMENTÁRIO - PARTE 3", id: "rMPl5ocV1Jc" },
         { title: "DOCUMENTÁRIO - PARTE 4", id: "o7ZJCTixDAs" }
     ];
-
+    
     const container = document.getElementById('multimedia-container');
     if (container) {
         container.innerHTML = videos.map(v => `
             <div class="flex-none w-[90vw] md:w-[600px] snap-center reveal-item">
-                <div class="group relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#1A1A1A] aspect-video cursor-pointer transition-all hover:border-[#C5A059]">
-                    <div onclick="playVideoInline(this, '${v.id}')" class="w-full h-full flex items-center justify-center bg-slate-900 p-0 relative z-10">
-                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity">
-                        <svg class="w-24 h-24 text-[#C5A059] relative z-20 opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all drop-shadow-2xl" fill="currentColor" viewBox="0 0 24 24">
+                <div class="group relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#1A1A1A] aspect-video cursor-pointer transition-all duration-300 hover:border-[#C5A059]">
+                    <div onclick="playVideoInline(this, '${v.id}')" class="absolute inset-0 flex items-center justify-center bg-slate-900 p-8 text-center group-hover:brightness-110 z-10">
+                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity">
+                        <svg class="w-24 h-24 text-[#C5A059] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl relative z-20" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
                     </div>
                 </div>
                 <h3 class="font-display text-white text-center mt-6 font-bold tracking-widest uppercase text-xl">${v.title}</h3>
@@ -1391,4 +1399,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </script>
 </body>
+
 </html>
