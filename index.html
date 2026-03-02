@@ -1166,7 +1166,7 @@ Hoje vivo separado.`
     window.playVideoInline = function(element, videoId) {
         element.onclick = null;
         element.style.pointerEvents = 'none';
-        
+
         element.innerHTML = `
             <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&wmode=transparent" 
                     style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
@@ -1174,7 +1174,7 @@ Hoje vivo separado.`
                     allowfullscreen>
             </iframe>
         `;
-        
+
         const textNode = element.closest('.flex-none').querySelector('p');
         if (textNode) textNode.textContent = 'REPRODUZINDO...';
     };
@@ -1185,15 +1185,15 @@ Hoje vivo separado.`
         { title: "DOCUMENTÁRIO - PARTE 3", id: "rMPl5ocV1Jc" },
         { title: "DOCUMENTÁRIO - PARTE 4", id: "o7ZJCTixDAs" }
     ];
-    
+
     const container = document.getElementById('multimedia-container');
     if (container) {
         container.innerHTML = videos.map(v => `
             <div class="flex-none w-[90vw] md:w-[600px] snap-center reveal-item">
                 <div class="group relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#1A1A1A] aspect-video cursor-pointer transition-all duration-300 hover:border-[#C5A059]">
-                    <div onclick="playVideoInline(this, '${v.id}')" class="absolute inset-0 flex items-center justify-center bg-slate-900 p-8 text-center group-hover:brightness-110 z-10">
-                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full
-<svg class="w-24 h-24 text-[#C5A059] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl relative z-20" fill="currentColor" viewBox="0 0 24 24">
+                    <div onclick="window.playVideoInline(this, '${v.id}')" class="absolute inset-0 flex items-center justify-center bg-slate-900 p-8 text-center group-hover:brightness-110 z-10">
+                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" />
+                        <svg class="w-24 h-24 text-[#C5A059] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl relative z-20" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
@@ -1205,14 +1205,6 @@ Hoje vivo separado.`
         `).join('');
     }
 }
-
-
-
-
-
-
-
-
 
         // --- GALLERY ---
         window.renderGallery = (filter) => {
@@ -1395,4 +1387,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
+
 
