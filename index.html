@@ -1487,7 +1487,7 @@ Hoje vivo separado.`
         }
     </script>
 
-    <script>
+       <script>
         // Proteção contra clique direito (Salvar imagem como...) e Arrastar
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') {
@@ -1502,11 +1502,128 @@ Hoje vivo separado.`
         });
     </script>
 
-const SUPABASE_URL = 'https://hdntegflksofsbksrwlo.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_p0esNIt5LCkyqlS79_LBGA_9hk_-tTG';
+    <!-- SUPABASE JS LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // === CONFIGURAÇÃO SUPABASE ===
+        const SUPABASE_URL = 'https://hdntegflksofsbksrwlo.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_p0esNIt5LCkyqlS79_LBGA_9hk_-tTG';
+        
+        let supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        // --- 1. LÓGICA DA ENQUETE ---
+        async function fetchPollResults() {
+            if (!supabase) return;
+            
+            try {
+                const { data, error } = await supabase.from('enquetes').select('opcao');
+                if (error) throw error;
+                
+                const total = data.length;
+                if (total === 0) return;
+                
+                const counts = {
+                    'Longa-Metragem': 0,
+                    'Minissérie': 0,
+                    'Documentário': 0
+                };
+                
+                data.forEach(vote => {
+                    if (counts[vote.opcao] !== undefined) counts[vote.opcao]++;
+                });
+                
+                updateBars(counts, total);
+            } catch (err) {
+                console.error('Erro ao buscar votos:', err);
+            }
+        }
 
+        function updateBars(counts, total) {
+            const pLonga = Math.round((counts['Longa-Metragem'] / total) * 100) || 0;
+            const pMini = Math.round((counts['Minissérie'] / total) * 100) || 0;
+            const pDoc = Math.round((counts['Documentário'] / total) * 100) || 0;
+            
+            document.getElementById('bar-longa').style.width = pLonga + '%';
+            document.getElementById('perc-longa').innerText = pLonga + '%';
+            
+            document.getElementById('bar-mini').style.width = pMini + '%';
+            document.getElementById('perc-mini').innerText = pMini + '%';
+            
+            document.getElementById('bar-doc').style.width = pDoc + '%';
+            document.getElementById('perc-doc').innerText = pDoc + '%';
+            
+            document.getElementById('total-votes').innerText = `Total de Votos: ${total}`;
+        }
+
+        async function submitVote(opcao) {
+            if (!supabase) return;
+            
+            // Impede duplo voto via LocalStorage
+            if (localStorage.getItem('silvino_voted')) {
+                alert('Você já registrou seu voto!');
+                return;
+            }
+            
+            document.getElementById('poll-container').style.display = 'none';
+            document.getElementById('poll-results').style.display = 'block';
+            
+            try {
+                const { error } = await supabase.from('enquetes').insert([{ opcao: opcao }]);
+                if (error) throw error;
+                
+                localStorage.setItem('silvino_voted', 'true');
+                await fetchPollResults(); // Atualiza em tempo real
+            } catch (err) {
+                console.error('Erro ao salvar voto:', err);
+                alert('Ocorreu um erro. Tente novamente.');
+                document.getElementById('poll-container').style.display = 'block';
+                document.getElementById('poll-results').style.display = 'none';
+            }
+        }
+
+        // Verifica se já votou ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('silvino_voted')) {
+                document.getElementById('poll-container').style.display = 'none';
+                document.getElementById('poll-results').style.display = 'block';
+                fetchPollResults();
+            }
+        });
+
+        // --- 2. LÓGICA DO FORMULÁRIO DE MEMÓRIA ---
+        const memForm = document.getElementById('memory-form');
+        if (memForm) {
+            memForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                if (!supabase) return;
+
+                const btnText = document.getElementById('mem-btn-text');
+                const originalText = btnText.innerText;
+                btnText.innerText = 'ENVIANDO...';
+                
+                const nome = document.getElementById('mem-name').value;
+                const email = document.getElementById('mem-email').value;
+                const whatsapp = document.getElementById('mem-whatsapp').value;
+                const relato = document.getElementById('mem-message').value;
+
+                try {
+                    const { error } = await supabase.from('memorias').insert([
+                        { nome: nome, email: email, whatsapp: whatsapp, relato: relato }
+                    ]);
+                    
+                    if (error) throw error;
+                    
+                    // Sucesso
+                    document.getElementById('memory-form').style.display = 'none';
+                    document.getElementById('mem-success').style.display = 'block';
+                    
+                } catch (err) {
+                    console.error('Erro ao enviar relato:', err);
+                    alert('Erro ao enviar. Por favor, verifique sua conexão.');
+                    btnText.innerText = originalText;
+                }
+            });
+        }
+    </script>
 </body>
 </html>
-
-
