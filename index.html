@@ -3,30 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TAG ADICIONADA AQUI EMBAIXO: Corrige o Erro 153 de configuração do iframe do YouTube -->
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    
     <meta name="description" content="Arquivo Silvino Jacques - Memória Digital do lendário capitão da fronteira. Biografia, documentos, áudios e história." />
     <title>Arquivo Silvino Jacques | Memória Digital</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-.video-full-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-.video-full-container iframe {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    border: none;
-}
-</style>
-
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,58 +198,58 @@
         <button onclick="toggleMobileMenu()" class="mt-8 text-white/50 text-sm uppercase tracking-widest">Fechar</button>
     </div>
 
-    <section id="home" class="relative min-h-screen w-full flex items-center overflow-hidden bg-black py-20 reveal-section -mt-[100px] pt-[200px]"> 
-            <!-- Fundo da Imagem Mantido como Original -->
-            <div class="absolute inset-0 z-0 bg-[#1a1a1a]"> 
-                <div class="absolute inset-0 bg-black/30 z-10"></div>
-                <div class="w-full h-full bg-cover bg-center grayscale opacity-90 bg-[#1a1a1a]" 
-                     style="background-image: url('HERO SILVINO_MEIO.jpg');">
-                </div>
-            </div>
+    <section id="home" class="relative min-h-screen w-full flex items-center overflow-hidden bg-black reveal-section -mt-[100px] pt-[200px] pb-16">
+  <!-- Fundo da Imagem Mantido como Original -->
+  <div class="absolute inset-0 z-0 bg-[#1a1a1a]"> 
+      <div class="absolute inset-0 bg-black/30 z-10"></div>
+      <div class="w-full h-full bg-cover bg-center grayscale opacity-90 bg-[#1a1a1a]" 
+           style="background-image: url('HERO SILVINO_MEIO.jpg');">
+      </div>
+  </div>
 
-            <!-- Container Principal (Corrigido o alinhamento e divs) -->
-            <div class="relative z-30 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center h-full gap-10">
-                
-                <!-- Coluna Esquerda: Títulos e Botão -->
-                <div class="max-w-2xl text-white mb-10 reveal-item text-center md:text-left flex flex-col items-center md:items-start w-full">
-                    
-                    <!-- Caixa de Data (1906 - 1939) Corrigida -->
-                    <div class="bg-[#0038A8] px-4 py-2 mb-6 inline-block font-bold tracking-widest text-lg shadow-lg border border-white/20 self-center md:self-start">
-                        1906 — 1939
-                    </div>
-                    
-                    <!-- Bloco de Texto SILVINO JACQUES -->
-                    <div class="flex flex-col mb-8 items-center md:items-start">
-                        <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white drop-shadow-xl font-monument">
-                            SILVINO
-                        </h1>
-                        <div class="bg-[#0038A8] px-8 py-4 inline-block shadow-lg transform -rotate-2 mt-2 border border-white/20">
-                            <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white font-monument">
-                                JACQUES
-                            </h1>
-                        </div>
-                    </div>
+  <!-- Container Principal -->
+  <div class="relative z-30 container mx-auto px-6 grid md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-10 items-center h-full">
 
-                    <p class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">
-                        O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.
-                    </p>
-                    
-                    <div class="flex gap-4 justify-center md:justify-start w-full">
-                        <a href="#biografia" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
-                            EXPLORAR ACERVO
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Coluna Direita: Card Mapeamento da Fronteira (Mantido Original) -->
-                <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block"> 
-                    <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span></div>
-                    <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
-                    <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
-                    <a href="#mapa" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
-                </div>
-            </div>
-    </section>
+      <!-- Coluna Esquerda: Títulos e Botão -->
+      <div class="max-w-2xl text-white mb-10 mt-32 md:mt-0 reveal-item text-center md:text-left flex flex-col items-center md:items-start w-full">
+
+          <!-- Caixa de Data (1906 - 1939) Corrigida -->
+          <div class="bg-[#0038A8] px-4 py-2 mb-6 inline-block font-bold tracking-widest text-lg shadow-lg border border-white/20 self-center md:self-start">
+              1906 — 1939
+          </div>
+
+          <!-- Bloco de Texto SILVINO JACQUES -->
+          <div class="flex flex-col mb-8 items-center md:items-start">
+              <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white drop-shadow-xl font-monument">
+                  SILVINO
+              </h1>
+              <div class="bg-[#0038A8] px-8 py-4 inline-block shadow-lg transform -rotate-2 mt-2 border border-white/20 self-center md:self-start">
+                  <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white font-monument">
+                      JACQUES
+                  </h1>
+              </div>
+          </div>
+
+          <p class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">
+              O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.
+          </p>
+
+          <div class="flex gap-4 justify-center md:justify-start w-full">
+              <a href="#biografia" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
+                  EXPLORAR ACERVO
+              </a>
+          </div>
+      </div>
+
+      <!-- Coluna Direita: Card Mapeamento da Fronteira (Mantido Original) -->
+      <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block place-self-end"> 
+          <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span></div>
+          <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
+          <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
+          <a href="#mapa" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
+      </div>
+  </div>
+</section>
 
     <section id="biografia" class="py-24 bg-[#F4ECD8] reveal-section relative">
         <div class="container mx-auto px-6 relative z-10">
@@ -287,7 +267,7 @@
             </div>
         </div>
     </section>
-	
+
     <section id="vozes" class="py-24 bg-[#1A1A1A] text-[#F4ECD8] relative overflow-hidden reveal-section">
         <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000); background-size: 20px 20px;"></div>
 
@@ -354,6 +334,17 @@
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Trajetória de Vida</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
                 <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
                 <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse">DESLIZE PARA O LADO &rarr;</p>
             </div>
@@ -374,6 +365,17 @@
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Conexões Humanas</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
                 <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
             </div>
             
@@ -393,6 +395,17 @@
                 <div class="bg-[#5C1B1B] text-white px-3 py-1 text-xs font-black uppercase tracking-widest mb-4">Arquivo Digital</div>
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Sala de Documentos</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
                 <p class="mt-6 text-center text-gray-600 italic">Passe o mouse (ou toque) para ampliar os registros originais.</p>
             </div>
 
@@ -439,12 +452,23 @@
             </div>
         </div>
     </section>
-	
+
     <section id="mapa" class="py-24 bg-white reveal-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Caminhos da História</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
             </div>
             <div id="desktop-map-view" class="hidden md:grid md:grid-cols-[250px_1fr] gap-8 max-w-7xl mx-auto">
                 <div class="flex flex-col gap-3" id="map-categories"></div>
@@ -468,6 +492,17 @@
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Acervo Multimídia</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
                 <p class="mt-4 text-sm font-bold text-[#C5A059] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
             </div>
             <div class="relative px-0 md:px-12 group">
@@ -604,11 +639,22 @@
         </div>
     </section>
 
-	<section id="galeria" class="py-24 bg-[#F4ECD8] relative reveal-section">
+    <section id="galeria" class="py-24 bg-[#F4ECD8] relative reveal-section">
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Arquivo Fotográfico</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
                 <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
             </div>
             <div class="flex flex-wrap justify-center gap-4 mb-16" id="gallery-filters"></div>
@@ -626,6 +672,17 @@
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Pesquisa & Academia</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        <!-- Aviso Arraste Mobile -->
+        <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </div>
+        <!-- FIM DO AVISO -->
             </div>
             <div class="flex flex-col md:grid md:grid-cols-[1.2fr_1.8fr] gap-8 max-w-7xl mx-auto">
                 <div class="flex flex-col gap-4">
@@ -645,35 +702,37 @@
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
             
-            <!-- CONTÊINER DO VÍDEO BLINDADO CONTRA ACHATAMENTO -->
-            <div class="max-w-4xl mx-auto mb-16 reveal-item relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#C5A059] pb-[56.25%] h-0 w-full">
-                <iframe 
-                    src="https://www.youtube-nocookie.com/embed/BbolC0kAklU?rel=0&modestbranding=1&playsinline=1" 
-                    title="FAMÍLIA JACQUES - ONDE TUDO COMEÇOU" 
-                    frameborder="0" 
-                    class="absolute top-0 left-0 w-full h-full" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+            <div class="max-w-4xl mx-auto mb-8 reveal-item">
+          <iframe 
+  width="833" 
+  height="439" 
+  src="https://www.youtube-nocookie.com/embed/BbolC0kAklU?rel=0&modestbranding=1" 
+  title="FAMÍLIA JACQUES - ONDE TUDO COMEÇOU" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+  referrerpolicy="no-referrer-when-downgrade"
+  allowfullscreen 
+  class="w-full h-full shadow-2xl border-4 border-[#C5A059]">
+</iframe>
+
+
+
             </div>
 
-            <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block text-center mb-8">NAVEGUE PELA ÁRVORE &rarr;</p>
-            <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse text-center mb-8">Deslize para ver a árvore &rarr;</p>
+            <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block text-center mb-4">NAVEGUE &rarr;</p>
+            <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse text-center mb-4">Deslize para ver de onde veio o Silvino &rarr;</p>
 
             <div class="relative px-0 md:px-12 group">
                  <button class="scroll-btn scroll-left" onclick="scrollContainer('genealogy-container', 'left')">&#8592;</button>
                  <button class="scroll-btn scroll-right" onclick="scrollContainer('genealogy-container', 'right')">&#8594;</button>
 
-                <div class="overflow-x-auto pb-24 pt-10">
-                    <!-- Aqui entram os cards (seu script renderGenealogy já cuidou disso!) -->
-                    <div id="genealogy-container" class="flex gap-12 min-w-max items-start px-4">
-                    </div>
+                <div id="genealogy-container" class="overflow-x-auto pb-24 border-t-2 border-gray-300 pt-20">
+                    <div class="flex gap-12 min-w-max items-start px-4">
+                        </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <section id="enquete" class="py-24 bg-white flex justify-center reveal-section">
         <div class="max-w-4xl w-full mx-auto px-6">
@@ -1173,50 +1232,35 @@ Hoje vivo separado.`
             }
         };
 
-// --- MULTIMEDIA ---
-function renderMultimedia() {
-    window.playVideoInline = function(element, videoId) {
-        element.onclick = null;
-        element.style.pointerEvents = 'none';
-
-        element.innerHTML = `
-            <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&wmode=transparent" 
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
-        `;
-
-        const textNode = element.closest('.flex-none').querySelector('p');
-        if (textNode) textNode.textContent = 'REPRODUZINDO...';
-    };
-
-    const videos = [
-        { title: "DOCUMENTÁRIO - PARTE 1", id: "FgEYktEaDRI" },
-        { title: "DOCUMENTÁRIO - PARTE 2", id: "3dlDbgQvTEw" },
-        { title: "DOCUMENTÁRIO - PARTE 3", id: "rMPl5ocV1Jc" },
-        { title: "DOCUMENTÁRIO - PARTE 4", id: "o7ZJCTixDAs" }
-    ];
-
-    const container = document.getElementById('multimedia-container');
-    if (container) {
-        container.innerHTML = videos.map(v => `
-            <div class="flex-none w-[90vw] md:w-[600px] snap-center reveal-item">
-                <div class="group relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#1A1A1A] aspect-video cursor-pointer transition-all duration-300 hover:border-[#C5A059]">
-                    <div onclick="window.playVideoInline(this, '${v.id}')" class="absolute inset-0 flex items-center justify-center bg-slate-900 p-8 text-center group-hover:brightness-110 z-10">
-                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" />
-                        <svg class="w-24 h-24 text-[#C5A059] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-2xl relative z-20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+        // --- MULTIMEDIA ---
+        function renderMultimedia() {
+            const videos = [
+                { id: 'FgEYktEaDRI', title: 'Documentário - Parte 1' },
+                { id: '3dlDbgQvTEw', title: 'Documentário - Parte 2' },
+                { id: 'rMPl5ocV1Jc', title: 'Documentário - Parte 3' },
+                { id: 'o7ZJCTixDAs', title: 'Documentário - Parte 4' }
+            ];
+            
+            const container = document.getElementById('multimedia-container');
+            if(container) {
+                container.innerHTML = videos.map((v, i) => `
+                    <div class="flex-none w-[85vw] md:w-[500px] reveal-item snap-center flex flex-col group">
+                        <div class="aspect-video bg-gray-900 border border-white/20 relative overflow-hidden rounded-sm shadow-2xl">
+                            <iframe class="absolute inset-0 w-full h-full" 
+                                    src="https://www.youtube.com/embed/${v.id}?rel=0&controls=1" 
+                                    frameborder="0" 
+                                    loading="lazy"
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="bg-black/80 text-white p-4 border-t border-white/10">
+                            <h4 class="font-display text-sm font-bold uppercase tracking-widest">${v.title}</h4>
+                        </div>
                     </div>
-                </div>
-                <h3 class="font-display text-white text-center mt-6 font-bold tracking-widest uppercase text-xl">${v.title}</h3>
-                <p class="text-[#C5A059] text-center text-xs tracking-widest mt-2">CLIQUE PARA ASSISTIR</p>
-            </div>
-        `).join('');
-    }
-}
+                `).join('');
+            }
+        }
 
         // --- GALLERY ---
         window.renderGallery = (filter) => {
@@ -1366,44 +1410,6 @@ function renderMultimedia() {
                 observer.observe(el);
             });
         }
-
-        // GENEALOGY ORIGINAL
-        function renderGenealogy() {
-            const container = document.getElementById('genealogy-container');
-            if (container && typeof GENEALOGY !== 'undefined') {
-                container.innerHTML = GENEALOGY.map(col => `
-                    <div class="flex flex-col gap-12">
-                        <div class="text-[10px] uppercase font-black text-[#C5A059] mb-4 tracking-[0.4em] text-center border-b border-[#C5A059]/20 pb-2">${col.col}</div>
-                        <div class="flex flex-col gap-8">
-                            ${col.items.map(item => `
-                                <div class="bg-[#FDFBF7] border-l-[12px] p-6 shadow-xl w-80 min-h-[140px] flex flex-col relative border-[#8B7E66] hover:scale-105 transition-transform">
-                                    <h4 class="font-display font-black text-lg uppercase text-black mb-2">${item.name}</h4>
-                                    <p class="text-[10px] text-gray-500 font-bold">${item.dates}</p>
-                                    ${item.extraInfo ? `<p class="mt-auto text-[9px] uppercase tracking-widest text-[#C5A059]">${item.extraInfo}</p>` : ''}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
