@@ -296,13 +296,13 @@
     <section class="py-16 md:py-24 bg-[#1A1A1A] relative reveal-section border-y-4 border-[#5C1B1B] overflow-hidden">
         <!-- Fundo com a própria imagem desfocada para criar um ambiente envolvente e elegante -->
         <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <img src="silvino-bombacha e arma.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
+            <img src="silvino-bombacha-e-arma.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
             <!-- A imagem vertical com altura máxima da tela, mantendo a proporção (sem cortes) -->
-            <img src="silvino-bombacha e arma.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
+            <img src="silvino-bombacha-e-arma.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
 
             <!-- Pequena legenda abaixo da foto -->
             <div class="mt-8 text-center">
@@ -710,13 +710,13 @@
     <section class="py-16 md:py-24 bg-[#1A1A1A] relative reveal-section border-y-4 border-[#5C1B1B] overflow-hidden">
         <!-- Fundo com a própria imagem desfocada para criar um ambiente envolvente e elegante -->
         <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <img src="Silvino-arma getulio.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
+            <img src="Silvino-arma-getulio.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
             <!-- A imagem vertical com altura máxima da tela, mantendo a proporção (sem cortes) -->
-            <img src="Silvino-arma getulio.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
+            <img src="Silvino-arma-getulio.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
 
             <!-- Pequena legenda abaixo da foto -->
             <div class="mt-8 text-center">
@@ -809,18 +809,56 @@
         </div>
     </section>
 
+    
     <section id="enquete" class="py-24 bg-white flex justify-center reveal-section">
         <div class="max-w-4xl w-full mx-auto px-6">
             <div class="bg-[#FDFBF7] border-[1px] border-[#E6DABB] shadow-[10px_10px_0_#5C1B1B] md:shadow-[15px_15px_0_#5C1B1B] p-8 md:p-16 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cardboard-flat.png')] opacity-20"></div>
                 <div class="relative z-10">
                     <h3 class="font-display text-2xl md:text-5xl font-black mb-16 uppercase leading-tight text-[#5C1B1B]">COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?</h3>
-                    <div class="space-y-6 max-w-2xl mx-auto" id="poll-options"></div>
+                    <div class="space-y-6 max-w-2xl mx-auto" id="poll-container">
+                        <!-- Botões de Voto -->
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Longa-Metragem')">
+                            <span class="font-display font-bold text-lg text-left">LONGA-METRAGEM<br>PARA O CINEMA</span>
+                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                        </div>
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Minissérie')">
+                            <span class="font-display font-bold text-lg text-left">MINISSÉRIE DO<br>NETFLIX</span>
+                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                        </div>
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Documentário')">
+                            <span class="font-display font-bold text-lg text-left">DOCUMENTÁRIO PARA<br>O NETFLIX</span>
+                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                        </div>
+                    </div>
+
+                    <!-- Resultados (Escondidos inicialmente) -->
+                    <div class="space-y-6 max-w-2xl mx-auto hidden mt-8" id="poll-results">
+                        <h4 class="font-display font-bold text-[#C5A059] text-xl mb-4">RESULTADOS PARCIAIS</h4>
+                        <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
+                            <div id="bar-longa" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
+                            <span class="relative z-10 font-bold text-sm uppercase">Longa-Metragem</span>
+                            <span id="perc-longa" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
+                        </div>
+                        <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
+                            <div id="bar-mini" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
+                            <span class="relative z-10 font-bold text-sm uppercase">Minissérie Netflix</span>
+                            <span id="perc-mini" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
+                        </div>
+                        <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
+                            <div id="bar-doc" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
+                            <span class="relative z-10 font-bold text-sm uppercase">Documentário Netflix</span>
+                            <span id="perc-doc" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 uppercase tracking-widest" id="total-votes">Total de Votos: 0</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+    
     <section id="preserve" class="py-24 bg-[#FDFBF7] reveal-section">
         <div class="container mx-auto px-6 text-center">
             <div class="flex flex-col items-center mb-16 reveal-item">
@@ -828,16 +866,27 @@
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
             <p class="font-body text-xl md:text-2xl max-w-3xl mx-auto mb-16 text-gray-600 italic">"Sua família guarda algum objeto, fotografia ou relato oral sobre Silvino Jacques? Ajude-nos a manter viva a história da fronteira."</p>
-            <form class="max-w-4xl mx-auto space-y-4 text-left" onsubmit="event.preventDefault(); alert('Obrigado! Esta é uma demonstração. Em produção, seu relato seria salvo.');">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Seu Nome Completo" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required />
-                    <input type="email" placeholder="E-mail de Contato" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required />
+
+            <form id="memory-form" class="max-w-4xl mx-auto space-y-4 text-left">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <input type="text" id="mem-name" placeholder="Seu Nome Completo" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required>
+                    <input type="email" id="mem-email" placeholder="E-mail de Contato" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required>
+                    <input type="tel" id="mem-whatsapp" placeholder="WhatsApp (com DDD)" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required>
                 </div>
-                <textarea placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-64 bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none shadow-sm" required></textarea>
-                <button type="submit" class="w-full bg-[#5C1B1B] text-white py-6 font-black uppercase tracking-[0.3em] text-sm hover:brightness-110 transition-all shadow-lg hover:shadow-xl">SUBMETER RELATO PARA O ARQUIVO</button>
+                <textarea id="mem-message" placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-64 bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none shadow-sm" required></textarea>
+
+                <button type="submit" id="mem-btn" class="w-full bg-[#5C1B1B] text-white py-6 font-black uppercase tracking-[0.3em] text-sm hover:brightness-110 transition-all shadow-lg hover:shadow-xl flex justify-center items-center gap-2">
+                    <span id="mem-btn-text">SUBMETER RELATO PARA O ARQUIVO</span>
+                </button>
             </form>
+
+            <div id="mem-success" class="hidden mt-8 p-6 bg-[#EFE6D0] border-l-4 border-[#5C1B1B] max-w-4xl mx-auto text-left">
+                <h4 class="font-display text-xl font-bold text-[#5C1B1B] mb-2">Relato Recebido!</h4>
+                <p class="font-body text-gray-700">Muito obrigado por contribuir com a preservação da história da fronteira. Entraremos em contato em breve pelo WhatsApp ou E-mail.</p>
+            </div>
         </div>
     </section>
+
 
     <footer id="rodape" class="bg-black py-20 text-center flex flex-col items-center reveal-section border-t border-white/10 relative">
         <div class="font-display text-[#F4ECD8] text-2xl md:text-4xl font-black tracking-[0.3em] uppercase mb-8 px-4 font-monument">ARQUIVO SILVINO JACQUES</div>
@@ -1149,7 +1198,7 @@ Hoje vivo separado.`
             renderGallery('all');
             renderAcademic();
             renderGenealogy();
-            renderPoll();
+
             setupReveals();
         });
         
@@ -1445,31 +1494,8 @@ Hoje vivo separado.`
         }
 
         // --- POLL ---
-        let voted = false;
-        window.renderPoll = () => {
-            const options = [
-                { id: 'movie', label: 'Longa-Metragem para o Cinema', percentage: 0 },
-                { id: 'series', label: 'Minissérie do Netflix', percentage: 0 },
-                { id: 'doc', label: 'Documentário para o Netflix', percentage: 0 }
-            ];
-            const container = document.getElementById('poll-options');
-            if(container) {
-                container.innerHTML = options.map(opt => `
-                    <button onclick="window.vote('${opt.id}')" ${voted ? 'disabled' : ''} class="w-full relative h-16 bg-white border border-[#E6DABB] overflow-hidden group transition-all hover:border-[#5C1B1B] disabled:cursor-default">
-                        <div class="absolute top-0 left-0 h-full bg-[#5C1B1B]/10 transition-all duration-1000" style="width: ${voted ? 33 : 0}%"></div> <div class="relative z-10 flex justify-between items-center px-6 h-full font-display">
-                            <span class="font-bold text-xs md:text-sm uppercase text-black text-left">${opt.label}</span>
-                            ${voted ? `<span class="font-black text-[#5C1B1B]">VOTADO</span>` : ''}
-                        </div>
-                    </button>
-                `).join('');
-            }
-        };
-
-        window.vote = (id) => {
-            voted = true;
-            window.renderPoll();
-            alert("Voto registrado! (Simulação)");
-        };
+        
+        
 
         // --- REVEAL ANIMATIONS ---
         function setupReveals() {
@@ -1487,7 +1513,7 @@ Hoje vivo separado.`
         }
     </script>
 
-       <script>
+    <script>
         // Proteção contra clique direito (Salvar imagem como...) e Arrastar
         document.addEventListener('contextmenu', function(e) {
             if (e.target.tagName === 'IMG') {
@@ -1502,36 +1528,46 @@ Hoje vivo separado.`
         });
     </script>
 
+
     <!-- SUPABASE JS LIBRARY -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // === CONFIGURAÇÃO SUPABASE ===
+        // ATENÇÃO: Substitua estas chaves pelos valores reais do seu painel do Supabase
+        // Acesse: Supabase Dashboard > Project Settings > API
         const SUPABASE_URL = 'https://hdntegflksofsbksrwlo.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_p0esNIt5LCkyqlS79_LBGA_9hk_-tTG';
-        
-        let supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Verifica se as chaves foram preenchidas para não quebrar a página
+        let supabase;
+        if (SUPABASE_URL !== 'COLE_AQUI_SUA_URL_DO_SUPABASE') {
+            supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
 
         // --- 1. LÓGICA DA ENQUETE ---
+        // Você precisa criar uma tabela no Supabase chamada 'enquetes' 
+        // com as colunas: id (int8/uuid), opcao (text), created_at (timestamp)
+
         async function fetchPollResults() {
             if (!supabase) return;
-            
+
             try {
                 const { data, error } = await supabase.from('enquetes').select('opcao');
                 if (error) throw error;
-                
+
                 const total = data.length;
                 if (total === 0) return;
-                
+
                 const counts = {
                     'Longa-Metragem': 0,
                     'Minissérie': 0,
                     'Documentário': 0
                 };
-                
+
                 data.forEach(vote => {
                     if (counts[vote.opcao] !== undefined) counts[vote.opcao]++;
                 });
-                
+
                 updateBars(counts, total);
             } catch (err) {
                 console.error('Erro ao buscar votos:', err);
@@ -1542,35 +1578,38 @@ Hoje vivo separado.`
             const pLonga = Math.round((counts['Longa-Metragem'] / total) * 100) || 0;
             const pMini = Math.round((counts['Minissérie'] / total) * 100) || 0;
             const pDoc = Math.round((counts['Documentário'] / total) * 100) || 0;
-            
+
             document.getElementById('bar-longa').style.width = pLonga + '%';
             document.getElementById('perc-longa').innerText = pLonga + '%';
-            
+
             document.getElementById('bar-mini').style.width = pMini + '%';
             document.getElementById('perc-mini').innerText = pMini + '%';
-            
+
             document.getElementById('bar-doc').style.width = pDoc + '%';
             document.getElementById('perc-doc').innerText = pDoc + '%';
-            
+
             document.getElementById('total-votes').innerText = `Total de Votos: ${total}`;
         }
 
         async function submitVote(opcao) {
-            if (!supabase) return;
-            
+            if (!supabase) {
+                alert('Conexão com banco de dados não configurada. Insira as chaves no código.');
+                return;
+            }
+
             // Impede duplo voto via LocalStorage
             if (localStorage.getItem('silvino_voted')) {
                 alert('Você já registrou seu voto!');
                 return;
             }
-            
+
             document.getElementById('poll-container').style.display = 'none';
             document.getElementById('poll-results').style.display = 'block';
-            
+
             try {
                 const { error } = await supabase.from('enquetes').insert([{ opcao: opcao }]);
                 if (error) throw error;
-                
+
                 localStorage.setItem('silvino_voted', 'true');
                 await fetchPollResults(); // Atualiza em tempo real
             } catch (err) {
@@ -1591,39 +1630,43 @@ Hoje vivo separado.`
         });
 
         // --- 2. LÓGICA DO FORMULÁRIO DE MEMÓRIA ---
-        const memForm = document.getElementById('memory-form');
-        if (memForm) {
-            memForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                if (!supabase) return;
+        // Você precisa criar uma tabela chamada 'memorias'
+        // com colunas: id, nome(text), email(text), whatsapp(text), relato(text), created_at
 
-                const btnText = document.getElementById('mem-btn-text');
-                const originalText = btnText.innerText;
-                btnText.innerText = 'ENVIANDO...';
-                
-                const nome = document.getElementById('mem-name').value;
-                const email = document.getElementById('mem-email').value;
-                const whatsapp = document.getElementById('mem-whatsapp').value;
-                const relato = document.getElementById('mem-message').value;
+        document.getElementById('memory-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!supabase) {
+                alert('Conexão com banco de dados não configurada.');
+                return;
+            }
 
-                try {
-                    const { error } = await supabase.from('memorias').insert([
-                        { nome: nome, email: email, whatsapp: whatsapp, relato: relato }
-                    ]);
-                    
-                    if (error) throw error;
-                    
-                    // Sucesso
-                    document.getElementById('memory-form').style.display = 'none';
-                    document.getElementById('mem-success').style.display = 'block';
-                    
-                } catch (err) {
-                    console.error('Erro ao enviar relato:', err);
-                    alert('Erro ao enviar. Por favor, verifique sua conexão.');
-                    btnText.innerText = originalText;
-                }
-            });
-        }
+            const btnText = document.getElementById('mem-btn-text');
+            const originalText = btnText.innerText;
+            btnText.innerText = 'ENVIANDO...';
+
+            const nome = document.getElementById('mem-name').value;
+            const email = document.getElementById('mem-email').value;
+            const whatsapp = document.getElementById('mem-whatsapp').value;
+            const relato = document.getElementById('mem-message').value;
+
+            try {
+                const { error } = await supabase.from('memorias').insert([
+                    { nome: nome, email: email, whatsapp: whatsapp, relato: relato }
+                ]);
+
+                if (error) throw error;
+
+                // Sucesso
+                document.getElementById('memory-form').style.display = 'none';
+                document.getElementById('mem-success').style.display = 'block';
+
+            } catch (err) {
+                console.error('Erro ao enviar relato:', err);
+                alert('Erro ao enviar. Por favor, verifique sua conexão.');
+                btnText.innerText = originalText;
+            }
+        });
     </script>
+
 </body>
 </html>
