@@ -218,65 +218,58 @@
         <button onclick="toggleMobileMenu()" class="mt-8 text-white/50 text-sm uppercase tracking-widest">Fechar</button>
     </div>
 
-<section id="home" class="relative min-h-screen w-full flex items-center overflow-hidden bg-black reveal-section -mt-[100px] pt-[200px] pb-16">
-  <!-- Fundo -->
-  <div class="absolute inset-0 z-0 bg-[#1a1a1a]">
-    <div class="absolute inset-0 bg-black/30 z-10"></div>
-    <div class="w-full h-full bg-cover bg-center grayscale opacity-90 bg-[#1a1a1a]"
-         style="background-image: url('HERO SILVINO_MEIO.jpg');">
-    </div>
-  </div>
+    <section id="home" class="relative min-h-screen w-full flex items-center overflow-hidden bg-black py-20 reveal-section -mt-[100px] pt-[200px]"> 
+            <!-- Fundo da Imagem Mantido como Original -->
+            <div class="absolute inset-0 z-0 bg-[#1a1a1a]"> 
+                <div class="absolute inset-0 bg-black/30 z-10"></div>
+                <div class="w-full h-full bg-cover bg-center grayscale opacity-90 bg-[#1a1a1a]" 
+                     style="background-image: url('HERO SILVINO_MEIO.jpg');">
+                </div>
+            </div>
 
-  <!-- Conteúdo principal -->
-  <div class="relative z-30 container mx-auto px-6 grid md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-10 items-center">
-    
-    <!-- Coluna esquerda -->
-    <div class="flex flex-col gap-6">
-      <div class="bg-[#0038A8] px-4 py-2 inline-block font-bold tracking-widest text-sm shadow-lg border border-white/20">
-        1906 — 1939
-      </div>
+            <!-- Container Principal (Corrigido o alinhamento e divs) -->
+            <div class="relative z-30 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center h-full gap-10">
+                
+                <!-- Coluna Esquerda: Títulos e Botão -->
+                <div class="max-w-2xl text-white mb-10 reveal-item text-center md:text-left flex flex-col items-center md:items-start w-full">
+                    
+                    <!-- Caixa de Data (1906 - 1939) Corrigida -->
+                    <div class="bg-[#0038A8] px-4 py-2 mb-6 inline-block font-bold tracking-widest text-lg shadow-lg border border-white/20 self-center md:self-start">
+                        1906 — 1939
+                    </div>
+                    
+                    <!-- Bloco de Texto SILVINO JACQUES -->
+                    <div class="flex flex-col mb-8 items-center md:items-start">
+                        <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white drop-shadow-xl font-monument">
+                            SILVINO
+                        </h1>
+                        <div class="bg-[#0038A8] px-8 py-4 inline-block shadow-lg transform -rotate-2 mt-2 border border-white/20">
+                            <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white font-monument">
+                                JACQUES
+                            </h1>
+                        </div>
+                    </div>
 
-      <div class="flex flex-col">
-        <h1 class="font-monument text-5xl md:text-7xl lg:text-8xl font-black leading-none uppercase tracking-tighter text-white drop-shadow-xl">
-          SILVINO
-        </h1>
-        <div class="bg-[#0038A8] px-6 py-3 inline-block shadow-lg transform -rotate-2 mt-3 border border-white/20 self-start">
-          <h2 class="font-monument text-4xl md:text-6xl lg:text-7xl font-black leading-none uppercase tracking-tighter text-white">
-            JACQUES
-          </h2>
-        </div>
-      </div>
-
-      <p class="font-body text-base md:text-lg lg:text-xl opacity-90 max-w-xl text-[#F4ECD8]">
-        O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.
-      </p>
-
-      <div class="flex gap-4">
-        <a href="#biografia"
-           class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
-          EXPLORAR ACERVO
-        </a>
-      </div>
-    </div>
-
-    <!-- Coluna direita: card -->
-    <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block">
-      <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">
-        REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span>
-      </div>
-      <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">
-        Mapeamento da Fronteira
-      </h3>
-      <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">
-        "Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."
-      </p>
-      <a href="#mapa"
-         class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">
-        VER MAPA INTERATIVO
-      </a>
-    </div>
-  </div>
-</section>
+                    <p class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">
+                        O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.
+                    </p>
+                    
+                    <div class="flex gap-4 justify-center md:justify-start w-full">
+                        <a href="#biografia" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
+                            EXPLORAR ACERVO
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Coluna Direita: Card Mapeamento da Fronteira (Mantido Original) -->
+                <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block"> 
+                    <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span></div>
+                    <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
+                    <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
+                    <a href="#mapa" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
+                </div>
+            </div>
+    </section>
 
     <section id="biografia" class="py-24 bg-[#F4ECD8] reveal-section relative">
         <div class="container mx-auto px-6 relative z-10">
@@ -1399,6 +1392,7 @@ function renderMultimedia() {
 </body>
 
 </html>
+
 
 
 
