@@ -296,13 +296,13 @@
     <section class="py-16 md:py-24 bg-[#1A1A1A] relative reveal-section border-y-4 border-[#5C1B1B] overflow-hidden">
         <!-- Fundo com a própria imagem desfocada para criar um ambiente envolvente e elegante -->
         <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <img src="silvino-bombacha-e-arma.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
+            <img src="silvino-bombacha e arma.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
             <!-- A imagem vertical com altura máxima da tela, mantendo a proporção (sem cortes) -->
-            <img src="silvino-bombacha-e-arma.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
+            <img src="silvino-bombacha e arma.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
 
             <!-- Pequena legenda abaixo da foto -->
             <div class="mt-8 text-center">
@@ -710,13 +710,13 @@
     <section class="py-16 md:py-24 bg-[#1A1A1A] relative reveal-section border-y-4 border-[#5C1B1B] overflow-hidden">
         <!-- Fundo com a própria imagem desfocada para criar um ambiente envolvente e elegante -->
         <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <img src="Silvino-arma-getulio.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
+            <img src="Silvino-arma getulio.jpg" class="w-full h-full object-cover blur-[100px] opacity-30 transform scale-110" alt="">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
             <!-- A imagem vertical com altura máxima da tela, mantendo a proporção (sem cortes) -->
-            <img src="Silvino-arma-getulio.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
+            <img src="Silvino-arma getulio.jpg" alt="Registro Histórico de Silvino Jacques" class="max-h-[75vh] md:max-h-[85vh] w-auto shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-[#C5A059]/30 rounded-sm grayscale sepia-[0.2]">
 
             <!-- Pequena legenda abaixo da foto -->
             <div class="mt-8 text-center">
@@ -1552,7 +1552,7 @@ Hoje vivo separado.`
             if (!supabase) return;
 
             try {
-                const { data, error } = await supabase.from('enquetes').select('opcao');
+                const { data, error } = await supabase.from('votos_enquete').select('opcao');
                 if (error) throw error;
 
                 const total = data.length;
@@ -1607,7 +1607,7 @@ Hoje vivo separado.`
             document.getElementById('poll-results').style.display = 'block';
 
             try {
-                const { error } = await supabase.from('enquetes').insert([{ opcao: opcao }]);
+                const { error } = await supabase.from('votos_enquete').insert([{ opcao: opcao }]);
                 if (error) throw error;
 
                 localStorage.setItem('silvino_voted', 'true');
@@ -1650,7 +1650,7 @@ Hoje vivo separado.`
             const relato = document.getElementById('mem-message').value;
 
             try {
-                const { error } = await supabase.from('memorias').insert([
+                const { error } = await supabase.from('relatos').insert([
                     { nome: nome, email: email, whatsapp: whatsapp, relato: relato }
                 ]);
 
