@@ -157,6 +157,30 @@
         /* Snap strict for connections */
         .snap-strict { scroll-snap-type: x mandatory; }
         .snap-strict > * { scroll-snap-align: center; scroll-snap-stop: always; }
+    
+        /* Proteção de Imagens e Conteúdo */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; /* Previne clique direito na maioria dos casos (Atenção: desabilita clique para modal. Faremos exceção para imagens clicáveis) */
+        }
+
+        /* Exceção: Imagens que precisam ser clicadas (como no Modal ou Galeria) mantêm pointer-events mas bloqueiam clique direito via JS */
+        .clickable-img, .doc-zoom-container img, #gallery-container img {
+            pointer-events: auto !important;
+        }
+
+        body {
+            -webkit-touch-callout: none; /* Desabilita o menu que aparece ao segurar no iOS */
+        }
+
     </style>
 </head>
 <body class="selection:bg-[#0038A8] selection:text-white overflow-x-hidden">
@@ -1399,5 +1423,21 @@ Hoje vivo separado.`
             });
         }
     </script>
+
+    <script>
+        // Proteção contra clique direito (Salvar imagem como...) e Arrastar
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+
 </body>
 </html>
