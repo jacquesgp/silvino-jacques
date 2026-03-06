@@ -1398,7 +1398,95 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
     </script>
+<script>
+// --- ÁUDIO: player simples (clique e toca sem sair da página) ---
+// Coloque seus MP3 em /audio no GitHub: audio/decimas-silvino.mp3, audio/corpo-fechado.mp3, audio/cancao-gaudrio.mp3
+const AUDIOS = {
+  decimas: { title: 'Décimas de Silvino (Declamação)', artist: 'Voz Gerson Jacques', src: 'audio/decimas-silvino.mp3' },
+  corpo:   { title: 'Relato Popular: O Corpo Fechado',    artist: 'Entrevista Oral 1992', src: 'audio/corpo-fechado.mp3' },
+  gaudrio: { title: 'Canção: O Último Gaúcho',            artist: 'Música Regional', src: 'audio/cancao-gaudrio.mp3' }
+};
+
+let currentAudioId = null;
+let audio = new Audio();
+let isPlaying = false;
+const order = Object.keys(AUDIOS);
+
+function syncIcons() {
+  const playIcon = document.getElementById('play-icon');
+  const pauseIcon = document.getElementById('pause-icon');
+  if (!playIcon || !pauseIcon) return;
+  if (isPlaying) { playIcon.classList.add('hidden'); pauseIcon.classList.remove('hidden'); }
+  else { playIcon.classList.remove('hidden'); pauseIcon.classList.add('hidden'); }
+}
+
+function highlightActive(id) {
+  document.querySelectorAll('.audio-item').forEach(el => {
+    el.classList.remove('border-[#C5A059]', 'bg-[#C5A059]/10');
+    if (el.dataset.audio === id) {
+      el.classList.add('border-[#C5A059]', 'bg-[#C5A059]/10');
+    }
+  });
+}
+
+window.playAudio = (id) => {
+  const info = AUDIOS[id];
+  if (!info) return;
+
+  const player = document.getElementById('audio-player');
+  const title = document.getElementById('current-title');
+  const artist = document.getElementById('current-artist');
+
+  // se clicou no mesmo áudio, alterna play/pause
+  if (currentAudioId === id) {
+    window.togglePlay();
+    return;
+  }
+
+  currentAudioId = id;
+  if (title) title.textContent = info.title;
+  if (artist) artist.textContent = info.artist;
+  if (player) player.classList.remove('hidden');
+
+  audio.pause();
+  audio.src = info.src;
+  audio.currentTime = 0;
+
+  audio.play().then(() => {
+    isPlaying = true;
+    syncIcons();
+    highlightActive(id);
+  }).catch((err) => {
+    // Em alguns browsers, se não for um gesto válido, pode bloquear
+    console.error('Falha ao tocar áudio:', err);
+  });
+};
+
+window.togglePlay = () => {
+  if (!currentAudioId) return;
+  if (isPlaying) audio.pause();
+  else audio.play();
+  isPlaying = !isPlaying;
+  syncIcons();
+};
+
+window.prevAudio = () => {
+  if (!currentAudioId) return;
+  let i = order.indexOf(currentAudioId);
+  i = (i <= 0) ? order.length - 1 : i - 1;
+  window.playAudio(order[i]);
+};
+
+window.nextAudio = () => {
+  if (!currentAudioId) return;
+  let i = order.indexOf(currentAudioId);
+  i = (i >= order.length - 1) ? 0 : i + 1;
+  window.playAudio(order[i]);
+};
+
+audio.addEventListener('ended', () => {
+  window.nextAudio();
+});
+</script>
 </body>
-
 </html>
-
