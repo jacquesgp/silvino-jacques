@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TAG ADICIONADA AQUI EMBAIXO: Corrige o Erro 153 de configuração do iframe do YouTube -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    
+    <meta name="description" content="Arquivo Silvino Jacques - Memória Digital do lendário capitão da fronteira. Biografia, documentos, áudios e história." />
+    <title>Arquivo Silvino Jacques | Memória Digital</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.video-full-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.video-full-container iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+</style>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Rye&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-paper: #F0EAD6; /* Papel mais amarelado/pergaminho */
+            --color-blood: #5C1B1B;
+            --color-gold: #C5A059;
+            --color-ink: #1A1A1A;
+            --color-blue: #0038A8;
+            --color-wine: #4A0E0E;
+            --texture-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        body {
+            background-color: var(--color-paper);
+            color: var(--color-ink);
+            font-family: 'Lora', serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            padding-top: 100px; /* Compensação para o header fixo */
+        }
+
+        /* Textura de Papel Antigo (Noise Overlay) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--texture-noise);
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.4;
+        }
+
+        /* Efeito Vinheta nas bordas da tela */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.3);
+            pointer-events: none;
+            z-index: 49;
+        }
+
+        .font-display { font-family: 'Playfair Display', serif; }
+        .font-western { font-family: 'Rye', serif; }
+        .font-monument { font-family: 'Cinzel', serif; }
+        .font-body { font-family: 'Lora', serif; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #e5e5e5; }
+        ::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-blood); }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #C5A059; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Flip Card 3D */
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .flip-card-back { transform: rotateY(180deg); }
+
+        /* Animations */
+        .reveal-section, .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .is-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .nav-link-special { position: relative; overflow: hidden; }
+        .nav-link-special::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+            background: currentColor; transform: scaleX(0); transition: transform 0.3s ease; transform-origin: right;
+        }
+        .nav-link-special:hover::after { transform: scaleX(1); transform-origin: left; }
+        
+        /* Navigation Arrows */
+        .scroll-btn {
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 40;
+            background-color: rgba(92, 27, 27, 0.9); color: white; width: 40px; height: 40px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: all 0.3s ease;
+        }
+        .scroll-btn:hover { background-color: #C5A059; transform: translateY(-50%) scale(1.1); }
+        .scroll-left { left: 10px; }
+        .scroll-right { right: 10px; }
+        @media (max-width: 768px) { .scroll-btn { display: none; } }
+
+        /* Mobile Menu */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        #mobile-menu.open { transform: translateX(0); }
+        #mobile-menu.closed { transform: translateX(100%); }
+
+        /* Audio Player Styling */
+        .audio-player-container {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 4px solid #C5A059;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.5), inset 2px 2px 5px rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .audio-player-container::before { 
+            content: ""; position: absolute; right: 20px; top: 20px; bottom: 20px; width: 60px;
+            background-image: radial-gradient(#000 20%, transparent 20%);
+            background-size: 4px 4px; opacity: 0.3;
+        }
+
+        /* Document Zoom Effect */
+        .doc-zoom-container { overflow: hidden; position: relative; cursor: zoom-in; }
+        .doc-zoom-container img { transition: transform 0.3s ease-out; transform-origin: center; }
+        .doc-zoom-container:hover img { transform: scale(1.5); }
+
+        /* Snap strict for connections */
+        .snap-strict { scroll-snap-type: x mandatory; }
+        .snap-strict > * { scroll-snap-align: center; scroll-snap-stop: always; }
+    </style>
+</head>
+<body class="selection:bg-[#0038A8] selection:text-white overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 w-full z-[100] bg-[#4A0E0E] shadow-xl border-b border-[#C5A059]/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center h-[90px] md:h-[110px]">
+            <a href="#home" class="flex flex-col no-underline text-[#F4ECD8] hover:opacity-90 transition-opacity">
+                <span class="font-monument text-[10px] md:text-sm tracking-[0.2em] uppercase leading-tight">ARQUIVO SILVINO</span>
+                <span class="font-display text-2xl md:text-4xl font-black tracking-widest uppercase leading-none mt-1">JACQUES</span>
+            </a>
+            
+            <nav class="hidden xl:flex gap-2 items-center">
+                <a href="#biografia" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">BIOGRAFIA</a>
+                <a href="#timeline" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">LINHA DO TEMPO</a>
+                <a href="#documentos" class="bg-[#5C1B1B] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">DOCUMENTOS</a>
+                <a href="#mitos" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MITOS</a>
+                <a href="#mapa" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MAPA</a>
+                <a href="#galeria" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">GALERIA</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="xl:hidden text-[#F4ECD8] focus:outline-none" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-[#4A0E0E] z-[90] flex flex-col justify-center items-center gap-6 closed xl:hidden overflow-y-auto py-10 pt-[120px]">
+        <a href="#biografia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">BIOGRAFIA</a>
+        <a href="#timeline" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">LINHA DO TEMPO</a>
+        <a href="#documentos" onclick="toggleMobileMenu()" class="text-[#C5A059] text-xl font-black tracking-widest font-display">DOCUMENTOS</a>
+        <a href="#vozes" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">ÁUDIOS & VOZES</a>
+        <a href="#mitos" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MITOS vs FATOS</a>
+        <a href="#mapa" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MAPA</a>
+        <a href="#galeria" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GALERIA</a>
+        <a href="#academia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">PESQUISA</a>
+        <a href="#genealogia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GENEALOGIA</a>
+        <button onclick="toggleMobileMenu()" class="mt-8 text-white/50 text-sm uppercase tracking-widest">Fechar</button>
+    </div>
+
+    <section id="home" class="relative min-h-screen w-full flex items-center overflow-hidden bg-black py-20 reveal-section -mt-[100px] pt-[200px]"> 
+        <div class="absolute inset-0 z-0 bg-[#1a1a1a]"> 
+            <div class="absolute inset-0 bg-black/60 z-10"></div>
+            <div class="w-full h-full bg-fixed bg-cover bg-center grayscale opacity-60 bg-[#1a1a1a]" 
+                 style="background-image: url('HERO SILVINO_MEIO.jpg');">
+            </div>
+        </div>
+
+        <div class="relative z-30 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center h-full">
+            <div class="max-w-2xl text-white mb-10 reveal-item text-center md:text-left">
+                
+                <div class="md:hidden flex justify-center mb-8 mt-4 animate-fade-in-up w-full">
+                    <div class="relative bg-[#F0EAD6] p-3 shadow-[0_10px_20px_rgba(0,0,0,0.5)] border border-[#C5A059]/50 transform -rotate-2 w-auto inline-block">
+                        <img src="Silvino-Mobile2.jpg" alt="Silvino Jacques" class="w-48 h-auto object-cover border border-[#1A1A1A]/20 grayscale sepia-[0.2]">
+                        <div class="text-center mt-2 font-western text-[#5C1B1B] text-sm tracking-widest">O CAPITÃO</div>
+                    </div>
+                </div>
+                <div class="bg-[#0038A8] px-4 py-2 mb-6 inline-block font-bold tracking-widest text-lg shadow-lg border border-white/20">1906 — 1939</div>
+                
+                <div class="flex flex-col mb-8">
+                    <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white drop-shadow-xl md:self-start self-center font-monument">SILVINO</h1>
+                    <div class="bg-[#0038A8] px-8 py-4 inline-block md:self-start self-center shadow-lg transform -rotate-2 mt-2 border border-white/20">
+                        <h1 class="font-display text-5xl md:text-9xl font-black leading-none uppercase tracking-tighter text-white font-monument">JACQUES</h1>
+                    </div>
+                </div>
+
+                               
+                <p class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.</p>
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#biografia" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">EXPLORAR ACERVO</a>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block"> 
+                <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span></div>
+                <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
+                <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
+                <a href="#mapa" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="biografia" class="py-24 bg-[#F4ECD8] reveal-section relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Breve Biografia</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+            <div class="max-w-4xl mx-auto md:columns-2 gap-12 text-justify font-body text-lg leading-relaxed reveal-item text-[#1A1A1A]">
+                <p class="mb-6 font-serif first-letter:text-7xl first-letter:font-western first-letter:text-[#5C1B1B] first-letter:mr-3 first-letter:float-left">
+                    Silvino Hermiro Jacques nasceu em 17 de fevereiro de 1906, em São Borja, RS. Filho de Leão Pedro Jacques e Máxima de Sant\'Anna, cresceu em uma família tradicional fronteiriça. 
+                </p>
+                <p class="mb-6">Ingressou na Brigada Militar, mas sua vida mudou radicalmente em 1929 após um incidente em Santo Ângelo que o tornou foragido. Fugindo para o Norte, serviu como Capitão legalista para seu padrinho, Getúlio Vargas, na Revolução de 1932.</p>
+                <p class="mb-6">Silvino era um homem de palavra e poesia. Suas "Décimas" registravam suas façanhas. Ele protegeu famílias e combateu rivais políticos, criando quase um estado paralelo na zona de fronteira entre o Brasil e o Paraguai.</p>
+                <p>Tombou em combate em maio de 1939 na Fazenda Aurora. Sua história permanece viva na memória oral como um herói popular, o último dos gaudérios da fronteira.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="vozes" class="py-24 bg-[#1A1A1A] text-[#F4ECD8] relative overflow-hidden reveal-section">
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000); background-size: 20px 20px;"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Vozes & Ecos</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div class="audio-player-container p-8 rounded-lg reveal-item">
+                    <div class="flex items-center justify-between mb-6 border-b border-[#C5A059]/30 pb-4">
+                        <div class="text-[#C5A059] font-black tracking-widest text-xs uppercase">Rádio Fronteira</div>
+                        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_red]"></div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="group cursor-pointer">
+                            <h4 class="font-display text-xl text-white group-hover:text-[#C5A059] transition-colors">▶ "Décimas de Silvino" (Declamação)</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Voz: Gerson Jacques</p>
+                            <div class="w-full bg-gray-700 h-1 mt-3 rounded-full overflow-hidden">
+                                <div class="bg-[#C5A059] w-[45%] h-full"></div>
+                            </div>
+                        </div>
+                        <div class="group cursor-pointer">
+                            <h4 class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Relato Popular: O Corpo Fechado</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Entrevista Oral (1992)</p>
+                        </div>
+                        <div class="group cursor-pointer">
+                            <h4 class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Canção: O Último Gaudério</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Música Regional</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-center gap-6">
+                        <button class="bg-[#C5A059] text-black w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg"><svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-left reveal-item">
+                    <div class="text-6xl text-[#C5A059] font-western opacity-50 mb-4">"</div>
+                    <blockquote class="font-display text-2xl md:text-4xl italic leading-relaxed text-white mb-6">
+                        Se algum dia por acaso, não possa eu cantar vitória, que meus inimigos me matem, e assim cheio de glória eu peço a meus amigos que leiam a minha história.
+                    </blockquote>
+                    <p class="font-black text-[#C5A059] tracking-[0.2em] text-sm">— TRECHO DAS DÉCIMAS ORIGINAIS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="memoria" class="py-24 bg-[#F4ECD8] reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">A Memória Viva</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12" id="testimonials-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="py-24 bg-white relative overflow-hidden reveal-section">
+        <div class="container mx-auto px-6 relative">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Trajetória de Vida</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+                <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse">DESLIZE PARA O LADO &rarr;</p>
+            </div>
+            
+            <div class="relative px-0 md:px-12 group">
+                <button class="scroll-btn scroll-left" onclick="scrollContainer('timeline-container', 'left')">&#8592;</button>
+                <button class="scroll-btn scroll-right" onclick="scrollContainer('timeline-container', 'right')">&#8594;</button>
+
+                <div class="absolute top-[40px] left-0 w-full h-[2px] bg-[#C5A059]/20 hidden md:block"></div>
+                <div class="flex overflow-x-auto gap-8 pb-20 pt-10 px-6 snap-x snap-mandatory overflow-y-visible" id="timeline-container">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="conexoes" class="py-24 bg-[#EFE6D0] reveal-section">
+        <div class="container mx-auto px-6 relative">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Conexões Humanas</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+            </div>
+            
+            <div class="relative px-0 md:px-12 group">
+                <button class="scroll-btn scroll-left" onclick="scrollContainer('characters-container', 'left')">&#8592;</button>
+                <button class="scroll-btn scroll-right" onclick="scrollContainer('characters-container', 'right')">&#8594;</button>
+
+                <div class="flex overflow-x-auto gap-10 pb-20 pt-10 px-6 snap-strict overflow-y-visible" id="characters-container">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="documentos" class="py-24 bg-[#EFE6D0] reveal-section border-y-8 border-[#5C1B1B]">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <div class="bg-[#5C1B1B] text-white px-3 py-1 text-xs font-black uppercase tracking-widest mb-4">Arquivo Digital</div>
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Sala de Documentos</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-6 text-center text-gray-600 italic">Passe o mouse (ou toque) para ampliar os registros originais.</p>
+            </div>
+
+            <div class="relative px-0 md:px-12 group">
+                <button class="scroll-btn scroll-left" onclick="scrollContainer('docs-container', 'left')">&#8592;</button>
+                <button class="scroll-btn scroll-right" onclick="scrollContainer('docs-container', 'right')">&#8594;</button>
+
+                <div class="flex overflow-x-auto gap-8 pb-12 pt-4 px-6 snap-x snap-mandatory" id="docs-container">
+
+                    <div class="flex-none w-[280px] md:w-[350px] snap-center">
+                        <div class="bg-white p-4 shadow-xl border border-gray-300 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                            <div class="doc-zoom-container overflow-hidden h-[400px] relative border border-gray-200">
+                                <img src="Certidão de Nascimento Silvino Jacques.jpg" alt="Certidão de Nascimento de Silvino" class="w-full h-full object-cover grayscale sepia-[0.3]" loading="lazy">
+                                <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 pointer-events-none">🔍 Zoom</div>
+                            </div>
+                            <h4 class="font-display font-bold text-center mt-4 text-[#5C1B1B]">Certidão de Nascimento</h4>
+                            <p class="text-center text-xs text-gray-500 uppercase tracking-widest mt-1">Silvino Jacques • 1906</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-none w-[280px] md:w-[350px] snap-center">
+                        <div class="bg-white p-4 shadow-xl border border-gray-300 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                            <div class="doc-zoom-container overflow-hidden h-[400px] relative border border-gray-200">
+                                <img src="certidao_casamento.jpg" alt="Certidão de Casamento Pais de Silvino" class="w-full h-full object-cover grayscale sepia-[0.3]" loading="lazy">
+                                <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 pointer-events-none">🔍 Zoom</div>
+                            </div>
+                            <h4 class="font-display font-bold text-center mt-4 text-[#5C1B1B]">Certidão de Casamento</h4>
+                            <p class="text-center text-xs text-gray-500 uppercase tracking-widest mt-1">Pais de Silvino • 1905</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-none w-[280px] md:w-[350px] snap-center">
+                        <div class="bg-white p-4 shadow-xl border border-gray-300 transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                            <div class="doc-zoom-container overflow-hidden h-[400px] relative border border-gray-200">
+                                <img src="Certidão Miguel Jaquess.jpg" alt="Certidão de Nascimento Miguel Jacques" class="w-full h-full object-cover grayscale sepia-[0.3]" loading="lazy">
+                                <div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 pointer-events-none">🔍 Zoom</div>
+                            </div>
+                            <h4 class="font-display font-bold text-center mt-4 text-[#5C1B1B]">Certidão de Nascimento</h4>
+                            <p class="text-center text-xs text-gray-500 uppercase tracking-widest mt-1">Irmão Miguel Jacques • 1909</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mapa" class="py-24 bg-white reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Caminhos da História</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+            <div id="desktop-map-view" class="hidden md:grid md:grid-cols-[250px_1fr] gap-8 max-w-7xl mx-auto">
+                <div class="flex flex-col gap-3" id="map-categories"></div>
+                <div class="grid md:grid-cols-[1fr_1fr] gap-8">
+                    <div class="max-h-[600px] overflow-y-auto pr-4 custom-scrollbar space-y-4" id="map-points-list"></div>
+                    <div class="hidden md:block">
+                        <div id="map-point-detail" class="sticky top-24 bg-[#FDFBF7] p-10 border border-[#E6DABB] shadow-2xl min-h-[500px] flex flex-col justify-center text-center relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-map-view" class="md:hidden relative mt-8 group reveal-item">
+                <p class="text-center text-xs font-bold text-[#5C1B1B] uppercase tracking-widest mb-6 animate-pulse">DESLIZE PARA VER OS LOCAIS &rarr;</p>
+                <div class="absolute top-[40px] left-0 w-full h-[2px] bg-[#C5A059]/20"></div>
+                <div class="flex overflow-x-auto gap-6 pb-12 px-4 snap-x snap-mandatory overflow-y-visible" id="map-mobile-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="midia" class="py-24 bg-black text-white reveal-section">
+        <div class="container mx-auto px-6 text-center relative">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Acervo Multimídia</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-4 text-sm font-bold text-[#C5A059] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+            </div>
+            <div class="relative px-0 md:px-12 group">
+                <button class="scroll-btn scroll-left" onclick="scrollContainer('multimedia-container', 'left')">&#8592;</button>
+                <button class="scroll-btn scroll-right" onclick="scrollContainer('multimedia-container', 'right')">&#8594;</button>
+                <div class="flex overflow-x-auto gap-8 md:gap-12 pb-16 px-4 snap-x snap-mandatory" id="multimedia-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mitos" class="py-24 bg-white reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-black">A Lenda vs. A História</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest animate-pulse text-center">DESLIZE PARA VER OUTROS PARALELOS &rarr;</p>
+            </div>
+
+            <div class="relative px-0 md:px-12 group">
+                <div class="flex overflow-x-auto gap-8 pb-12 px-4 snap-x snap-mandatory" id="mitos-container">
+                    
+                    <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
+                        <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Corpo Fechado</h3>
+                            <p class="font-body opacity-90">Diz a lenda que Silvino tinha pacto. As balas batiam em seu peito e caíam no chão.</p>
+                        </div>
+                        <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p class="font-body">Documentos provam que ele foi ferido várias vezes. Sobrevivia por táticas militares e proteção.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
+                        <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Tesouro Enterrado</h3>
+                            <p class="font-body opacity-90">Relatos de que enterrava ouro das revoluções em locais secretos da fronteira.</p>
+                        </div>
+                        <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p class="font-body">Não há registros de fortuna. Morreu deixando poucos bens materiais para a família.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
+                        <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ Robin Hood Gaúcho</h3>
+                            <p class="font-body opacity-90">A ideia de que roubava apenas dos ricos para dar aos pobres da região.</p>
+                        </div>
+                        <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p class="font-body">Atuava por interesses políticos e de clãs. Protegia seus aliados, mas cobrava caro dos rivais.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
+                        <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ Imortalidade</h3>
+                            <p class="font-body opacity-90">Boatos de que não morreu em 39 e fugiu para viver anônimo no Paraguai.</p>
+                        </div>
+                        <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p class="font-body">O corpo foi identificado, fotografado e o óbito registrado oficialmente após o cerco na Aurora.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contexto" class="py-24 bg-[#EFE6D0] border-y border-[#C5A059]/30 reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <h3 class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Glossário da Fronteira</h3>
+                    <ul class="space-y-6">
+                        <li class="reveal-item">
+                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Coiteiro</span>
+                            <span class="font-body text-gray-700">Pessoa que dá abrigo, comida e proteção a perseguidos pela justiça ou bandoleiros em suas propriedades.</span>
+                        </li>
+                        <li class="reveal-item">
+                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Invernada</span>
+                            <span class="font-body text-gray-700">Período de estadia prolongada em uma fazenda, geralmente durante o inverno ou chuvas, para recuperação.</span>
+                        </li>
+                        <li class="reveal-item">
+                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Gaudério</span>
+                            <span class="font-body text-gray-700">Termo regional para quem vive sem destino certo, muitas vezes associado à liberdade e à vida no campo, mas também ao banditismo.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Contexto Nacional</h3>
+                    <div class="relative pl-8 border-l-2 border-[#C5A059] space-y-8">
+                        
+                        <div class="reveal-item relative">
+                            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
+                            <h4 class="font-black text-lg">1906</h4>
+                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Nasce Silvino Jacques.</p>
+                            <p class="font-body text-sm text-gray-600 italic">Brasil: Presidente Rodrigues Alves consolida a República Velha e o Convênio de Taubaté valoriza o café.</p>
+                        </div>
+
+                        <div class="reveal-item relative">
+                            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
+                            <h4 class="font-black text-lg">1929</h4>
+                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Fuga do RS após incidente em Santo Ângelo.</p>
+                            <p class="font-body text-sm text-gray-600 italic">Brasil: Crise econômica mundial (Quebra da Bolsa de NY) enfraquece a oligarquia cafeeira, preparando terreno para a Revolução de 30.</p>
+                        </div>
+
+                        <div class="reveal-item relative">
+                            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
+                            <h4 class="font-black text-lg">1932</h4>
+                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Capitão na Revolução Constitucionalista.</p>
+                            <p class="font-body text-sm text-gray-600 italic">Brasil: Guerra Civil em São Paulo contra o governo provisório de Vargas.</p>
+                        </div>
+
+                        <div class="reveal-item relative">
+                            <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
+                            <h4 class="font-black text-lg">1939</h4>
+                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Morte na Fazenda Aurora.</p>
+                            <p class="font-body text-sm text-gray-600 italic">Brasil: Auge do Estado Novo (Ditadura Vargas). Fim do cangaço e banditismo rural. Mundo à beira da 2ª Guerra Mundial.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-24 bg-[#F4ECD8] relative reveal-section">
+        <div class="container mx-auto px-6 relative">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Arquivo Fotográfico</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+                <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 mb-16" id="gallery-filters"></div>
+            
+            <div class="relative px-0 md:px-12 group">
+                <button class="scroll-btn scroll-left" onclick="scrollContainer('gallery-container', 'left')">&#8592;</button>
+                <button class="scroll-btn scroll-right" onclick="scrollContainer('gallery-container', 'right')">&#8594;</button>
+                <div class="flex overflow-x-auto gap-6 md:gap-10 pb-16 px-4 snap-x snap-mandatory" id="gallery-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="academia" class="py-24 bg-white reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Pesquisa & Academia</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+            <div class="flex flex-col md:grid md:grid-cols-[1.2fr_1.8fr] gap-8 max-w-7xl mx-auto">
+                <div class="flex flex-col gap-4">
+                    <div id="academic-list" class="flex md:flex-col overflow-x-auto md:overflow-y-auto gap-4 pb-4 md:pb-0 md:max-h-[520px] custom-scrollbar snap-x"></div>
+                </div>
+                <div class="relative w-full">
+                    <div id="academic-detail" class="sticky top-24 bg-[#FDFBF7] p-8 md:p-12 border border-[#E6DABB] shadow-2xl min-h-[500px] max-h-[700px] flex flex-col bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="genealogia" class="py-24 bg-[#F4ECD8] reveal-section">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col items-center mb-12 reveal-item"> <!-- mb-12 para espaço -->
+            <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Histórico Genealógico</h2>
+            <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+        </div>
+        
+        <!-- Vídeo Full (Não empurra mais) -->
+        <div class="max-w-4xl mx-auto mb-12 reveal-item relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#C5A059] aspect-video mx-auto"> <!-- mb-12 + mx-auto -->
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/BbolC0kAklU?rel=0&modestbranding=1&playsinline=1" 
+                title="FAMÍLIA JACQUES" 
+                frameborder="0" 
+                class="absolute inset-0 w-full h-full" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Textos Navegue -->
+        <div class="text-center mb-8 reveal-item">
+            <p class="text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+            <p class="text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse">Deslize para ver de onde veio o Silvino &rarr;</p>
+        </div>
+
+        <!-- Scroll Gráficos (Padding Reduzido) -->
+        <div class="relative px-4 md:px-12 group">
+            <button class="scroll-btn scroll-left" onclick="scrollContainer('genealogy-container', 'left')">&#8592;</button>
+            <button class="scroll-btn scroll-right" onclick="scrollContainer('genealogy-container', 'right')">&#8594;</button>
+            <div id="genealogy-container" class="flex overflow-x-auto gap-8 md:gap-12 pb-12 px-4 snap-x snap-mandatory border-t-2 border-gray-300 pt-8"> <!-- pb/pt reduzidos -->
+                <!-- Conteúdo JS aqui (imagens genealógicas) -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section id="enquete" class="py-24 bg-white flex justify-center reveal-section">
+        <div class="max-w-4xl w-full mx-auto px-6">
+            <div class="bg-[#FDFBF7] border-[1px] border-[#E6DABB] shadow-[10px_10px_0_#5C1B1B] md:shadow-[15px_15px_0_#5C1B1B] p-8 md:p-16 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cardboard-flat.png')] opacity-20"></div>
+                <div class="relative z-10">
+                    <h3 class="font-display text-2xl md:text-5xl font-black mb-16 uppercase leading-tight text-[#5C1B1B]">COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?</h3>
+                    <div class="space-y-6 max-w-2xl mx-auto" id="poll-options"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="preserve" class="py-24 bg-[#FDFBF7] reveal-section">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col items-center mb-16 reveal-item">
+                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Preserve a Memória</h2>
+                <div class="w-24 h-1.5 bg-[#C5A059]"></div>
+            </div>
+            <p class="font-body text-xl md:text-2xl max-w-3xl mx-auto mb-16 text-gray-600 italic">"Sua família guarda algum objeto, fotografia ou relato oral sobre Silvino Jacques? Ajude-nos a manter viva a história da fronteira."</p>
+            <form class="max-w-4xl mx-auto space-y-4 text-left" onsubmit="event.preventDefault(); alert('Obrigado! Esta é uma demonstração. Em produção, seu relato seria salvo.');">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Seu Nome Completo" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required />
+                    <input type="email" placeholder="E-mail de Contato" class="w-full bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors shadow-sm" required />
+                </div>
+                <textarea placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-64 bg-[#FDFBF7] border-[1px] border-[#E6DABB] p-6 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none shadow-sm" required></textarea>
+                <button type="submit" class="w-full bg-[#5C1B1B] text-white py-6 font-black uppercase tracking-[0.3em] text-sm hover:brightness-110 transition-all shadow-lg hover:shadow-xl">SUBMETER RELATO PARA O ARQUIVO</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="rodape" class="bg-black py-20 text-center flex flex-col items-center reveal-section border-t border-white/10 relative">
+        <div class="font-display text-[#F4ECD8] text-2xl md:text-4xl font-black tracking-[0.3em] uppercase mb-8 px-4 font-monument">ARQUIVO SILVINO JACQUES</div>
+        <div class="flex flex-wrap justify-center gap-6 md:gap-12 mb-10 font-black uppercase tracking-[0.2em] text-[#F4ECD8]/60 text-[10px] md:text-xs px-6">
+            <a href="#biografia" class="hover:text-white transition-colors no-underline nav-link-special">BIO</a>
+            <a href="#mapa" class="hover:text-white transition-colors no-underline nav-link-special">MAPA</a>
+            <a href="#galeria" class="hover:text-white transition-colors no-underline nav-link-special">GALERIA</a>
+            <a href="#timeline" class="hover:text-white transition-colors no-underline nav-link-special">LINHA DO TEMPO</a>
+            <a href="#conexoes" class="hover:text-white transition-colors no-underline nav-link-special">CONEXÕES</a>
+        </div>
+        <div class="text-[#F4ECD8]/80 font-body text-sm mb-12">
+            Contato: <span class="font-bold">+55 67 (998909314)</span>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-4 text-[9px] font-black uppercase tracking-[0.3em] text-[#F4ECD8] opacity-30 text-center px-4">
+            <span>© 2025 PRESERVANDO A MEMÓRIA DA FRONTEIRA</span>
+            <span class="hidden md:inline">|</span>
+            <span>TODOS OS DIREITOS RESERVADOS</span>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="fixed inset-0 z-[200] bg-black/95 hidden items-center justify-center p-4 md:p-6 backdrop-blur-sm cursor-pointer transition-opacity duration-300">
+        <div class="max-w-5xl w-full bg-white flex flex-col md:flex-row shadow-2xl rounded-sm overflow-hidden cursor-default max-h-[90vh]" onclick="event.stopPropagation()">
+            <div class="md:w-2/3 bg-black flex items-center justify-center relative">
+                <img id="modal-img" src="" class="max-h-[50vh] md:max-h-[80vh] w-full object-contain" alt="" />
+            </div>
+            <div class="md:w-1/3 p-8 md:p-12 flex flex-col justify-center bg-[#FDFBF7] overflow-y-auto">
+                <h3 id="modal-title" class="font-display text-2xl md:text-4xl font-bold mb-6 text-[#1A1A1A]"></h3>
+                <p id="modal-desc" class="font-body text-lg md:text-xl opacity-80 text-gray-700"></p>
+                <div class="mt-8 flex gap-4">
+                     <span id="modal-cat" class="text-[10px] font-black uppercase tracking-widest text-[#5C1B1B] border border-[#5C1B1B] px-3 py-1"></span>
+                </div>
+                <button class="mt-12 text-[#5C1B1B] font-black uppercase text-xs tracking-[0.3em] border-b-2 border-[#5C1B1B] self-start py-2 hover:opacity-70 transition-opacity" onclick="closeModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. DATASETS (MANTIDOS E ATUALIZADOS) ---
+        
+        // --- TIMELINE COMPLETA ---
+        const TIMELINE = [
+            { year: "Início séc. XX", title: "Fundação", description: "The Miranda Estancia Company é fundada no Pantanal; base futura da expansão no sul do MT." },
+            { year: "1905 (07/Out)", title: "Origem", description: "Casam-se Leão Pedro Jacques e Máxima Sant\'Anna em Itaroquém/RS; união que inicia a linhagem." },
+            { year: "1906 (17/Fev)", title: "Nascimento", description: "Nasce Silvino Hermiro Jacques em Camaqua/RS; origem gaúcha molda sua trajetória futura." },
+            { year: "1909 (08/Nov)", title: "Família", description: "Nasce Miguel Jacques em Itaroquém/RS; irmão que acompanha parte de sua jornada inicial." },
+            { year: "Adolescência", title: "Formação", description: "Conclui o ginásio em São Borja/RS; encerra estudos antes da vida militar e fronteiriça." },
+            { year: "Antes de 1929", title: "Vida Militar", description: "Serve na Brigada Militar/RS; alcança sargento e aprende tática, disciplina e comando." },
+            { year: "Antes de 1929", title: "Fiscal", description: "Fiscal de linha férrea; perde cargo após conflitos e início de reputação de risco." },
+            { year: "1929 (25/Jun)", title: "O Estopim", description: "Briga em cabaré de Santo Ângelo termina em morte de dois; nasce o proscrito do Sul." },
+            { year: "1929 (1ª Metade)", title: "Tensão", description: "Crimes e tensões com autoridades crescem; vira alvo principal da polícia gaúcha." },
+            { year: "1929 (Jun)", title: "Fuga", description: "Foge do Rio Grande do Sul em direção ao Brasil central; busca refúgio nas fronteiras." },
+            { year: "1929 (08/Ago)", title: "Retorno", description: "Parte de Santo Tomé/AR e retorna ao Brasil; movimenta-se entre matas e aliados." },
+            { year: "1929 (2º Sem)", title: "Prisão e Fuga", description: "Ferido e preso após emboscada; resgatado por aliados e volta a agir sob proteção." },
+            { year: "1929 (Final)", title: "Bela Vista", description: "Chega em Bela Vista-MS. Adota codinome Valdemar Pereira na fronteira inicia vida clandestina." },
+            { year: "1930 (02/Jul)", title: "Registro Militar", description: "Marinha registra incidentes na fronteira; nome de Silvino circula nos bastidores militares." },
+            { year: "1930 (15/Jul)", title: "Monitoramento", description: "Ofício reservado registra tensões em MT; autoridades acompanham seus movimentos." },
+            { year: "1931", title: "Orcírio", description: "Orcírio dos Santos serve no 10° RCI em Bela Vista; contatos futuros se aproximam." },
+            { year: "1931 (18/Mar)", title: "Denúncia", description: "Ofício de Corumbá denuncia problemas na região; O nome de Silvino é envolvido." },
+            { year: "1932 (Início)", title: "Cenário Político", description: "Cenário político se tensiona; governadores dividem apoio entre legalistas e rebeldes." },
+            { year: "1932 (08/Jul)", title: "Reforma Klinger", description: "Reforma administrativa de Klinger; reorganização militar cria brechas na fronteira." },
+            { year: "1932 (09/Jul)", title: "Revolução", description: "Eclode a Revolução Constitucionalista; Sul do MT torna-se palco de disputas armadas." },
+            { year: "1932 (Ago)", title: "Instruções", description: "Borges de Medeiros envia instruções secretas; movimentações ampliam tensão regional." },
+            { year: "1932", title: "Comandante", description: "Comanda legalistas no Sul do MT; é chamado de capitão e usa táticas de guerrilha gaúcha." },
+            { year: "1932", title: "Rio Piripucu", description: "Queima ponte no rio Piripucu para retardar Klinger; demonstra domínio territorial." },
+            { year: "1932", title: "Divisão do 10° RCI", description: "10° RCI dividido politicamente; clima interno reflete crise nacional e local." },
+            { year: "1932", title: "Adesão de Orcírio", description: "Orcírio dos Santos entra no grupo de Simão Coelho; apoio a Vargas o aproxima de Silvino." },
+            { year: "1932", title: "Ataque Rebelde", description: "Constitucionalistas atacam o 10° RCI; confrontos diretos contra tropas ligadas a Silvino." },
+            { year: "1932", title: "Resistência", description: "Ofensiva segue até Porto Murtinho; legalistas se fortalecem e resistem sob Néri da Fonseca." },
+            { year: "1933 (Ago)", title: "Extradição", description: "Ordem para prender e extraditar Silvino e Argemiro Leão; refugiados no Paraguai." },
+            { year: "1933 (Out)", title: "Manifesto", description: "Manifesto universitário defende divisão de MT; região de Silvino ganha destaque político." },
+            { year: "1934", title: "Porojukahá", description: "Reputação de pistoleiro se consolida; passa a ser chamado de 'porojukahá'." },
+            { year: "1935", title: "Ecos Comunistas", description: "Contato com revolucionários de 1935; ecos comunistas atravessam sua trajetória." },
+            { year: "1935 (Nov)", title: "Informe MT", description: "Informe MT registra sua atuação; detalhes chegam ao Rio e ganham repercussão ampla." },
+            { year: "1935/1936", title: "Mitificação", description: "Ações de 1932 voltam à tona; mitificação de sua figura cresce no imaginário regional." },
+            { year: "1936 (Mar)", title: "Invernada", description: "Inverna na Fazenda Recrío junto de Adão Jacques; reduz movimentos e observa cenário." },
+            { year: "1937 (Fev)", title: "Deserções", description: "Deserções ao persegui-lo indignam comando; sua mobilidade impõe medo e respeito." },
+            { year: "1937", title: "Estado Novo", description: "Estado Novo endurece repressão; perseguição aos bandoleiros se torna prioridade." },
+            { year: "1938", title: "Fim do Cangaço", description: "Lampião é morto; auge do combate ao banditismo inspira operações contra Silvino." },
+            { year: "1938 (Abr)", title: "Cerco", description: "Relatório militar detalha buscas; cerco se fecha ao redor da fronteira pantaneira." },
+            { year: "1939", title: "Propaganda", description: "Banditismo declarado extinto; propaganda oficial tenta apagar sua lenda." },
+            { year: "1939 (Abr)", title: "Delegacia Especial", description: "Criada Delegacia Especial do Sul em Aquidauana para eliminá-lo; cerco se institucionaliza." },
+            { year: "1939 (30/Mar)", title: "Herdeiro", description: "Nasce seu filho Euclides Charão Jacques com Elodya Charão de Siqueira." },
+            { year: "1939 (03/Mai)", title: "Sentença", description: "Orcírio recebe ordem direta: eliminar, não prender; sentença assinada politicamente." },
+            { year: "1939 (19/Mai)", title: "O Mito", description: "Silvino é morto por milícia local; fim do homem, início do mito permanente da fronteira." }
+        ];
+
+        // --- DEMAIS DADOS MANTIDOS ---
+        const TESTIMONIALS = [
+            { text: "Minha avó contava que ele chegou na fazenda pedindo água, mas não desceu do cavalo. Seu olhar era penetrante", source: "BELA VISTA" },
+            { text: "Dizem que ele tinha o corpo fechado. A bala batia no peito e caía no chão.", source: "LENDA POPULAR" },
+            { text: "Ele era um homem de palavra. Se prometesse proteção, ninguém tocava naqueles colonos.", source: "DESCENDENTE DE COLONO" }
+        ];
+
+        const CHARACTERS = [
+            { name: "Silvino Jacques", quote: "O Capitão", desc: "Protagonista central, ex-sargento e lendário bandoleiro da fronteira." },
+            { name: "Getúlio Vargas", quote: "Padrinho e Protetor", desc: "Presidente do Brasil, cujas oscilações políticas influenciaram a vida de Silvino." },
+            { name: "Raída (Almerinda)", quote: "Amor no fogo cruzado", desc: "Companheira inseparável de Silvino, viveu os anos de perigo nas matas." },
+            { name: "Orcírio dos Santos", quote: "A Missão Final", desc: "Legalista nomeado com autoridade policial para eliminar Silvino Jacques em 1939." },
+            { name: "Leão Pedro Jacques", quote: "A Raiz", desc: "Pai de Silvino, casado com Máxima de Sant\'Anna." },
+            { name: "Máxima Sant\'Anna", quote: "Matriarca", desc: "Mãe de Silvino, nascida de tradicional família gaúcha." },
+            { name: "Miguel Jacques", quote: "Irmão de Sangue", desc: "Nascido em 1909, acompanhou Silvino em partes de sua jornada." },
+            { name: "Prudente D\'Ornellas", quote: "Lealdade na Fuga", desc: "Companheiro fiel desde o incidente no cabaré em Santo Ângelo." },
+            { name: "Zanir Pinheiro Jacques", quote: "A Cabeleireira", desc: "Esposa de Silvino que trabalhou e viveu em Bela Vista." },
+            { name: "Major Néri da Fonseca", quote: "Comandante Legalista", desc: "Liderou as forças legalistas em Porto Murtinho em 1932." },
+            { name: "Simão Coelho", quote: "Líder de Combate", desc: "Chefe do grupo legalista onde Orcírio ingressou para lutar em 32." },
+            { name: "Alípio dos Santos", quote: "O Rival", desc: "Fazendeiro e inimigo declarado de Silvino Jacques." },
+            { name: "Manoelito Coelho", quote: "Conflito", desc: "Genro de Alípio dos Santos, envolvido num conflito direto com Silvino" },
+            { name: "Adão Jacques", quote: "Braço Direito", desc: "Parente e companheiro de invernada na Fazenda Recrío." },
+            { name: "Argemiro Leão", quote: "O Primo", desc: "Fugiu com Silvino para o Paraguai após condenação em Ponta Porã." },
+            { name: "Ten. Cel. Paulo Nascimento", quote: "A Perseguição", desc: "Militar que solicitou informações para caçar o bando em 1937." },
+            { name: "Ten. José Cancello", quote: "O Vigilante", desc: "Encarregado de obter notícias sobre os movimentos do bandoleiro." },
+            { name: "Juracy Jacques", quote: "A Herdeira", desc: "Filha que guardou as trovas e memórias do pai." },
+            { name: "Euclides Charão Jacques", quote: "O Filho", desc: "Nascido em 29 de abril de 1939, pouco antes da morte do pai." },
+            { name: "Pedro Cruz", quote: "Primo Leal", desc: "Participou de diversos conflitos e atividades ao lado de Silvino." },
+            { name: "Osvaldo Santana Cabrera", quote: "Laços de Sangue", desc: "Tio de Silvino, envolvido na briga em Ponta Porã." },
+            { name: "Bernabé Cristaldo", quote: "O Artista", desc: "Músico e companheiro presente em festas e combates." },
+            { name: "Gregório da Cruz", quote: "O Delator", desc: "Ferroviário que reconheceu Silvino em Miranda." },
+            { name: "Dr. Veloso", quote: "A Mente", desc: "Advogado e amigo com quem Silvino tinha relação suspeita." },
+            { name: "Agrícola de Azevedo", quote: "O Cronista", desc: "Possível autor do 'Informe Mato Grosso' de 1935." },
+            { name: "Cândido Barbosa Pratt", quote: "O Estopim", desc: "Sua morte motivou a condenação e fuga de Silvino para o Paraguai." },
+            { name: "Julio Strübling Müller", quote: "O Interventor", desc: "Organizou a Delegacia Especial para o cerco final em 1939." },
+            { name: "Doutor Mandacaru", quote: "O Médico", desc: "Médico do Exército, figura controversa na fronteira." },
+            { name: "Zé Turco", quote: "O Mensageiro", desc: "Envolvido no sequestro de Claudino Barbosa." },
+            { name: "Capitão Valdemar Pereira", quote: "O Codinome", desc: "Identidade adotada por Silvino Jacques para viver em Bela Vista." },
+            { name: "Bernardo Júnior", quote: "O Delegado", desc: "Envolvido na perseguição e prisão de Amim." },
+            { name: "Turco Amin", quote: "O Contrabandista", desc: "Comerciante amigo do Capitão Gomes, envolto em tramas locais." },
+            { name: "Capitão Gomes", quote: "O Oficial Paraguaio", desc: "Militar do exército paraguaio, amigo de Amin." },
+            { name: "Elias Fernandes", quote: "O Aliado", desc: "Amigo do turco Amin e do Capitão Gomes." },
+            { name: "Saturnino", quote: "A Autoridade Local", desc: "Delegado em Passo Itá." },
+            { name: "Bernardina", quote: "A Filha", desc: "Filha do delegado Saturnino." },
+            { name: "João Farofa", quote: "O Companheiro", desc: "Membro do grupo, acompanhava Adão Jacques." },
+            { name: "Pedro Coelho", quote: "O Alambiqueiro", desc: "Proprietário de um alambique na região." },
+            { name: "Ricardo", quote: "O Motorista", desc: "Condutor do Fordeco utilizado pelo grupo." },
+            { name: "Cabo Cléber", quote: "O Militar", desc: "Participou das operações na região." },
+            { name: "Major Costinha", quote: "O Comandante", desc: "Ordenou a repressão ao banditismo e captura de Silvino." },
+            { name: "Miguel Dutra dos Santos", quote: "O Logístico", desc: "Realizava compras em Bela Vista para o grupo." },
+            { name: "Felício Benedetti", quote: "O Tropeiro", desc: "Teve mulas roubadas por Argemiro Leão." },
+            { name: "Tenente Juarez Távora", quote: "O Tenentista", desc: "Envolvido na campanha contra os rebeldes." },
+            { name: "Idelzina Pereira da Rosa", quote: "A Revoltosa", desc: "Participou do contingente de Ponta Porã." },
+            { name: "Alcides Machado", quote: "O Fugitivo", desc: "Companheiro de Idelzina na fuga." },
+            { name: "Epaminondas Escobar", quote: "O Fazendeiro", desc: "Proprietário da Fazenda Machorra, deu abrigo aos fugitivos." },
+            { name: "Izidro Pereira da Rosa Neto", quote: "O Genro", desc: "Casou-se com Suely Loureiro e era amigo de Epaminondas." },
+            { name: "Dr. Otávio Quevedo", quote: "O Advogado", desc: "Dono da Fazenda Carapê e defensor de Manolito Coelho." },
+            { name: "Margarida Vonci", quote: "A Fazendeira", desc: "Proprietária rural da região." }
+        ];
+
+        const MAP_POINTS = [
+            // RIO GRANDE DO SUL
+            { id: 'sao-borja', category: 'RS', title: 'São Borja', description: 'Local de nascimento (17/02/1906). Origem de sua linhagem tradicional. Retorno como fugitivo.' },
+            { id: 'santo-angelo', category: 'RS', title: 'Santo Ângelo', description: 'Fiscal de linha. Incidente na "Pensão do Bolinha" (25/06/1929). Julgamento.' },
+            { id: 'santa-rosa', category: 'RS', title: 'Santa Rosa', description: 'Trabalho como fiscal de linha férrea.' },
+            { id: 'porto-alegre', category: 'RS', title: 'Porto Alegre', description: 'Casa de Correção. Escrita da carta-poesia.' },
+            { id: 'nonoai', category: 'RS', title: 'Nonoai', description: 'Refúgio na tentativa de restabelecer rede de apoio.' },
+            { id: 'uruguaiana', category: 'RS', title: 'Uruguaiana', description: 'Chácara dos avós paternos, local de treino de tiro.' },
+            { id: 'rio-uruguai', category: 'RS', title: 'Rio Uruguai', description: 'Travessia de fronteira durante a fuga do RS.' },
+            // SANTA CATARINA
+            { id: 'chapeco', category: 'SC', title: 'Chapecó', description: 'Entrada no estado em rota de fuga pela divisa com o RS.' },
+            { id: 'cameiro', category: 'SC', title: 'Povoado Cameiro', description: 'Local de ataque policial durante a fuga.' },
+                        // ARGENTINA
+            { id: 'santo-tome', category: 'Argentina', title: 'Santo Tomé', description: 'Passagem transitória pela província de Corrientes.' },
+            { id: 'posadas', category: 'Argentina', title: 'Posadas', description: 'Primeira parada na Argentina durante o périplo fronteiriço.' },
+            { id: 'corrientes', category: 'Argentina', title: 'Corrientes', description: 'Viagem pela província argentina.' },
+            // PARAGUAI
+            { id: 'encarnacion', category: 'Paraguai', title: 'Encarnación', description: 'Segunda parada na fuga, aprendizado do idioma Guarani.' },
+            // MATO GROSSO DO SUL
+            { id: 'bela-vista', category: 'MS', title: 'Bela Vista', description: 'Chegada em 1929 como Valdemar Pereira. Esposa Zanyr Pinheiro. Prestígio no Exército.' },
+            { id: 'porteiras', category: 'MS', title: 'Porteiras', description: 'Viveu como Valdemar Pereira trabalhando em fazendas da região.' },
+            { id: 'maracaju', category: 'MS', title: 'Maracaju', description: 'Região de registro de suas façanhas na fronteira.' },
+            { id: 'bonito', category: 'MS', title: 'Bonito', description: 'Façanhas registradas. Local da morte (19/05/1939). Casa de Memória Raída.' },
+            { id: 'porto-murtinho', category: 'MS', title: 'Porto Murtinho', description: 'Comando de tropa legalista durante a Revolução de 1932.' },
+            { id: 'rio-perdido', category: 'MS', title: 'Rio Perdido', description: 'Missão estratégica de 1932: queima da ponte para retardar tropas.' },
+            { id: 'campo-grande', category: 'MS', title: 'Campo Grande', description: 'Penosa viagem e tentativa de organizar comitê revolucionário.' },
+            { id: 'bolicho-seco', category: 'MS', title: 'Bolicho Seco', description: 'Ponto de passagem a caminho de Campo Grande.' },
+            { id: 'passo-ita', category: 'MS', title: 'Passo Itá', description: 'Próximo a São Carlos. Estadia após sair de Porteiras.' },
+            { id: 'aurora', category: 'MS', title: 'Fazenda Aurora', description: 'Local do confronto final e morte em 1939.' },
+            { id: 'ponta-pora', category: 'MS', title: 'Ponta Porã', description: 'Pronunciado pelo assassinato de Candido Barbosa Pratt. Fuga para o Paraguai.' },
+            { id: 'miranda', category: 'MS', title: 'Miranda', description: 'Esposa Zanir (cabeleireira). Reconhecimento por ferroviário e prisão de coiteiros.' },
+	    // SÃO PAULO
+            { id: 'sao-paulo', category: 'SP', title: 'São Paulo', description: 'Tropeada de mulas. Visita à esposa. Obra "Décima Gaúcha" mimeografada em 1980.' }
+        ];
+        const GALLERY = [
+            { id: '1', title: "Silvino com Acordeão e Arma", url: "Silvino com Acordeão e Arma.jpg", desc: "Silvino Jacques com seu acordeão. Habilidades extremas com a música e com as armas, .", category: 'militar' },
+            { id: '2', title: "Silvino e Adão", url: "Silvino e Adão Jacques.jpg", desc: "Silvino com seu braço direito, Adão Jacques.", category: 'grupo' },
+            { id: '3', title: "Pais de Silvino", url: "Pais-Silvino.jpg", desc: "Leão Pedro Jacques e Máxima Santanna Jacques", category: 'retrato' },
+            { id: '4', title: "O Poeta", url: "Escrevendo a História.jpg", desc: "Silvino era hábil também na escrita. Era um exímio trovador, tendo registrado um diário de suas façanhas, conhecido como As Décimas de Silvino Jacques", category: 'retrato' },
+            { id: '5', title: "Revolução de 32", url: "Grupo de Silvino Jacques.jpg", desc: "Capitão Silvino Jacques e parte de seu grupo na Revolução de 32", category: 'militar' },
+            { id: '6', title: "Grupo de Silvino", url: "grupo-silvino.jpg", desc: "O grupo de Silvino. Homens que seguiram com ele até sua morte", category: 'grupo' },
+            { id: '7', title: "Ildorilda, filha de Zanyr e Silvino", url: "Ildorilda-filha.jpg", desc: "Nascida em 1930, viveu por 93 anos, na maior parte em Bela Vista-MS. Deixou essa vida em 2024", category: 'retrato' },
+            { id: '8', title: "Elodya Charão", url: "Elodya Charão.jpg", desc: "Elodya, a Bela, foi capturada grávida. O filho Euclides nasceu 20 dias antes da morte de Silvino ", category: 'retrato' },
+            { id: '9', title: "Capitão Silvino e sua filha Ildorilda", url: "silvino-filhaildorilda.jpg", desc: "Ildorilda apareceu em diversas fotos da época. Amava o pai e sentiu sua falta no decorrer dos anos", category: 'militar' },
+{ id: '10', title: "Retrato Familiar", url: "Familia de Silvino Esposa Filha pais cunhados.jpg", desc: "Pais de Silvino, esposa, filha, irmãs e cunhados.", category: 'retrato' },
+            { id: '11', title: "Silvino jovem com um amigo", url: "Silvino Jovem.jpg", desc: "Silvino ainda adolescente, mas pilchado e armado", category: 'retrato' },
+            { id: '12', title: "Visita ao Padrinho Getúlio Vargas no RJ", url: "Traje Civil no Rio.jpg", desc: "Silvino no Rio de Janeiro com Zanyr e Ildorilda", category: 'retrato' },
+            { id: '13', title: "De terno e Chapéu", url: "Traje Civil no Rio2.jpg", desc: "Em sua visita ao padrinho Presidente do Brasil", category: 'retrato' },
+            { id: '14', title: "Exibindo medalha de honra", url: "Três Companheiros.jpg", desc: "Silvino ao lado de companheiros na Revolução de 32, recebendo medalha de honra por sua atuação que deu a vitória a Getúlio Vargas ", category: 'militar' },
+            { id: '15', title: "Retrato de Silvino", url: "silvino-retrato araguari.jpg", desc: "Esta foto foi usada para identificar Silvino após a morte de policiais que o perseguiram em Araguari-MG", category: 'retrato' },
+            { id: '16', title: "Soldado entrega arma a Silvino", url: "Soldado-arma-getulio.jpg", desc: "Silvino recebe e exibe arma enviada pelo Padrinho Getúlio Vargas. Elodya estava no dia", category: 'grupo' },
+{ id: '17', title: "Prudente de Ornellas", url: "Prudente-Dornellas.jpg", desc: "Prudente era primo de Silvino e um homem igual a ele. Gaúcho valente seguiu com Silvino após o incidente em Santo Angelo-RS ", category: 'retrato' },
+{ id: '18', title: "Silvino e Família", url: "Silvino-mae-irmas-parentes.jpg", desc: "Silvino com Zanyr Ildorilda, mãe, irmãs e outros parentes", category: 'retrato' },
+{ id: '19', title: "Silvino e a Família de Zanyr", url: "silvino-pais-irmãosZanyr.jpg", desc: "O Capitão Silvino Jacques, o pai de Zanyr, madrasta dela, irmãs, Zanyr e Ilda", category: 'militar' },
+{ id: '20', title: "Silvino Retrato", url: "Silvino-retrato3.jpg", desc: "Retrato de Silvino - Na foto original estava com sua irmã Maria Jacques(Riquinha)", category: 'retrato' },
+{ id: '21', title: "O Homem, a Lenda - 1938", url: "Capitão-lenço-vermelho.jpg", desc: "Até os dias de hoje fala-se do Capitão Silvino Jacques. Embora tenha tido seus inimigos, mais são os que simpatizam com ele e que perpetuam a lenda", category: 'grupo' },
+{ id: '22', title: "Ninguém atirava como ele", url: "Silvino-Retrato4.jpg", desc: "Sua rapidez e pontaria são lendárias. Suas habilidades fizeram com que vivesse mais do que a perseguição poderia ter feito. Morreu aos 33 anos", category: 'grupo' },
+
+
+            // Placeholder generator for demo purposes
+            ...Array.from({length: 0}, (_, i) => ({
+                id: `${i+17}`,
+                title: `Registro Histórico ${i+1}`,
+                url: "https://via.placeholder.com/600x800/E6DABB/5C1B1B?text=Acervo+Silvino",
+                desc: "Fotografia do acervo histórico (em processo de digitalização).",
+                category: ['retrato', 'grupo', 'militar'][i % 3]
+            }))
+        ];
+
+        const ACADEMIC = [
+            {
+                id: 'decimas',
+                title: 'Décimas Gaúchas',
+                author: 'Silvino Jacques',
+                text: `As "Décimas" foram escritas pelas mãos do próprio Silvino Jacques que era um exímio trovador. Embora chamada de Décimas, foi escrita em Sextilhas. Nelas, ele narra importantes fatos de sua vida, como um verdadeiro diário pessoal.
+
+1
+Vou contar uma historia,
+Que muitos devem saber,
+Mas contada por quem não viu
+É justo não deve crer.
+E para que todos saibam
+Bem certo vou escrever.
+
+2
+Meu nome nunca neguei,
+E não pretendo negar,
+Me chamo Sylvino Jacques,
+E nunca procuro o mal
+Ele é quem me procura
+E sempre há de me encontrar.
+
+3
+Sempre fui perseguido
+por um ruim triste destino,
+Até chegar ao ponto
+De ser um homem ferino
+E meu nome ser comentado
+Com fama de assassino.
+
+4
+Essa triste sorte, de longe
+De longe vem me seguindo,
+Pois creio que é o meu destino
+Que anda me perseguindo,
+Embora cheio de mágoas
+Eu mostro-me sempre rindo.
+
+[...Trecho selecionado para demonstração...]
+
+112
+A arma do bom gaúcho
+É o cavalo bom e forte,
+Brigando se arrisca a vida,
+Correndo desvia a morte,
+Por isso montei o puro
+E fui pendendo para o norte.
+
+221
+Sou um gaúcho decente,
+Mas nasci predestinado
+Sempre andar a sofrer,
+Este já foi o meu fado,
+De alegrias e prazeres
+Hoje vivo separado.`
+            },
+            { id: 'ibanh', title: 'O Último dos Bandoleiros', author: 'Brígido Ibanhes', text: 'Obra definitiva que explora a dualidade entre o herói e o bandido. Ibanhes mergulha nos arquivos policiais e na memória oral para reconstruir os passos de Silvino.' },
+            { id: 'tese', title: 'Fronteiras e Mitos', author: 'Maria de Lourdes', text: 'Estudo acadêmico sobre o impacto cultural da lenda de Jacques na formação da identidade sul-mato-grossense e a relação com o poder central na Era Vargas.' }
+        ];
+
+        // --- GENEALOGIA ATUALIZADA (COM MÃE NA 2ª GERAÇÃO) ---
+        const GENEALOGY = [
+            { col: "1ª Geração", items: [{ name: "Silvino Hermiro Jacques", dates: "1906-1939" }] },
+            { col: "2ª Geração", items: [
+                { name: "Leão Pedro Jacques", dates: "1879-1954", extraInfo: "Pai" },
+                { name: "Máxima De Santa-Anna Jacques", dates: "1884-1964", extraInfo: "Mãe" }
+            ]},
+            { col: "3ª Geração", items: [
+                { name: "João Rodrigues de Almeida Jacques", dates: "1857-Falecido", extraInfo: "Avô Paterno" },
+                { name: "João Paulo Sant\'Anna", dates: "1865-1903", extraInfo: "Avô Materno" }
+            ]},
+            { col: "4ª Geração", items: [
+                { name: "Modesto Rodrigues Jaques", dates: "1828-Falecido", extraInfo: "Bisavô Paterno" },
+                { name: "Pedro Pereira da Rosa", dates: "1840-Falecido", extraInfo: "Bisavô Materno" }
+            ]},
+            { col: "5ª Geração", items: [
+                { name: "João Rodrigues Jacques", dates: "1787-1852", extraInfo: "Trisavô Paterno" }
+            ]},
+            { col: "6ª Geração", items: [
+                { name: "Jacinto Rodrigues Jacques", dates: "1749-1834", extraInfo: "Tetravô Paterno", highlight: "Ilha dos Açores - Portugal" }
+            ]}
+        ];
+
+        // --- 2. INITIALIZATION ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTestimonials();
+            renderTimeline();
+            renderCharacters();
+            renderMap();       // Desktop
+            renderMobileMap(); // Mobile Exclusivo
+            renderMultimedia();
+            renderGallery('all');
+            renderAcademic();
+            renderGenealogy();
+            renderPoll();
+            setupReveals();
+        });
+        
+        // --- 3. MOBILE MENU LOGIC ---
+        window.toggleMobileMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('closed')) {
+                menu.classList.remove('closed');
+                menu.classList.add('open');
+            } else {
+                menu.classList.remove('open');
+                menu.classList.add('closed');
+            }
+        };
+
+        // --- 4. SCROLL HELPER ---
+        window.scrollContainer = (id, direction) => {
+            const container = document.getElementById(id);
+            if (container) {
+                // Cálculo mais preciso para scroll: Pega a largura do primeiro filho + gap
+                const firstChild = container.firstElementChild;
+                const scrollAmount = firstChild ? firstChild.getBoundingClientRect().width + 32 : 320; // 32 = gap (aprox)
+                
+                container.scrollBy({
+                    left: direction === 'left' ? -scrollAmount : scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // --- 5. RENDER FUNCTIONS ---
+
+        function renderTestimonials() {
+            const container = document.getElementById('testimonials-grid');
+            if(container) {
+                container.innerHTML = TESTIMONIALS.map(t => `
+                    <div class="bg-white p-10 shadow-xl border-l-[6px] border-[#C5A059] transition-transform hover:-translate-y-2 reveal-item">
+                        <p class="font-body text-lg italic leading-relaxed text-gray-800 mb-8">"${t.text}"</p>
+                        <p class="font-display font-black text-[#5C1B1B] tracking-[0.2em] text-xs">— ${t.source}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timeline-container');
+            if(container) {
+                container.innerHTML = TIMELINE.map(ev => `
+                    <div class="flex-none w-[300px] md:w-[400px] snap-center">
+                        <div class="relative flex flex-col items-center">
+                            <div class="w-6 h-6 bg-[#5C1B1B] rounded-full border-4 border-white z-10 shadow-xl mb-10"></div>
+                            <div class="bg-[#FDFBF7] p-8 md:p-10 border border-[#E6DABB] shadow-2xl border-t-[8px] border-t-[#5C1B1B] w-full min-h-[300px]">
+                                <div class="bg-[#5C1B1B] text-white px-4 py-1 text-xs font-western self-start mb-6 inline-block">${ev.year}</div>
+                                <h3 class="font-display text-2xl font-black mb-6 uppercase text-black leading-tight border-b border-[#E6DABB] pb-4">${ev.title}</h3>
+                                <p class="text-gray-700 leading-relaxed font-body text-lg opacity-90">${ev.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderCharacters() {
+            const container = document.getElementById('characters-container');
+            if(container) {
+                container.innerHTML = CHARACTERS.map(c => `
+                    <div class="flex-none w-[300px] md:w-[380px] h-[480px] flip-card snap-center perspective-1000 reveal-item cursor-pointer" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner shadow-2xl transition-transform duration-700">
+                            <div class="flip-card-front bg-[#E6DABB] border-2 border-[#8B7E66] p-10 flex flex-col items-center">
+                                <div class="w-24 h-24 bg-[#5C1B1B] rounded-full mb-10 flex items-center justify-center text-white font-western text-4xl opacity-20">SJ</div>
+                                <h3 class="font-display text-2xl font-black mb-6 uppercase tracking-widest text-black text-center">${c.name}</h3>
+                                <p class="italic text-[#5C1B1B] text-lg font-serif text-center px-4 leading-relaxed">"${c.quote}"</p>
+                                <span class="mt-auto text-[10px] uppercase font-bold text-gray-500 animate-pulse">Toque para ver detalhes</span>
+                            </div>
+                            <div class="flip-card-back bg-[#1A1A1A] text-[#F4ECD8] p-12 border-2 border-[#C5A059] flex flex-col justify-center items-center text-center">
+                                <p class="font-body text-lg leading-relaxed opacity-95">${c.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // --- MAP LOGIC (SPLIT: DESKTOP vs MOBILE) ---
+
+        let activeRegion = 'RS';
+
+        function renderMap() { // DESKTOP ONLY
+            const categoriesContainer = document.getElementById('map-categories');
+            const pointsList = document.getElementById('map-points-list');
+            if(!categoriesContainer || !pointsList) return;
+
+            const regions = ['RS', 'Argentina', 'SC', 'Paraguai', 'MS', 'SP'];
+            
+            categoriesContainer.innerHTML = regions.map(r => `
+                <button onclick="window.setMapRegion('${r}')" class="map-cat-btn p-5 text-left border-l-4 transition-all font-black uppercase text-[11px] tracking-[0.3em] ${activeRegion === r ? 'bg-[#5C1B1B] text-white border-[#C5A059]' : 'bg-[#FDFBF7] text-[#8B7E66] border-[#E6DABB]'}">
+                    ${r === 'MS' ? 'MATO GROSSO DO SUL' : r === 'RS' ? 'RIO GRANDE DO SUL' : r}
+                </button>
+            `).join('');
+
+            const regionPoints = MAP_POINTS.filter(p => p.category === activeRegion); 
+            
+            if (regionPoints.length === 0) {
+                 pointsList.innerHTML = `<div class="p-6 text-gray-400 italic font-serif">Nenhum registro público nesta região ainda.</div>`;
+            } else {
+                pointsList.innerHTML = regionPoints.map(pt => `
+                    <button onclick="window.setMapPoint('${pt.id}')" class="w-full text-left p-6 transition-all border shadow-sm bg-white border-[#E6DABB] text-black hover:bg-gray-50 mb-4 focus:border-[#5C1B1B] focus:border-l-8">
+                        <h4 class="font-display font-black text-lg uppercase mb-1">${pt.title}</h4>
+                        <span class="text-[9px] font-bold tracking-widest text-gray-400">PONTO HISTÓRICO</span>
+                    </button>
+                `).join('');
+                window.setMapPoint(regionPoints[0].id);
+            }
+        }
+
+        function renderMobileMap() { // MOBILE ONLY (Horizontal Cards)
+            const mobileContainer = document.getElementById('map-mobile-container');
+            if(!mobileContainer) return;
+
+            // We use ALL points for mobile carousel, relying on natural array order (RS -> SC -> MS...)
+            mobileContainer.innerHTML = MAP_POINTS.map(pt => `
+                <div class="flex-none w-[300px] snap-center">
+                    <div class="relative flex flex-col items-center">
+                         <div class="w-4 h-4 bg-[#5C1B1B] rounded-full border-2 border-white z-10 shadow-md mb-6"></div>
+                         <div class="bg-[#FDFBF7] p-8 border border-[#E6DABB] shadow-2xl border-t-[8px] border-t-[#5C1B1B] w-full min-h-[350px] flex flex-col justify-center text-center">
+                            <div class="bg-[#5C1B1B] text-white px-4 py-1 text-[10px] font-black uppercase tracking-widest mb-6 inline-block self-center">
+                                ${pt.category === 'MS' ? 'MATO GROSSO DO SUL' : pt.category === 'RS' ? 'RIO GRANDE DO SUL' : pt.category}
+                            </div>
+                            <h3 class="font-display text-2xl font-black mb-4 uppercase text-black leading-tight border-b border-[#E6DABB] pb-4">${pt.title}</h3>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-[#C5A059] mb-4 block">RELATO DO ACERVO</span>
+                            <p class="text-gray-700 leading-relaxed font-body text-lg opacity-90">"${pt.description}"</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.setMapRegion = (r) => {
+            activeRegion = r;
+            renderMap(); // Re-render desktop list
+        };
+
+        window.setMapPoint = (id) => {
+            const pt = MAP_POINTS.find(p => p.id === id);
+            if(!pt) return;
+            const detail = document.getElementById('map-point-detail');
+            if(detail) {
+                detail.innerHTML = `
+                    <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none"><span class="font-western text-9xl">SJ</span></div>
+                    <div class="bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-4 py-2 inline-block mb-10 tracking-[0.4em] self-center">RELATO DE ACERVO</div>
+                    <h3 class="font-western text-[#5C1B1B] text-4xl md:text-5xl mb-8">${pt.title}</h3>
+                    <div class="w-16 h-1 bg-[#C5A059] mx-auto mb-8"></div>
+                    <p class="font-body text-xl md:text-2xl leading-relaxed text-gray-800 italic opacity-90 max-w-lg mx-auto">"${pt.description}"</p>
+                `;
+            }
+        };
+
+// --- MULTIMEDIA ---
+function renderMultimedia() {
+    window.playVideoInline = function(playerDiv, id) {
+        playerDiv.className = 'video-full-container';
+        playerDiv.innerHTML = `
+            <iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" 
+                    class="w-full h-full" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        `;
+        const text = playerDiv.closest('.flex-none').querySelector('p');
+        if (text) text.textContent = 'REPRODUZINDO...';
+    };
+
+    const videos = [
+        { title: "DOCUMENTÁRIO - PARTE 1", id: "FgEYktEaDRI" },
+        { title: "DOCUMENTÁRIO - PARTE 2", id: "3dlDbgQvTEw" },
+        { title: "DOCUMENTÁRIO - PARTE 3", id: "rMPl5ocV1Jc" },
+        { title: "DOCUMENTÁRIO - PARTE 4", id: "o7ZJCTixDAs" }
+    ];
+
+    const container = document.getElementById('multimedia-container');
+    if (container) {
+        container.innerHTML = videos.map(v => `
+            <div class="flex-none w-[90vw] md:w-[600px] snap-center reveal-item">
+                <div class="group relative overflow-hidden rounded-sm shadow-2xl border-4 border-[#1A1A1A] aspect-video cursor-pointer transition-all hover:border-[#C5A059]">
+                    <div onclick="playVideoInline(this, '${v.id}')" class="w-full h-full flex items-center justify-center bg-slate-900 p-0 relative z-10">
+                        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity">
+                        <svg class="w-24 h-24 text-[#C5A059] relative z-20 opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all drop-shadow-2xl" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 pointer-events-none"></div>
+                    </div>
+                </div>
+                <h3 class="font-display text-white text-center mt-6 font-bold tracking-widest uppercase text-xl">${v.title}</h3>
+                <p class="text-[#C5A059] text-center text-xs tracking-widest mt-2">CLIQUE PARA ASSISTIR</p>
+            </div>
+        `).join('');
+    }
+}
+
+
+
+
+
+
+
+
+
+        // --- GALLERY ---
+        window.renderGallery = (filter) => {
+            const filtersContainer = document.getElementById('gallery-filters');
+            if(filtersContainer) {
+                const cats = ['all', 'grupo', 'retrato', 'militar'];
+                filtersContainer.innerHTML = cats.map(c => `
+                    <button onclick="window.renderGallery('${c}')" class="px-8 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${filter === c ? 'bg-[#5C1B1B] text-white' : 'bg-white text-[#8B7E66] border border-[#E6DABB]'}">
+                        ${c === 'all' ? 'Todos' : c}
+                    </button>
+                `).join('');
+            }
+
+            const container = document.getElementById('gallery-container');
+            if(container) {
+                const items = filter === 'all' ? GALLERY : GALLERY.filter(i => i.category === filter);
+                container.innerHTML = items.map(img => `
+                    <div onclick="window.openModal('${img.id}')" class="flex-none w-[300px] md:w-[400px] snap-center cursor-pointer group">
+                        <div class="bg-white p-5 shadow-2xl border-t-[10px] border-[#5C1B1B] rounded-sm overflow-hidden h-full">
+                            <div class="aspect-[3/4] overflow-hidden bg-gray-200 relative">
+                                <img src="${img.url}" class="w-full h-full object-cover grayscale sepia-[0.2] transition-all duration-700 group-hover:scale-110" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800?text=Imagem+Indisponível'"/>
+                            </div>
+                            <h3 class="font-display font-black text-lg md:text-2xl mt-8 uppercase text-black group-hover:text-[#5C1B1B] transition-colors">${img.title}</h3>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        };
+
+        window.openModal = (id) => {
+            const img = GALLERY.find(i => i.id === id);
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalCat = document.getElementById('modal-cat');
+            const modal = document.getElementById('image-modal');
+
+            if(modalImg && modalTitle && modalDesc && modal) {
+                modalImg.src = img.url;
+                modalTitle.innerText = img.title;
+                modalDesc.innerText = img.desc;
+                modalCat.innerText = img.category;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        };
+
+        window.closeModal = () => {
+            const modal = document.getElementById('image-modal');
+            if(modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        };
+
+        // --- ACADEMIC ---
+        function renderAcademic() {
+            const list = document.getElementById('academic-list');
+            if(list) {
+                list.innerHTML = ACADEMIC.map(a => `
+                    <button onclick="window.setAcademic('${a.id}')" class="flex-none md:w-full text-left p-6 md:border-l-8 border border-gray-200 md:border-t-0 md:border-r-0 md:border-b-0 min-w-[280px] md:min-w-0 transition-all bg-[#FDFBF7] shadow-sm hover:shadow-md border-[#8B7E66] opacity-90 focus:opacity-100 focus:border-[#5C1B1B]">
+                        <h4 class="font-display font-black text-lg md:text-xl mb-1 text-black">${a.title}</h4>
+                        <span class="text-[10px] text-[#5C1B1B] uppercase font-black tracking-widest">${a.author}</span>
+                    </button>
+                `).join('');
+                
+                if(ACADEMIC.length > 0) window.setAcademic(ACADEMIC[0].id);
+            }
+        }
+
+        window.setAcademic = (id) => {
+            const item = ACADEMIC.find(a => a.id === id);
+            const detail = document.getElementById('academic-detail');
+            if(detail) {
+                detail.innerHTML = `
+                    <div class="absolute top-0 left-0 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-6 py-2 tracking-[0.3em]">LEITURA PARCIAL</div>
+                    <div class="overflow-y-auto flex-1 mt-6 pr-4 custom-scrollbar">
+                        <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-black leading-tight border-b-2 border-gray-100 pb-4">${item.title}</h3>
+                        <div class="mb-10"><span class="text-xs text-[#5C1B1B] font-black uppercase tracking-[0.2em] italic">Por: ${item.author}</span></div>
+                        <div class="font-body text-lg md:text-xl leading-relaxed text-gray-800 opacity-95 whitespace-pre-line">${item.text}</div>
+                        <p class="mt-6 text-sm font-bold text-[#5C1B1B] italic">Para acesso à Obra completa entre em contato com o administrador desse Site pelo Whatsapp: +55 67 998909314</p>
+                    </div>
+                `;
+            }
+        };
+
+        // --- GENEALOGIA ---
+        function renderGenealogy() {
+            const container = document.getElementById('genealogy-container').querySelector('.flex');
+            if(container) {
+                container.innerHTML = GENEALOGY.map(col => `
+                    <div class="flex flex-col gap-12">
+                        <div class="text-[10px] uppercase font-black text-[#C5A059] mb-4 tracking-[0.4em] text-center border-b border-[#C5A059]/20 pb-2">${col.col}</div>
+                        <div class="flex flex-col gap-8">
+                            ${col.items.map(item => `
+                                <div class="bg-[#FDFBF7] border-l-[12px] p-6 shadow-xl w-72 md:w-80 min-h-[140px] flex flex-col relative border-[#8B7E66] hover:scale-105 transition-transform">
+                                    <h4 class="font-display font-black text-lg uppercase text-black mb-2">${item.name}</h4>
+                                    <p class="text-[10px] text-gray-500 font-bold">${item.dates}</p>
+                                    ${item.extraInfo ? `<p class="mt-auto text-[9px] uppercase tracking-widest text-[#C5A059]">${item.extraInfo}</p>` : ''}
+                                    ${item.highlight ? `<div class="mt-2 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-2 py-1 tracking-widest rounded-sm border border-[#C5A059] shadow-lg animate-pulse">${item.highlight}</div>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // --- POLL ---
+        let voted = false;
+        window.renderPoll = () => {
+            const options = [
+                { id: 'movie', label: 'Longa-Metragem para o Cinema', percentage: 0 },
+                { id: 'series', label: 'Minissérie do Netflix', percentage: 0 },
+                { id: 'doc', label: 'Documentário para o Netflix', percentage: 0 }
+            ];
+            const container = document.getElementById('poll-options');
+            if(container) {
+                container.innerHTML = options.map(opt => `
+                    <button onclick="window.vote('${opt.id}')" ${voted ? 'disabled' : ''} class="w-full relative h-16 bg-white border border-[#E6DABB] overflow-hidden group transition-all hover:border-[#5C1B1B] disabled:cursor-default">
+                        <div class="absolute top-0 left-0 h-full bg-[#5C1B1B]/10 transition-all duration-1000" style="width: ${voted ? 33 : 0}%"></div> <div class="relative z-10 flex justify-between items-center px-6 h-full font-display">
+                            <span class="font-bold text-xs md:text-sm uppercase text-black text-left">${opt.label}</span>
+                            ${voted ? `<span class="font-black text-[#5C1B1B]">VOTADO</span>` : ''}
+                        </div>
+                    </button>
+                `).join('');
+            }
+        };
+
+        window.vote = (id) => {
+            voted = true;
+            window.renderPoll();
+            alert("Voto registrado! (Simulação)");
+        };
+
+        // --- REVEAL ANIMATIONS ---
+        function setupReveals() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-section, .reveal-item').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
