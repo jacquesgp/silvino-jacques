@@ -1520,7 +1520,7 @@ Hoje vivo separado.`
         window.toggleMainPlayer = function() {
             if (!globalAudioPlayer.src) return;
             if (globalAudioPlayer.paused) {
-                globalAudioPlayer.play().catch(err => console.error('Erro ao tocar áudio:', err));
+                globalAudioPlayer.play().catch(error => console.warn('Erro na reprodução:', error));
             } else {
                 globalAudioPlayer.pause();
             }
@@ -1528,21 +1528,23 @@ Hoje vivo separado.`
 
         // Play/Pause toggle por faixa
         window.playAudio = function(url, trackId) {
-            const isSameTrack = globalAudioPlayer.src.endsWith(url) || globalAudioPlayer.src === url;
+            // Comparação robusta: normaliza a URL do src atual para comparar com o caminho relativo
+            const currentSrc = decodeURIComponent(globalAudioPlayer.src || '');
+            const isSameTrack = currentSrc.endsWith(url) || currentSrc.endsWith('/' + url);
 
             if (isSameTrack) {
                 // Toggle pause/play na mesma faixa
                 if (!globalAudioPlayer.paused) {
                     globalAudioPlayer.pause();
                 } else {
-                    globalAudioPlayer.play().catch(err => console.error('Erro ao tocar áudio:', err));
+                    globalAudioPlayer.play().catch(error => console.warn('Erro na reprodução:', error));
                 }
             } else {
                 // Troca de faixa: reseta ícone da anterior
                 if (activeTrackId) setTrackIcon(activeTrackId, false);
                 activeTrackId = trackId;
                 globalAudioPlayer.src = url;
-                globalAudioPlayer.play().catch(err => console.error('Erro ao tocar áudio:', err));
+                globalAudioPlayer.play().catch(error => console.warn('Erro na reprodução:', error));
             }
         };
 
