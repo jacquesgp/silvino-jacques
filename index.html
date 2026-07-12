@@ -2089,7 +2089,13 @@ Hoje vivo separado.`
                 if (imgUrl.includes('upload_')) {
                     imgUrl = 'https://hdntegflksofsbksrwlo.supabase.co/storage/v1/object/public/acervo/' + imgUrl;
                 } else {
-                    imgUrl = './assets/' + imgUrl;
+                    // Sanitize local asset filename (e.g. "Certidão Miguel Jaquess.jpg" -> "certidao-miguel-jaquess.jpg")
+                    const cleanName = imgUrl.normalize("NFD")
+                                            .replace(/[̀-ͯ]/g, "")
+                                            .toLowerCase()
+                                            .replace(/\s+/g, '-')
+                                            .replace(/_/g, '-');
+                    imgUrl = './assets/' + cleanName;
                 }
             }
             const safeUrl = imgUrl.replace(/'/g, "\\'");
