@@ -2084,7 +2084,24 @@ Hoje vivo separado.`
             const rotations = ['rotate-1', '-rotate-1', 'rotate-2'];
             const rotClass = isDoc ? rotations[index % 3] : '';
             
-            const imgUrl = item.url_midia && item.url_midia.startsWith('http') ? item.url_midia : './assets/' + (item.url_midia || 'placeholder.jpg');
+            let imgUrl = item.url_midia || 'placeholder.jpg';
+            if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('./') && !imgUrl.startsWith('../')) {
+                const localAssets = [
+                    'certidao-casamento.jpg',
+                    'certidao-de-nascimento-silvino-jacques.jpg',
+                    'certidao-miguel-jaquess.jpg',
+                    'certidao_casamento.jpg',
+                    'Certidão Miguel Jaquess.jpg',
+                    'Certidão de Nascimento Silvino Jacques.jpg'
+                ];
+                if (localAssets.includes(imgUrl)) {
+                    imgUrl = './assets/' + imgUrl;
+                } else {
+                    imgUrl = 'https://hdntegflksofsbksrwlo.supabase.co/storage/v1/object/public/acervo/' + imgUrl;
+                }
+            } else if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('./') && !imgUrl.startsWith('../')) {
+                imgUrl = './assets/' + imgUrl;
+            }
             const safeUrl = imgUrl.replace(/'/g, "\\'");
             const safeTitle = (item.titulo || '').replace(/'/g, "\\'");
             const safeDesc = (item.descricao || '').replace(/'/g, "\\'");
@@ -2107,11 +2124,11 @@ Hoje vivo separado.`
 
             return `
             <div ${(isGal || isMidia) ? `data-category="${(item.categoria || '').trim().toLowerCase()}"` : ''} class="${isGal ? 'gallery-item ' : ''}${isMidia ? 'video-item ' : ''}flex-none w-[280px] md:w-[350px] snap-center bg-white p-4 shadow-xl border border-gray-300 relative group flex flex-col h-full ${isDoc ? 'transform ' + rotClass + ' hover:rotate-0 transition-transform duration-300' : ''} ${isGal || isMidia ? 'flex' : ''}">
-                <div class="${isDoc ? 'doc-zoom-container' : ''} overflow-visible h-[300px] relative border border-gray-200 bg-black">
+                <div class="${isDoc ? 'doc-zoom-container' : ''} overflow-visible h-[300px] relative border border-gray-200 ${isDoc ? 'bg-white' : 'bg-black'}">
                     ${isMidia && youtubeId ? 
                         `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` 
                         : 
-                        `<img src="${imgUrl}" alt="${item.titulo}" class="${isDoc || isGal ? 'cursor-pointer ' : ''}w-full h-full ${objectFit} grayscale sepia-[0.3] transition-transform duration-500 hover:scale-110" onerror="this.src='./assets/placeholder.jpg'" ${clickAction}>`
+                        `<img src="${imgUrl}" alt="${item.titulo}" class="${isDoc || isGal ? 'cursor-pointer ' : ''}w-full h-full ${objectFit} ${isDoc ? 'bg-white' : 'grayscale sepia-[0.3]'} transition-transform duration-500 hover:scale-110" onerror="this.src='./assets/placeholder.jpg'" ${clickAction}>`
                     }
                     ${isDoc || isGal ? '<div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 pointer-events-none z-10">🔍 Ampliar</div>' : ''}
                 </div>
