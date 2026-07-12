@@ -2086,21 +2086,11 @@ Hoje vivo separado.`
             
             let imgUrl = item.url_midia || 'placeholder.jpg';
             if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('./') && !imgUrl.startsWith('../')) {
-                const localAssets = [
-                    'certidao-casamento.jpg',
-                    'certidao-de-nascimento-silvino-jacques.jpg',
-                    'certidao-miguel-jaquess.jpg',
-                    'certidao_casamento.jpg',
-                    'Certidão Miguel Jaquess.jpg',
-                    'Certidão de Nascimento Silvino Jacques.jpg'
-                ];
-                if (localAssets.includes(imgUrl)) {
-                    imgUrl = './assets/' + imgUrl;
-                } else {
+                if (imgUrl.includes('upload_')) {
                     imgUrl = 'https://hdntegflksofsbksrwlo.supabase.co/storage/v1/object/public/acervo/' + imgUrl;
+                } else {
+                    imgUrl = './assets/' + imgUrl;
                 }
-            } else if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('./') && !imgUrl.startsWith('../')) {
-                imgUrl = './assets/' + imgUrl;
             }
             const safeUrl = imgUrl.replace(/'/g, "\\'");
             const safeTitle = (item.titulo || '').replace(/'/g, "\\'");
