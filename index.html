@@ -1510,18 +1510,42 @@ Hoje vivo separado.`
                 if (item) {
                     const detail = document.getElementById('academic-detail');
                     if (detail) {
+                        let textoObra = '';
+                        let urlObra = 'https://api.whatsapp.com/send?phone=5567998909314&text=' + encodeURIComponent('Olá, gostaria de acessar a obra completa: ' + item.titulo);
+                        let textoBotao = item.descricao || 'Acessar Link Externo';
+                        
+                        try {
+                            const parsed = JSON.parse(item.url_midia);
+                            textoObra = parsed.texto || '';
+                            if (parsed.url) {
+                                urlObra = parsed.url;
+                            }
+                        } catch(e) {
+                            // Legacy fallback
+                            textoObra = item.descricao || '';
+                            textoBotao = 'Acessar Link Externo';
+                            if (item.url_midia && item.url_midia.startsWith('http')) {
+                                urlObra = item.url_midia;
+                            }
+                        }
+
                         detail.innerHTML = `
                             <div class="absolute top-0 left-0 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-6 py-2 tracking-[0.3em]">LEITURA PARCIAL</div>
                             <div class="overflow-y-auto flex-1 mt-6 pr-4 custom-scrollbar">
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-black leading-tight">${item.titulo}</h3>
-                                <div class="mb-6 border-b border-gray-100 pb-4">
+                                <div class="mb-6 border-b border-gray-100 pb-4 flex flex-wrap items-center justify-between gap-4">
                                     <div class="mb-3"><span class="text-xs text-[#5C1B1B] font-black uppercase tracking-[0.2em] italic">Por: ${item.categoria || 'Autor Desconhecido'}</span></div>
-                                    <button onclick="shareAcademicWhatsApp('${(item.titulo || '').replace(/'/g, "\\'")}', '${(item.categoria || 'Autor Desconhecido').replace(/'/g, "\\'")}')" class="inline-flex items-center gap-2 px-4 py-2 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-xs font-bold uppercase rounded-md shadow-sm hover:shadow">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
-                                        Recomendar Leitura no WhatsApp
-                                    </button>
+                                    <div class="flex gap-2">
+                                        <button onclick="shareAcademicWhatsApp('${(item.titulo || '').replace(/'/g, "\\'")}', '${(item.categoria || 'Autor Desconhecido').replace(/'/g, "\\'")}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all text-[10px] font-bold uppercase rounded shadow-sm">
+                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+                                            Compartilhar
+                                        </button>
+                                        <a href="${urlObra}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#5C1B1B] text-white hover:bg-black transition-all text-[10px] font-bold uppercase rounded shadow-sm">
+                                            ${textoBotao}
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="texto-obra whitespace-pre-wrap font-body text-lg md:text-xl leading-relaxed text-gray-800 opacity-95">${item.descricao || ''}</div>
+                                <div class="texto-obra whitespace-pre-wrap font-body text-lg md:text-xl leading-relaxed text-gray-800 opacity-95">${textoObra}</div>
                             </div>
                         `;
                     }
@@ -1876,6 +1900,8 @@ Hoje vivo separado.`
                     <!-- Input Text para Mídia (YouTube) -->
                     <input type="text" id="mediaUrl" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden" placeholder="Ex: https://youtube.com/...">
                     
+                    <input type="text" id="itemTextoBotao" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Título do Botão (ex: Leia mais, Obra Completa)">
+                    
                     <input type="hidden" id="crud-midia" value="">
                     <p id="media-current-name" class="text-xs text-gray-500 mt-1"></p>
                 </div>
@@ -2218,9 +2244,17 @@ Hoje vivo separado.`
             if (currentName) currentName.innerText = item && item.url_midia ? `Atual: ${item.url_midia.split('/').pop()}` : '';
         }
         
+        const btnTextInput = document.getElementById('itemTextoBotao');
+        if (btnTextInput) btnTextInput.style.display = 'none';
+
         if (table === 'academia') {
-            // Academia: hide media, show only titulo/autor(categoria)/descricao
-            if (mediaWrapper) mediaWrapper.style.display = 'none';
+            // Academia: show media text input for external link URL, and show button text input
+            if (mediaWrapper) mediaWrapper.style.display = 'block';
+            if (mediaLabel) mediaLabel.innerText = 'URL do Link Externo (PDF/Site)';
+            if (mediaFile) mediaFile.style.display = 'none';
+            if (mediaText) mediaText.style.display = 'block';
+            if (btnTextInput) btnTextInput.style.display = 'block';
+            
             catTextWrapper.style.display = 'block';
             catSelectWrapper.style.display = 'none';
             if (catTextInput) catTextInput.placeholder = 'Autor do texto';
@@ -2241,9 +2275,28 @@ Hoje vivo separado.`
             document.getElementById('crud-modal-title').innerText = 'Editar Item';
             document.getElementById('crud-id').value = item.id;
             document.getElementById('crud-titulo').value = item.titulo;
-            document.getElementById('crud-descricao').value = item.descricao || '';
+            
+            if (table === 'academia') {
+                let textoObra = '';
+                let urlObra = '';
+                try {
+                    const parsed = JSON.parse(item.url_midia);
+                    textoObra = parsed.texto || '';
+                    urlObra = parsed.url || '';
+                } catch(e) {
+                    textoObra = item.descricao || '';
+                    urlObra = item.url_midia || '';
+                }
+                document.getElementById('crud-descricao').value = textoObra;
+                document.getElementById('mediaUrl').value = urlObra;
+                document.getElementById('crud-midia').value = item.url_midia || '';
+                if (btnTextInput) btnTextInput.value = item.descricao || '';
+            } else {
+                document.getElementById('crud-descricao').value = item.descricao || '';
+                document.getElementById('crud-midia').value = item.url_midia || '';
+            }
+            
             document.getElementById('crud-categoria').value = item.categoria || '';
-            document.getElementById('crud-midia').value = item.url_midia || '';
             
             if (table === 'galeria' || table === 'midia') {
                 if (table === 'galeria') {
@@ -2381,19 +2434,26 @@ Hoje vivo separado.`
                     }
 
                     let finalDescricao = document.getElementById('crud-descricao').value;
+                    let finalUrlMidia = urlMidia;
 
                     if (table === 'academia') {
                         const ASSINATURA = 'Para acesso à Obra completa entre em contato com o administrador desse Site pelo Whatsapp: +55 67 998909314';
                         if (!finalDescricao.includes(ASSINATURA)) {
                             finalDescricao = finalDescricao.trim() + '\n\n' + ASSINATURA;
                         }
+                        const buttonText = document.getElementById('itemTextoBotao').value || '';
+                        const extUrl = document.getElementById('mediaUrl').value || '';
+                        
+                        // Save button text in descricao, and JSON payload {texto, url} in url_midia
+                        finalDescricao = buttonText;
+                        finalUrlMidia = JSON.stringify({ texto: document.getElementById('crud-descricao').value, url: extUrl });
                     }
 
                     const payload = {
                         titulo: document.getElementById('crud-titulo').value,
                         descricao: finalDescricao,
                         categoria: finalCategoria,
-                        url_midia: table === 'academia' ? '' : urlMidia,
+                        url_midia: finalUrlMidia,
                     };
 
                     btn.innerText = "Salvando banco...";
