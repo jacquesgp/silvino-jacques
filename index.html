@@ -1862,8 +1862,8 @@ Hoje vivo separado.`
     </div>
 
     <!-- GENERIC CRUD MODAL -->
-    <div id="crud-modal" class="fixed inset-0 bg-black/80 z-[300] hidden items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white max-w-lg w-full p-8 shadow-2xl relative">
+    <div id="crud-modal" class="fixed inset-0 bg-black/80 z-[300] hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeCrudModal()">
+        <div class="bg-white max-w-lg w-full p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
             <button onclick="closeCrudModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
