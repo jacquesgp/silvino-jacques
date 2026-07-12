@@ -2063,8 +2063,8 @@ Hoje vivo separado.`
             const safeDesc = (item.descricao || '').replace(/'/g, "\\'");
             const safeCat = (item.categoria || '').replace(/'/g, "\\'");
             
-            // Para documentos, usamos object-contain para ver tudo, para outros object-cover
-            const objectFit = isDoc ? 'object-contain' : 'object-cover';
+            // Para documentos: object-contain | Galeria: object-cover object-top | demais: object-cover
+            const objectFit = isDoc ? 'object-contain' : isGal ? 'object-cover object-top' : 'object-cover';
             // Documentos tem a lupa e zoom, Galeria tambem pode abrir modal
             const clickAction = (isDoc || isGal) ? `onclick="openDynamicModal('${safeUrl}', '${safeTitle}', '${safeDesc}', '${safeCat}')"` : '';
             
@@ -2084,7 +2084,7 @@ Hoje vivo separado.`
                     ${isMidia && youtubeId ? 
                         `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` 
                         : 
-                        `<img src="${imgUrl}" alt="${item.titulo}" class="${isDoc || isGal ? 'cursor-pointer ' : ''}w-full h-full ${objectFit} grayscale sepia-[0.3]" onerror="this.src='./assets/placeholder.jpg'" ${clickAction}>`
+                        `<img src="${imgUrl}" alt="${item.titulo}" class="${isDoc || isGal ? 'cursor-pointer ' : ''}w-full h-full ${objectFit} grayscale sepia-[0.3] transition-transform duration-500 hover:scale-110" onerror="this.src='./assets/placeholder.jpg'" ${clickAction}>`
                     }
                     ${isDoc || isGal ? '<div class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 pointer-events-none z-10">🔍 Ampliar</div>' : ''}
                 </div>
