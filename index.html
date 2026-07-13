@@ -1903,6 +1903,8 @@ Hoje vivo separado.`
                     
                     <input type="text" id="itemTextoBotao" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Título do Botão (ex: Leia mais, Obra Completa)">
                     
+                    <input type="number" id="itemOrdem" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
+                    
                     <input type="hidden" id="crud-midia" value="">
                     <p id="media-current-name" class="text-xs text-gray-500 mt-1"></p>
                 </div>
@@ -1978,7 +1980,13 @@ Hoje vivo separado.`
         
         // Para cada tabela, vamos fazer o select e mapear os cards
         TABLES.forEach(async (table) => {
-            const { data, error } = await supabaseClient.from(table).select('*').order('created_at', { ascending: false });
+            let query = supabaseClient.from(table).select('*');
+            if (table === 'midia') {
+                query = query.order('ordem', { ascending: true, nullsFirst: false });
+            } else {
+                query = query.order('created_at', { ascending: false });
+            }
+            const { data, error } = await query;
             if (!error && data) {
                 renderSectionCards(table, data);
             }
@@ -2226,14 +2234,7 @@ Hoje vivo separado.`
         if (table === 'conexoes') {
             if (mediaWrapper) mediaWrapper.style.display = 'none';
         } else if (table === 'midia') {
-            if (mediaWrapper) mediaWrapper.style.display = 'block';
-            if (mediaLabel) mediaLabel.innerText = 'URL do YouTube';
-            if (mediaFile) mediaFile.style.display = 'none';
-            if (mediaText) {
-                mediaText.style.display = 'block';
-                mediaText.value = item ? (item.url_midia || '') : '';
-            }
-            if (currentName) currentName.innerText = '';
+            // Handled lower down
         } else {
             if (mediaWrapper) mediaWrapper.style.display = 'block';
             if (mediaLabel) mediaLabel.innerText = 'Mídia (Imagem)';
@@ -2247,8 +2248,20 @@ Hoje vivo separado.`
         
         const btnTextInput = document.getElementById('itemTextoBotao');
         if (btnTextInput) btnTextInput.style.display = 'none';
+        const orderInput = document.getElementById('itemOrdem');
+        if (orderInput) orderInput.style.display = 'none';
 
-        if (table === 'academia') {
+        if (table === 'midia') {
+            if (mediaWrapper) mediaWrapper.style.display = 'block';
+            if (mediaLabel) mediaLabel.innerText = 'URL do YouTube';
+            if (mediaFile) mediaFile.style.display = 'none';
+            if (mediaText) {
+                mediaText.style.display = 'block';
+                mediaText.value = item ? (item.url_midia || '') : '';
+            }
+            if (currentName) currentName.innerText = '';
+            if (orderInput) orderInput.style.display = 'block';
+        } else if (table === 'academia') {
             // Academia: show media text input for external link URL, and show button text input
             if (mediaWrapper) mediaWrapper.style.display = 'block';
             if (mediaLabel) mediaLabel.innerText = 'URL do Link Externo (PDF/Site)';
@@ -2299,6 +2312,9 @@ Hoje vivo separado.`
             
             document.getElementById('crud-categoria').value = item.categoria || '';
             
+            if (table === 'midia' && orderInput) {
+                orderInput.value = item.ordem || '';
+            }
             if (table === 'galeria' || table === 'midia') {
                 if (table === 'galeria') {
                     catSelectInput.innerHTML = `
@@ -2450,12 +2466,21 @@ Hoje vivo separado.`
                         finalUrlMidia = JSON.stringify({ texto: document.getElementById('crud-descricao').value, url: extUrl });
                     }
 
+                    let finalOrdem = null;
+                    if (table === 'midia') {
+                        const orderVal = document.getElementById('itemOrdem').value;
+                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                    }
+
                     const payload = {
                         titulo: document.getElementById('crud-titulo').value,
                         descricao: finalDescricao,
                         categoria: finalCategoria,
                         url_midia: finalUrlMidia,
                     };
+                    if (table === 'midia') {
+                        payload.ordem = finalOrdem;
+                    }
 
                     btn.innerText = "Salvando banco...";
                     
