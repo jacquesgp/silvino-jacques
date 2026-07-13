@@ -781,15 +781,15 @@
                     <h3 class="font-display text-2xl md:text-5xl font-black mb-16 uppercase leading-tight text-[#5C1B1B]">COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?</h3>
                     <div class="space-y-6 max-w-2xl mx-auto" id="poll-container">
                         <!-- Botões de Voto -->
-                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Longa-Metragem')">
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Longa-Metragem')">
                             <span class="font-display font-bold text-lg text-left">LONGA-METRAGEM<br>PARA O CINEMA</span>
                             <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
-                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Minissérie')">
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Minissérie')">
                             <span class="font-display font-bold text-lg text-left">MINISSÉRIE DO<br>NETFLIX</span>
                             <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
-                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="submitVote('Documentário')">
+                        <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Documentário')">
                             <span class="font-display font-bold text-lg text-left">DOCUMENTÁRIO PARA<br>O NETFLIX</span>
                             <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
@@ -836,16 +836,16 @@
                 <!-- COLUNA ESQUERDA: Formulário Card -->
                 <div class="bg-[#F9F6F0] p-8 rounded-lg shadow-sm border border-[#E6DABB] text-left">
                     <h3 class="font-display text-2xl font-black uppercase text-[#5C1B1B] mb-6 tracking-widest">Envie seu Relato</h3>
-                    <form id="memory-form" class="space-y-4">
-                        <input type="text" id="mem-name" placeholder="Seu Nome Completo" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <input type="email" id="mem-email" placeholder="E-mail de Contato" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <input type="tel" id="mem-whatsapp" placeholder="WhatsApp (com DDD)" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <textarea id="mem-message" placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-48 bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none rounded-md shadow-sm" required></textarea>
+                    <form id="memory-form" class="space-y-4" onsubmit="event.preventDefault(); enviarMemoria();">
+                        <input type="text" id="memoria-nome" placeholder="Seu Nome Completo" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <input type="email" id="memoria-email" placeholder="E-mail de Contato" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <input type="tel" id="memoria-whatsapp" placeholder="WhatsApp (com DDD)" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <textarea id="memoria-relato" placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-48 bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none rounded-md shadow-sm" required></textarea>
                         <button type="submit" id="mem-btn" class="w-full bg-[#5C1B1B] text-white py-5 font-black uppercase tracking-[0.3em] text-sm hover:brightness-110 transition-all shadow-lg hover:shadow-xl flex justify-center items-center gap-2 rounded-md">
                             <span id="mem-btn-text">SUBMETER RELATO PARA O ARQUIVO</span>
                         </button>
                     </form>
-                    <div id="mem-success" class="hidden mt-6 p-5 bg-[#EFE6D0] border-l-4 border-[#5C1B1B] rounded-r-md">
+                    <div id="mensagem-sucesso-memoria" class="hidden mt-6 p-5 bg-[#EFE6D0] border-l-4 border-[#5C1B1B] rounded-r-md">
                         <h4 class="font-display text-xl font-bold text-[#5C1B1B] mb-2">Relato Recebido!</h4>
                         <p class="font-body text-gray-700">Muito obrigado por contribuir com a preservação da história da fronteira. Entraremos em contato em breve pelo WhatsApp ou E-mail.</p>
                     </div>
@@ -1718,6 +1718,8 @@ Hoje vivo separado.`
 
                 // Atualizar Contador de Visitantes
                 atualizarContadorVisitas();
+                // Carregar Resultados Enquete
+                carregarResultadosEnquete();
             }
         });
 
@@ -1759,18 +1761,14 @@ Hoje vivo separado.`
 
 
         // --- 1. LÓGICA DA ENQUETE ---
-        // Você precisa criar uma tabela no Supabase chamada 'enquetes' 
-        // com as colunas: id (int8/uuid), opcao (text), created_at (timestamp)
-
-        async function fetchPollResults() {
+        async function carregarResultadosEnquete() {
             if (!supabaseClient) return;
 
             try {
-                const { data, error } = await supabaseClient.from('votos_enquete').select('opcao');
+                const { data, error } = await supabaseClient.from('enquetes').select('opcao');
                 if (error) throw error;
 
                 const total = data.length;
-                if (total === 0) return;
 
                 const counts = {
                     'Longa-Metragem': 0,
@@ -1782,57 +1780,53 @@ Hoje vivo separado.`
                     if (counts[vote.opcao] !== undefined) counts[vote.opcao]++;
                 });
 
-                updateBars(counts, total);
+                const pLonga = Math.round((counts['Longa-Metragem'] / (total || 1)) * 100) || 0;
+                const pMini = Math.round((counts['Minissérie'] / (total || 1)) * 100) || 0;
+                const pDoc = Math.round((counts['Documentário'] / (total || 1)) * 100) || 0;
+
+                document.getElementById('bar-longa').style.width = pLonga + '%';
+                document.getElementById('perc-longa').innerText = pLonga + '%';
+
+                document.getElementById('bar-mini').style.width = pMini + '%';
+                document.getElementById('perc-mini').innerText = pMini + '%';
+
+                document.getElementById('bar-doc').style.width = pDoc + '%';
+                document.getElementById('perc-doc').innerText = pDoc + '%';
+
+                document.getElementById('total-votes').innerText = `Total de Votos: ${total}`;
+
+                if (localStorage.getItem('jaVotou')) {
+                    document.getElementById('poll-container').style.display = 'none';
+                    document.getElementById('poll-results').style.display = 'block';
+                }
             } catch (err) {
                 console.error('Erro ao buscar votos:', err);
             }
         }
 
-        function updateBars(counts, total) {
-            const pLonga = Math.round((counts['Longa-Metragem'] / total) * 100) || 0;
-            const pMini = Math.round((counts['Minissérie'] / total) * 100) || 0;
-            const pDoc = Math.round((counts['Documentário'] / total) * 100) || 0;
-
-            document.getElementById('bar-longa').style.width = pLonga + '%';
-            document.getElementById('perc-longa').innerText = pLonga + '%';
-
-            document.getElementById('bar-mini').style.width = pMini + '%';
-            document.getElementById('perc-mini').innerText = pMini + '%';
-
-            document.getElementById('bar-doc').style.width = pDoc + '%';
-            document.getElementById('perc-doc').innerText = pDoc + '%';
-
-            document.getElementById('total-votes').innerText = `Total de Votos: ${total}`;
-        }
-
-        async function submitVote(opcao) {
-            if (!supabaseClient) {
-                alert('Conexão com banco de dados não configurada. Insira as chaves no código.');
+        async function votarEnquete(opcaoEscolhida) {
+            if (!supabaseClient) return;
+            if (localStorage.getItem('jaVotou')) {
+                alert('Você já registrou seu voto! Obrigado.');
                 return;
             }
 
-            // Impede duplo voto via LocalStorage
-            if (localStorage.getItem('silvino_voted')) {
-                alert('Você já registrou seu voto!');
-                return;
-            }
+            const { error } = await supabaseClient.from('enquetes').insert([{ opcao: opcaoEscolhida }]);
 
-            document.getElementById('poll-container').style.display = 'none';
-            document.getElementById('poll-results').style.display = 'block';
-
-            try {
-                const { error } = await supabaseClient.from('votos_enquete').insert([{ opcao: opcao }]);
-                if (error) throw error;
-
-                localStorage.setItem('silvino_voted', 'true');
-                await fetchPollResults(); // Atualiza em tempo real
-            } catch (err) {
-                console.error('Erro ao salvar voto:', err);
-                alert('Ocorreu um erro. Tente novamente.');
-                document.getElementById('poll-container').style.display = 'block';
-                document.getElementById('poll-results').style.display = 'none';
+            if (!error) {
+                localStorage.setItem('jaVotou', 'sim');
+                alert('Voto registrado com sucesso!');
+                document.getElementById('poll-container').style.display = 'none';
+                document.getElementById('poll-results').style.display = 'block';
+                carregarResultadosEnquete();
+            } else {
+                console.error('Erro ao votar:', error);
+                alert('Ocorreu um erro ao salvar seu voto.');
             }
         }
+
+        window.votarEnquete = votarEnquete;
+        window.carregarResultadosEnquete = carregarResultadosEnquete;
 
         // Verifica se já votou ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
@@ -1844,42 +1838,31 @@ Hoje vivo separado.`
         });
 
         // --- 2. LÓGICA DO FORMULÁRIO DE MEMÓRIA ---
-        // Você precisa criar uma tabela chamada 'memorias'
-        // com colunas: id, nome(text), email(text), whatsapp(text), relato(text), created_at
+        async function enviarMemoria() {
+            if (!supabaseClient) return;
+            const nome = document.getElementById('memoria-nome').value;
+            const email = document.getElementById('memoria-email').value;
+            const whatsapp = document.getElementById('memoria-whatsapp').value;
+            const relato = document.getElementById('memoria-relato').value;
 
-        document.getElementById('memory-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            if (!supabaseClient) {
-                alert('Conexão com banco de dados não configurada.');
-                return;
+            if (!nome || !relato) { 
+                alert('Preencha pelo menos o Nome e o Relato.'); 
+                return; 
             }
 
-            const btnText = document.getElementById('mem-btn-text');
-            const originalText = btnText.innerText;
-            btnText.innerText = 'ENVIANDO...';
+            const { data, error } = await supabaseClient.from('memorias').insert([{ nome, email, whatsapp, relato }]);
 
-            const nome = document.getElementById('mem-name').value;
-            const email = document.getElementById('mem-email').value;
-            const whatsapp = document.getElementById('mem-whatsapp').value;
-            const relato = document.getElementById('mem-message').value;
-
-            try {
-                const { error } = await supabaseClient.from('relatos').insert([
-                    { nome: nome, email: email, whatsapp: whatsapp, relato: relato }
-                ]);
-
-                if (error) throw error;
-
-                // Sucesso
-                document.getElementById('memory-form').style.display = 'none';
-                document.getElementById('mem-success').style.display = 'block';
-
-            } catch (err) {
-                console.error('Erro ao enviar relato:', err);
-                alert('Erro ao enviar: ' + (err.message || err.details || JSON.stringify(err) || 'Verifique o console para detalhes.'));
-                btnText.innerText = originalText;
+            if (!error) {
+                document.getElementById('mensagem-sucesso-memoria').classList.remove('hidden');
+                document.getElementById('memory-form').reset();
+                fetchRelatos(); // Atualiza a lista lateral
+            } else {
+                console.error("Erro ao enviar memória:", error);
+                alert("Erro ao enviar relato.");
             }
-        });
+        }
+
+        window.enviarMemoria = enviarMemoria;
     </script>
 
 
@@ -2049,7 +2032,7 @@ Hoje vivo separado.`
         if (!supabaseClient) return;
         const adminMode = window.AppState ? window.AppState.checkIsAdmin() : false;
         
-        let query = supabaseClient.from('relatos').select('*').order('created_at', { ascending: false });
+        let query = supabaseClient.from('memorias').select('*').order('created_at', { ascending: false });
         // Removido filtro de adminMode aqui para renderizar e apenas esconder via CSS.
         // Contudo, usuarios comuns nao deveriam ver relatos não-aprovados?
         // O Supabase RLS deve barrar relatos nao aprovados para não-admins.
@@ -2081,13 +2064,13 @@ Hoje vivo separado.`
 
     async function approveRelato(id) {
         if(!confirm('Deseja aprovar este relato?')) return;
-        await supabaseClient.from('relatos').update({ aprovado: true }).eq('id', id);
+        await supabaseClient.from('memorias').update({ aprovado: true }).eq('id', id);
         fetchRelatos();
     }
     
     async function deleteRelato(id) {
         if(!confirm('Excluir permanentemente?')) return;
-        await supabaseClient.from('relatos').delete().eq('id', id);
+        await supabaseClient.from('memorias').delete().eq('id', id);
         fetchRelatos();
     }
 
