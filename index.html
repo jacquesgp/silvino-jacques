@@ -873,8 +873,13 @@
             <a href="#timeline" class="hover:text-white transition-colors no-underline nav-link-special">LINHA DO TEMPO</a>
             <a href="#conexoes" class="hover:text-white transition-colors no-underline nav-link-special">CONEXÕES</a>
         </div>
-        <div class="text-[#F4ECD8]/80 font-body text-sm mb-12">
+        <div class="text-[#F4ECD8]/80 font-body text-sm mb-4">
             Contato: <span class="font-bold">+55 67 (998909314)</span>
+        </div>
+        <div class="mt-4 mb-12 flex justify-center">
+            <div class="inline-block bg-[#1a1a1a] text-white px-5 py-2 rounded-md text-sm font-mono font-bold tracking-widest border border-gray-700 shadow-lg">
+                VISITANTES: <span id="contador-visitas">...</span>
+            </div>
         </div>
         <div class="flex flex-col md:flex-row items-center gap-4 text-[9px] font-black uppercase tracking-[0.3em] text-[#F4ECD8] text-center px-4" style="opacity: 0.6;">
             <span class="flex items-center gap-1">
@@ -1710,8 +1715,47 @@ Hoje vivo separado.`
                         fetchAllSections();
                     }
                 });
+
+                // Atualizar Contador de Visitantes
+                atualizarContadorVisitas();
             }
         });
+
+        async function atualizarContadorVisitas() {
+            if (!supabaseClient) return;
+            const visited = localStorage.getItem('visitou');
+            
+            try {
+                // Fetch current metrics
+                const { data, error } = await supabaseClient.from('metricas').select('visitantes').eq('id', 1).maybeSingle();
+                
+                if (error) {
+                    console.error("Erro ao buscar visitantes:", error);
+                    return;
+                }
+                
+                let count = data ? data.visitantes : 200;
+                
+                if (!visited) {
+                    count += 1;
+                    localStorage.setItem('visitou', 'sim');
+                    
+                    if (data) {
+                        // Update existing entry
+                        await supabaseClient.from('metricas').update({ visitantes: count }).eq('id', 1);
+                    } else {
+                        // Create entry if missing in Supabase
+                        await supabaseClient.from('metricas').insert([{ id: 1, visitantes: count }]);
+                    }
+                }
+                
+                const contEl = document.getElementById('contador-visitas');
+                if (contEl) contEl.innerText = count;
+                
+            } catch(e) {
+                console.error("Erro no contador de visitas:", e);
+            }
+        }
 
 
         // --- 1. LÓGICA DA ENQUETE ---
