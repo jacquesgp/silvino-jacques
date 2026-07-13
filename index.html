@@ -1765,7 +1765,7 @@ Hoje vivo separado.`
             if (!supabaseClient) return;
 
             try {
-                const { data, error } = await supabaseClient.from('enquetes').select('opcao');
+                const { data, error } = await supabaseClient.from('votos_enquete').select('opcao');
                 if (error) throw error;
 
                 const total = data.length;
@@ -1811,7 +1811,7 @@ Hoje vivo separado.`
                 return;
             }
 
-            const { error } = await supabaseClient.from('enquetes').insert([{ opcao: opcaoEscolhida }]);
+            const { error } = await supabaseClient.from('votos_enquete').insert([{ opcao: opcaoEscolhida }]);
 
             if (!error) {
                 localStorage.setItem('jaVotou', 'sim');
@@ -1850,7 +1850,7 @@ Hoje vivo separado.`
                 return; 
             }
 
-            const { data, error } = await supabaseClient.from('memorias').insert([{ nome, email, whatsapp, relato }]);
+            const { data, error } = await supabaseClient.from('relatos').insert([{ nome, email, whatsapp, relato }]);
 
             if (!error) {
                 document.getElementById('mensagem-sucesso-memoria').classList.remove('hidden');
@@ -2032,7 +2032,7 @@ Hoje vivo separado.`
         if (!supabaseClient) return;
         const adminMode = window.AppState ? window.AppState.checkIsAdmin() : false;
         
-        let query = supabaseClient.from('memorias').select('*').order('created_at', { ascending: false });
+        let query = supabaseClient.from('relatos').select('*').order('created_at', { ascending: false });
         // Removido filtro de adminMode aqui para renderizar e apenas esconder via CSS.
         // Contudo, usuarios comuns nao deveriam ver relatos não-aprovados?
         // O Supabase RLS deve barrar relatos nao aprovados para não-admins.
@@ -2064,13 +2064,13 @@ Hoje vivo separado.`
 
     async function approveRelato(id) {
         if(!confirm('Deseja aprovar este relato?')) return;
-        await supabaseClient.from('memorias').update({ aprovado: true }).eq('id', id);
+        await supabaseClient.from('relatos').update({ aprovado: true }).eq('id', id);
         fetchRelatos();
     }
     
     async function deleteRelato(id) {
         if(!confirm('Excluir permanentemente?')) return;
-        await supabaseClient.from('memorias').delete().eq('id', id);
+        await supabaseClient.from('relatos').delete().eq('id', id);
         fetchRelatos();
     }
 
