@@ -1936,6 +1936,8 @@ Hoje vivo separado.`
                     
                     <input type="number" id="itemOrdemAcademia" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
                     
+                    <input type="number" id="itemOrdemConexoes" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
+                    
                     <input type="hidden" id="crud-midia" value="">
                     <p id="media-current-name" class="text-xs text-gray-500 mt-1"></p>
                 </div>
@@ -2012,7 +2014,7 @@ Hoje vivo separado.`
         // Para cada tabela, vamos fazer o select e mapear os cards
         TABLES.forEach(async (table) => {
             let query = supabaseClient.from(table).select('*');
-            if (table === 'midia' || table === 'galeria' || table === 'academia') {
+            if (table === 'midia' || table === 'galeria' || table === 'academia' || table === 'conexoes') {
                 query = query.order('ordem', { ascending: true, nullsFirst: false });
             } else {
                 query = query.order('created_at', { ascending: false });
@@ -2264,6 +2266,7 @@ Hoje vivo separado.`
 
         if (table === 'conexoes') {
             if (mediaWrapper) mediaWrapper.style.display = 'none';
+            if (orderConexoesInput) orderConexoesInput.style.display = 'block';
         } else if (table === 'midia') {
             // Handled lower down
         } else {
@@ -2285,6 +2288,8 @@ Hoje vivo separado.`
         if (orderGaleriaInput) orderGaleriaInput.style.display = 'none';
         const orderAcademiaInput = document.getElementById('itemOrdemAcademia');
         if (orderAcademiaInput) orderAcademiaInput.style.display = 'none';
+        const orderConexoesInput = document.getElementById('itemOrdemConexoes');
+        if (orderConexoesInput) orderConexoesInput.style.display = 'none';
 
         if (table === 'midia') {
             if (mediaWrapper) mediaWrapper.style.display = 'block';
@@ -2359,6 +2364,9 @@ Hoje vivo separado.`
             }
             if (table === 'academia' && orderAcademiaInput) {
                 orderAcademiaInput.value = item.ordem || '';
+            }
+            if (table === 'conexoes' && orderConexoesInput) {
+                orderConexoesInput.value = item.ordem || '';
             }
             if (table === 'galeria' || table === 'midia') {
                 if (table === 'galeria') {
@@ -2521,6 +2529,9 @@ Hoje vivo separado.`
                     } else if (table === 'academia') {
                         const orderVal = document.getElementById('itemOrdemAcademia').value;
                         finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                    } else if (table === 'conexoes') {
+                        const orderVal = document.getElementById('itemOrdemConexoes').value;
+                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
                     }
 
                     const payload = {
@@ -2529,7 +2540,7 @@ Hoje vivo separado.`
                         categoria: finalCategoria,
                         url_midia: finalUrlMidia,
                     };
-                    if (table === 'midia' || table === 'galeria' || table === 'academia') {
+                    if (table === 'midia' || table === 'galeria' || table === 'academia' || table === 'conexoes') {
                         payload.ordem = finalOrdem;
                     }
 
