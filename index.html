@@ -388,6 +388,7 @@
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Trajetória de Vida</h2>
+                <div id="admin-btn-trajetoria_vida" class="mt-4 hidden"><button onclick="openCrudModal('trajetoria_vida')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
         <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
@@ -496,6 +497,7 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
                 <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Caminhos da História</h2>
+                <div id="admin-btn-caminhos_historia" class="mt-4 hidden"><button onclick="openCrudModal('caminhos_historia')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
         <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
@@ -983,6 +985,7 @@
                     closeAuthModal();
                     window.AppState.setAdmin(true);
                     alert("Login efetuado com sucesso.");
+
                     checkAdminUI();
                     fetchAllSections();
                 }
@@ -991,55 +994,13 @@
 
         
 
-
         // --- 1. DATASETS (MANTIDOS E ATUALIZADOS) ---
         
-        // --- TIMELINE COMPLETA ---
-        const TIMELINE = [
-            { year: "Início séc. XX", title: "Fundação", description: "The Miranda Estancia Company é fundada no Pantanal; base futura da expansão no sul do MT." },
-            { year: "1905 (07/Out)", title: "Origem", description: "Casam-se Leão Pedro Jacques e Máxima Sant\'Anna em Itaroquém/RS; união que inicia a linhagem." },
-            { year: "1906 (17/Fev)", title: "Nascimento", description: "Nasce Silvino Hermiro Jacques em Camaqua/RS; origem gaúcha molda sua trajetória futura." },
-            { year: "1909 (08/Nov)", title: "Família", description: "Nasce Miguel Jacques em Itaroquém/RS; irmão que acompanha parte de sua jornada inicial." },
-            { year: "Adolescência", title: "Formação", description: "Conclui o ginásio em São Borja/RS; encerra estudos antes da vida militar e fronteiriça." },
-            { year: "Antes de 1929", title: "Vida Militar", description: "Serve na Brigada Militar/RS; alcança sargento e aprende tática, disciplina e comando." },
-            { year: "Antes de 1929", title: "Fiscal", description: "Fiscal de linha férrea; perde cargo após conflitos e início de reputação de risco." },
-            { year: "1929 (25/Jun)", title: "O Estopim", description: "Briga em cabaré de Santo Ângelo termina em morte de dois; nasce o proscrito do Sul." },
-            { year: "1929 (1ª Metade)", title: "Tensão", description: "Crimes e tensões com autoridades crescem; vira alvo principal da polícia gaúcha." },
-            { year: "1929 (Jun)", title: "Fuga", description: "Foge do Rio Grande do Sul em direção ao Brasil central; busca refúgio nas fronteiras." },
-            { year: "1929 (08/Ago)", title: "Retorno", description: "Parte de Santo Tomé/AR e retorna ao Brasil; movimenta-se entre matas e aliados." },
-            { year: "1929 (2º Sem)", title: "Prisão e Fuga", description: "Ferido e preso após emboscada; resgatado por aliados e volta a agir sob proteção." },
-            { year: "1929 (Final)", title: "Bela Vista", description: "Chega em Bela Vista-MS. Adota codinome Valdemar Pereira na fronteira inicia vida clandestina." },
-            { year: "1930 (02/Jul)", title: "Registro Militar", description: "Marinha registra incidentes na fronteira; nome de Silvino circula nos bastidores militares." },
-            { year: "1930 (15/Jul)", title: "Monitoramento", description: "Ofício reservado registra tensões em MT; autoridades acompanham seus movimentos." },
-            { year: "1931", title: "Orcírio", description: "Orcírio dos Santos serve no 10° RCI em Bela Vista; contatos futuros se aproximam." },
-            { year: "1931 (18/Mar)", title: "Denúncia", description: "Ofício de Corumbá denuncia problemas na região; O nome de Silvino é envolvido." },
-            { year: "1932 (Início)", title: "Cenário Político", description: "Cenário político se tensiona; governadores dividem apoio entre legalistas e rebeldes." },
-            { year: "1932 (08/Jul)", title: "Reforma Klinger", description: "Reforma administrativa de Klinger; reorganização militar cria brechas na fronteira." },
-            { year: "1932 (09/Jul)", title: "Revolução", description: "Eclode a Revolução Constitucionalista; Sul do MT torna-se palco de disputas armadas." },
-            { year: "1932 (Ago)", title: "Instruções", description: "Borges de Medeiros envia instruções secretas; movimentações ampliam tensão regional." },
-            { year: "1932", title: "Comandante", description: "Comanda legalistas no Sul do MT; é chamado de capitão e usa táticas de guerrilha gaúcha." },
-            { year: "1932", title: "Rio Piripucu", description: "Queima ponte no rio Piripucu para retardar Klinger; demonstra domínio territorial." },
-            { year: "1932", title: "Divisão do 10° RCI", description: "10° RCI dividido politicamente; clima interno reflete crise nacional e local." },
-            { year: "1932", title: "Adesão de Orcírio", description: "Orcírio dos Santos entra no grupo de Simão Coelho; apoio a Vargas o aproxima de Silvino." },
-            { year: "1932", title: "Ataque Rebelde", description: "Constitucionalistas atacam o 10° RCI; confrontos diretos contra tropas ligadas a Silvino." },
-            { year: "1932", title: "Resistência", description: "Ofensiva segue até Porto Murtinho; legalistas se fortalecem e resistem sob Néri da Fonseca." },
-            { year: "1933 (Ago)", title: "Extradição", description: "Ordem para prender e extraditar Silvino e Argemiro Leão; refugiados no Paraguai." },
-            { year: "1933 (Out)", title: "Manifesto", description: "Manifesto universitário defende divisão de MT; região de Silvino ganha destaque político." },
-            { year: "1934", title: "Porojukahá", description: "Reputação de pistoleiro se consolida; passa a ser chamado de 'porojukahá'." },
-            { year: "1935", title: "Ecos Comunistas", description: "Contato com revolucionários de 1935; ecos comunistas atravessam sua trajetória." },
-            { year: "1935 (Nov)", title: "Informe MT", description: "Informe MT registra sua atuação; detalhes chegam ao Rio e ganham repercussão ampla." },
-            { year: "1935/1936", title: "Mitificação", description: "Ações de 1932 voltam à tona; mitificação de sua figura cresce no imaginário regional." },
-            { year: "1936 (Mar)", title: "Invernada", description: "Inverna na Fazenda Recrío junto de Adão Jacques; reduz movimentos e observa cenário." },
-            { year: "1937 (Fev)", title: "Deserções", description: "Deserções ao persegui-lo indignam comando; sua mobilidade impõe medo e respeito." },
-            { year: "1937", title: "Estado Novo", description: "Estado Novo endurece repressão; perseguição aos bandoleiros se torna prioridade." },
-            { year: "1938", title: "Fim do Cangaço", description: "Lampião é morto; auge do combate ao banditismo inspira operações contra Silvino." },
-            { year: "1938 (Abr)", title: "Cerco", description: "Relatório militar detalha buscas; cerco se fecha ao redor da fronteira pantaneira." },
-            { year: "1939", title: "Propaganda", description: "Banditismo declarado extinto; propaganda oficial tenta apagar sua lenda." },
-            { year: "1939 (Abr)", title: "Delegacia Especial", description: "Criada Delegacia Especial do Sul em Aquidauana para eliminá-lo; cerco se institucionaliza." },
-            { year: "1939 (30/Mar)", title: "Herdeiro", description: "Nasce seu filho Euclides Charão Jacques com Elodya Charão de Siqueira." },
-            { year: "1939 (03/Mai)", title: "Sentença", description: "Orcírio recebe ordem direta: eliminar, não prender; sentença assinada politicamente." },
-            { year: "1939 (19/Mai)", title: "O Mito", description: "Silvino é morto por milícia local; fim do homem, início do mito permanente da fronteira." }
-        ];
+        // --- TIMELINE DINÂMICA ---
+        let TIMELINE = [];
+
+        // --- MAPA DINÂMICO ---
+        let MAP_POINTS = [];
 
         // --- DEMAIS DADOS MANTIDOS ---
         const TESTIMONIALS = [
@@ -1101,40 +1062,7 @@
             { name: "Margarida Vonci", quote: "A Fazendeira", desc: "Proprietária rural da região." }
         ];
 
-        const MAP_POINTS = [
-            // RIO GRANDE DO SUL
-            { id: 'sao-borja', category: 'RS', title: 'São Borja', description: 'Local de nascimento (17/02/1906). Origem de sua linhagem tradicional. Retorno como fugitivo.' },
-            { id: 'santo-angelo', category: 'RS', title: 'Santo Ângelo', description: 'Fiscal de linha. Incidente na "Pensão do Bolinha" (25/06/1929). Julgamento.' },
-            { id: 'santa-rosa', category: 'RS', title: 'Santa Rosa', description: 'Trabalho como fiscal de linha férrea.' },
-            { id: 'porto-alegre', category: 'RS', title: 'Porto Alegre', description: 'Casa de Correção. Escrita da carta-poesia.' },
-            { id: 'nonoai', category: 'RS', title: 'Nonoai', description: 'Refúgio na tentativa de restabelecer rede de apoio.' },
-            { id: 'uruguaiana', category: 'RS', title: 'Uruguaiana', description: 'Chácara dos avós paternos, local de treino de tiro.' },
-            { id: 'rio-uruguai', category: 'RS', title: 'Rio Uruguai', description: 'Travessia de fronteira durante a fuga do RS.' },
-            // SANTA CATARINA
-            { id: 'chapeco', category: 'SC', title: 'Chapecó', description: 'Entrada no estado em rota de fuga pela divisa com o RS.' },
-            { id: 'cameiro', category: 'SC', title: 'Povoado Cameiro', description: 'Local de ataque policial durante a fuga.' },
-                        // ARGENTINA
-            { id: 'santo-tome', category: 'Argentina', title: 'Santo Tomé', description: 'Passagem transitória pela província de Corrientes.' },
-            { id: 'posadas', category: 'Argentina', title: 'Posadas', description: 'Primeira parada na Argentina durante o périplo fronteiriço.' },
-            { id: 'corrientes', category: 'Argentina', title: 'Corrientes', description: 'Viagem pela província argentina.' },
-            // PARAGUAI
-            { id: 'encarnacion', category: 'Paraguai', title: 'Encarnación', description: 'Segunda parada na fuga, aprendizado do idioma Guarani.' },
-            // MATO GROSSO DO SUL
-            { id: 'bela-vista', category: 'MS', title: 'Bela Vista', description: 'Chegada em 1929 como Valdemar Pereira. Esposa Zanyr Pinheiro. Prestígio no Exército.' },
-            { id: 'porteiras', category: 'MS', title: 'Porteiras', description: 'Viveu como Valdemar Pereira trabalhando em fazendas da região.' },
-            { id: 'maracaju', category: 'MS', title: 'Maracaju', description: 'Região de registro de suas façanhas na fronteira.' },
-            { id: 'bonito', category: 'MS', title: 'Bonito', description: 'Façanhas registradas. Local da morte (19/05/1939). Casa de Memória Raída.' },
-            { id: 'porto-murtinho', category: 'MS', title: 'Porto Murtinho', description: 'Comando de tropa legalista durante a Revolução de 1932.' },
-            { id: 'rio-perdido', category: 'MS', title: 'Rio Perdido', description: 'Missão estratégica de 1932: queima da ponte para retardar tropas.' },
-            { id: 'campo-grande', category: 'MS', title: 'Campo Grande', description: 'Penosa viagem e tentativa de organizar comitê revolucionário.' },
-            { id: 'bolicho-seco', category: 'MS', title: 'Bolicho Seco', description: 'Ponto de passagem a caminho de Campo Grande.' },
-            { id: 'passo-ita', category: 'MS', title: 'Passo Itá', description: 'Próximo a São Carlos. Estadia após sair de Porteiras.' },
-            { id: 'aurora', category: 'MS', title: 'Fazenda Aurora', description: 'Local do confronto final e morte em 1939.' },
-            { id: 'ponta-pora', category: 'MS', title: 'Ponta Porã', description: 'Pronunciado pelo assassinato de Candido Barbosa Pratt. Fuga para o Paraguai.' },
-            { id: 'miranda', category: 'MS', title: 'Miranda', description: 'Esposa Zanir (cabeleireira). Reconhecimento por ferroviário e prisão de coiteiros.' },
-	    // SÃO PAULO
-            { id: 'sao-paulo', category: 'SP', title: 'São Paulo', description: 'Tropeada de mulas. Visita à esposa. Obra "Décima Gaúcha" mimeografada em 1980.' }
-        ];
+
 
         const ACADEMIC = [
             {
@@ -1288,6 +1216,11 @@ Hoje vivo separado.`
                                 <div class="bg-[#5C1B1B] text-white px-4 py-1 text-xs font-western self-start mb-6 inline-block">${ev.year}</div>
                                 <h3 class="font-display text-2xl font-black mb-6 uppercase text-black leading-tight border-b border-[#E6DABB] pb-4">${ev.title}</h3>
                                 <p class="text-gray-700 leading-relaxed font-body text-lg opacity-90">${ev.description}</p>
+                                <!-- Admin Action Buttons -->
+                                <div class="admin-only hidden mt-4 flex gap-2 pt-2 border-t border-gray-100">
+                                    <button onclick='event.stopPropagation(); openCrudModal("trajetoria_vida", ${JSON.stringify({id: ev.id, titulo: ev.title, descricao: ev.description, categoria: ev.year, ordem: ev.ordem}).replace(/'/g, "&#39;")})' class="bg-[#C5A059] text-white px-3 py-1 text-xs font-bold uppercase hover:bg-black">Editar</button>
+                                    <button onclick="event.stopPropagation(); deleteCrudItem('trajetoria_vida', '${ev.id}')" class="bg-red-600 text-white px-3 py-1 text-xs font-bold uppercase hover:bg-red-700">Excluir</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1339,10 +1272,17 @@ Hoje vivo separado.`
                  pointsList.innerHTML = `<div class="p-6 text-gray-400 italic font-serif">Nenhum registro público nesta região ainda.</div>`;
             } else {
                 pointsList.innerHTML = regionPoints.map(pt => `
-                    <button onclick="window.setMapPoint('${pt.id}')" class="w-full text-left p-6 transition-all border shadow-sm bg-white border-[#E6DABB] text-black hover:bg-gray-50 mb-4 focus:border-[#5C1B1B] focus:border-l-8">
-                        <h4 class="font-display font-black text-lg uppercase mb-1">${pt.title}</h4>
-                        <span class="text-[9px] font-bold tracking-widest text-gray-400">PONTO HISTÓRICO</span>
-                    </button>
+                    <div class="relative w-full border shadow-sm bg-white border-[#E6DABB] mb-4 hover:bg-gray-50 flex flex-col justify-between">
+                        <button onclick="window.setMapPoint('${pt.id}')" class="w-full text-left p-6 transition-all text-black focus:border-[#5C1B1B] focus:border-l-8">
+                            <h4 class="font-display font-black text-lg uppercase mb-1">${pt.title}</h4>
+                            <span class="text-[9px] font-bold tracking-widest text-gray-400">PONTO HISTÓRICO</span>
+                        </button>
+                        <!-- Admin Action Buttons -->
+                        <div class="admin-only hidden px-6 pb-4 flex gap-2 border-t border-gray-100 pt-2">
+                            <button onclick='event.stopPropagation(); openCrudModal("caminhos_historia", ${JSON.stringify({id: pt.id, titulo: pt.title, descricao: pt.description, categoria: pt.category, ordem: pt.ordem}).replace(/'/g, "&#39;")})' class="bg-[#C5A059] text-white px-3 py-1 text-[10px] font-bold uppercase hover:bg-black">Editar</button>
+                            <button onclick="event.stopPropagation(); deleteCrudItem('caminhos_historia', '${pt.id}')" class="bg-red-600 text-white px-3 py-1 text-[10px] font-bold uppercase hover:bg-red-700">Excluir</button>
+                        </div>
+                    </div>
                 `).join('');
                 window.setMapPoint(regionPoints[0].id);
             }
@@ -1364,6 +1304,11 @@ Hoje vivo separado.`
                             <h3 class="font-display text-2xl font-black mb-4 uppercase text-black leading-tight border-b border-[#E6DABB] pb-4">${pt.title}</h3>
                             <span class="text-[9px] font-bold uppercase tracking-widest text-[#C5A059] mb-4 block">RELATO DO ACERVO</span>
                             <p class="text-gray-700 leading-relaxed font-body text-lg opacity-90">"${pt.description}"</p>
+                            <!-- Admin Action Buttons -->
+                            <div class="admin-only hidden mt-4 flex gap-2 justify-center pt-2 border-t border-gray-100">
+                                <button onclick='event.stopPropagation(); openCrudModal("caminhos_historia", ${JSON.stringify({id: pt.id, titulo: pt.title, descricao: pt.description, category: pt.category, ordem: pt.ordem}).replace(/'/g, "&#39;")})' class="bg-[#C5A059] text-white px-3 py-1 text-xs font-bold uppercase hover:bg-black">Editar</button>
+                                <button onclick="event.stopPropagation(); deleteCrudItem('caminhos_historia', '${pt.id}')" class="bg-red-600 text-white px-3 py-1 text-xs font-bold uppercase hover:bg-red-700">Excluir</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1910,15 +1855,15 @@ Hoje vivo separado.`
                 <input type="hidden" id="crud-table" value="">
                 <input type="hidden" id="crud-id" value="">
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Título</label>
+                    <label id="crud-titulo-label" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Título</label>
                     <input type="text" id="crud-titulo" required class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Descrição</label>
+                    <label id="crud-descricao-label" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Descrição</label>
                     <textarea id="crud-descricao" required class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors resize-none h-24"></textarea>
                 </div>
                 <div id="categoria-text-wrapper">
-                    <label class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Categoria/Tag</label>
+                    <label id="crud-categoria-text-label" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-1">Categoria/Tag</label>
                     <input type="text" id="crud-categoria-text" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors">
                 </div>
                 <div id="categoria-select-wrapper" class="hidden">
@@ -1947,6 +1892,8 @@ Hoje vivo separado.`
                     <input type="number" id="itemOrdemAcademia" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
                     
                     <input type="number" id="itemOrdemConexoes" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
+                    <input type="number" id="itemOrdemCaminhos" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
+                    <input type="number" id="itemOrdemTrajetoria" class="w-full border-b-2 border-gray-200 px-0 py-2 focus:ring-0 focus:border-[#5C1B1B] outline-none transition-colors hidden mt-2" placeholder="Ordem de Exibição (ex: 1, 2, 3)">
                     
                     <input type="hidden" id="crud-midia" value="">
                     <p id="media-current-name" class="text-xs text-gray-500 mt-1"></p>
@@ -1959,7 +1906,7 @@ Hoje vivo separado.`
 
 <script>
     // --- 0. LÓGICA DE CRUD E RENDERIZAÇÃO DINÂMICA DAS SEÇÕES (SUPABASE) ---
-    const TABLES = ['conexoes', 'documentos', 'midia', 'galeria', 'academia'];
+    const TABLES = ['conexoes', 'documentos', 'midia', 'galeria', 'academia', 'caminhos_historia', 'trajetoria_vida'];
 
     function checkAdminUI() {
         const adminMode = window.AppState ? window.AppState.checkIsAdmin() : false;
@@ -2024,7 +1971,7 @@ Hoje vivo separado.`
         // Para cada tabela, vamos fazer o select e mapear os cards
         TABLES.forEach(async (table) => {
             let query = supabaseClient.from(table).select('*');
-            if (table === 'midia' || table === 'galeria' || table === 'academia' || table === 'conexoes') {
+            if (['midia', 'galeria', 'academia', 'conexoes', 'caminhos_historia', 'trajetoria_vida'].includes(table)) {
                 query = query.order('ordem', { ascending: true, nullsFirst: false });
             } else {
                 query = query.order('created_at', { ascending: false });
@@ -2088,6 +2035,31 @@ Hoje vivo separado.`
 
     // Render Genérico das Seções
     function renderSectionCards(table, data) {
+        if (table === 'caminhos_historia') {
+            MAP_POINTS = data.map(item => ({
+                id: item.id,
+                category: item.regiao,
+                title: item.local,
+                description: item.descricao,
+                ordem: item.ordem
+            }));
+            renderMap();
+            renderMobileMap();
+            checkAdminUI();
+            return;
+        }
+        if (table === 'trajetoria_vida') {
+            TIMELINE = data.map(item => ({
+                year: item.periodo,
+                title: item.titulo,
+                description: item.descricao,
+                ordem: item.ordem,
+                id: item.id
+            }));
+            renderTimeline();
+            checkAdminUI();
+            return;
+        }
         if (table === 'galeria') {
             window.DYNAMIC_GALLERY = data;
         }
@@ -2274,34 +2246,51 @@ Hoje vivo separado.`
         const catTextInput = document.getElementById('crud-categoria-text');
         const catSelectInput = document.getElementById('itemCategoria');
 
+        const labelTitulo = document.getElementById('crud-titulo-label');
+        const labelDescricao = document.getElementById('crud-descricao-label');
+        const labelCategoria = document.getElementById('crud-categoria-text-label');
+        const descEl = document.getElementById('crud-descricao');
+
+        // Reset default states
+        if (labelTitulo) labelTitulo.innerText = 'Título';
+        if (labelDescricao) labelDescricao.innerText = 'Descrição';
+        if (labelCategoria) labelCategoria.innerText = 'Categoria/Tag';
+        if (descEl) { descEl.rows = 4; descEl.style.height = '96px'; }
+        if (catTextInput) catTextInput.placeholder = '';
+
+        const orderInput = document.getElementById('itemOrdem');
+        const orderGaleriaInput = document.getElementById('itemOrdemGaleria');
+        const orderAcademiaInput = document.getElementById('itemOrdemAcademia');
+        const orderConexoesInput = document.getElementById('itemOrdemConexoes');
+        const orderCaminhosInput = document.getElementById('itemOrdemCaminhos');
+        const orderTrajetoriaInput = document.getElementById('itemOrdemTrajetoria');
+
+        if (orderInput) orderInput.style.display = 'none';
+        if (orderGaleriaInput) orderGaleriaInput.style.display = 'none';
+        if (orderAcademiaInput) orderAcademiaInput.style.display = 'none';
+        if (orderConexoesInput) orderConexoesInput.style.display = 'none';
+        if (orderCaminhosInput) orderCaminhosInput.style.display = 'none';
+        if (orderTrajetoriaInput) orderTrajetoriaInput.style.display = 'none';
+
+        const btnTextInput = document.getElementById('itemTextoBotao');
+        if (btnTextInput) btnTextInput.style.display = 'none';
+
         if (table === 'conexoes') {
             if (mediaWrapper) mediaWrapper.style.display = 'none';
             if (orderConexoesInput) orderConexoesInput.style.display = 'block';
+        } else if (table === 'caminhos_historia') {
+            if (mediaWrapper) mediaWrapper.style.display = 'none';
+            if (orderCaminhosInput) orderCaminhosInput.style.display = 'block';
+            if (labelTitulo) labelTitulo.innerText = 'Local (Cidade/Ponto)';
+            if (labelDescricao) labelDescricao.innerText = 'Relato (Descrição)';
+            if (labelCategoria) labelCategoria.innerText = 'Região (RS, SC, MS, Argentina, Paraguai, SP)';
+        } else if (table === 'trajetoria_vida') {
+            if (mediaWrapper) mediaWrapper.style.display = 'none';
+            if (orderTrajetoriaInput) orderTrajetoriaInput.style.display = 'block';
+            if (labelTitulo) labelTitulo.innerText = 'Título do Evento';
+            if (labelDescricao) labelDescricao.innerText = 'Relato (Descrição)';
+            if (labelCategoria) labelCategoria.innerText = 'Período (Ano/Data)';
         } else if (table === 'midia') {
-            // Handled lower down
-        } else {
-            if (mediaWrapper) mediaWrapper.style.display = 'block';
-            if (mediaLabel) mediaLabel.innerText = 'Mídia (Imagem)';
-            if (mediaFile) {
-                mediaFile.style.display = 'block';
-                mediaFile.value = '';
-            }
-            if (mediaText) mediaText.style.display = 'none';
-            if (currentName) currentName.innerText = item && item.url_midia ? `Atual: ${item.url_midia.split('/').pop()}` : '';
-        }
-        
-        const btnTextInput = document.getElementById('itemTextoBotao');
-        if (btnTextInput) btnTextInput.style.display = 'none';
-        const orderInput = document.getElementById('itemOrdem');
-        if (orderInput) orderInput.style.display = 'none';
-        const orderGaleriaInput = document.getElementById('itemOrdemGaleria');
-        if (orderGaleriaInput) orderGaleriaInput.style.display = 'none';
-        const orderAcademiaInput = document.getElementById('itemOrdemAcademia');
-        if (orderAcademiaInput) orderAcademiaInput.style.display = 'none';
-        const orderConexoesInput = document.getElementById('itemOrdemConexoes');
-        if (orderConexoesInput) orderConexoesInput.style.display = 'none';
-
-        if (table === 'midia') {
             if (mediaWrapper) mediaWrapper.style.display = 'block';
             if (mediaLabel) mediaLabel.innerText = 'URL do YouTube';
             if (mediaFile) mediaFile.style.display = 'none';
@@ -2312,7 +2301,6 @@ Hoje vivo separado.`
             if (currentName) currentName.innerText = '';
             if (orderInput) orderInput.style.display = 'block';
         } else if (table === 'academia') {
-            // Academia: show media text input for external link URL, and show button text input
             if (mediaWrapper) mediaWrapper.style.display = 'block';
             if (mediaLabel) mediaLabel.innerText = 'URL do Link Externo (PDF/Site)';
             if (mediaFile) mediaFile.style.display = 'none';
@@ -2323,12 +2311,22 @@ Hoje vivo separado.`
             catTextWrapper.style.display = 'block';
             catSelectWrapper.style.display = 'none';
             if (catTextInput) catTextInput.placeholder = 'Autor do texto';
-            document.querySelector('label[for="crud-titulo"]') && (document.querySelector('label[for="crud-titulo"]').innerText = 'Título');
-            const descLabel = document.querySelector('label[for="crud-descricao"]');
-            if (descLabel) descLabel.innerText = 'Texto da Obra (Trecho)';
-            const descEl = document.getElementById('crud-descricao');
+            if (labelTitulo) labelTitulo.innerText = 'Título';
+            if (labelDescricao) labelDescricao.innerText = 'Texto da Obra (Trecho)';
             if (descEl) { descEl.rows = 12; descEl.style.height = '280px'; }
-        } else if (table === 'galeria' || table === 'midia') {
+        } else {
+            // Documentos, Galeria
+            if (mediaWrapper) mediaWrapper.style.display = 'block';
+            if (mediaLabel) mediaLabel.innerText = 'Mídia (Imagem)';
+            if (mediaFile) {
+                mediaFile.style.display = 'block';
+                mediaFile.value = '';
+            }
+            if (mediaText) mediaText.style.display = 'none';
+            if (currentName) currentName.innerText = item && item.url_midia ? `Atual: ${item.url_midia.split('/').pop()}` : '';
+        }
+
+        if (table === 'galeria' || table === 'midia') {
             catTextWrapper.style.display = 'none';
             catSelectWrapper.style.display = 'block';
             if (table === 'galeria' && orderGaleriaInput) {
@@ -2342,60 +2340,73 @@ Hoje vivo separado.`
         if (item) {
             document.getElementById('crud-modal-title').innerText = 'Editar Item';
             document.getElementById('crud-id').value = item.id;
-            document.getElementById('crud-titulo').value = item.titulo;
             
-            if (table === 'academia') {
-                let textoObra = '';
-                let urlObra = '';
-                try {
-                    const parsed = JSON.parse(item.url_midia);
-                    textoObra = parsed.texto || '';
-                    urlObra = parsed.url || '';
-                } catch(e) {
-                    textoObra = item.descricao || '';
-                    urlObra = item.url_midia || '';
-                }
-                document.getElementById('crud-descricao').value = textoObra;
-                document.getElementById('mediaUrl').value = urlObra;
-                document.getElementById('crud-midia').value = item.url_midia || '';
-                if (btnTextInput) btnTextInput.value = item.descricao || '';
-            } else {
+            if (table === 'caminhos_historia') {
+                document.getElementById('crud-titulo').value = item.local || '';
                 document.getElementById('crud-descricao').value = item.descricao || '';
-                document.getElementById('crud-midia').value = item.url_midia || '';
-            }
-            
-            document.getElementById('crud-categoria').value = item.categoria || '';
-            
-            if (table === 'midia' && orderInput) {
-                orderInput.value = item.ordem || '';
-            }
-            if (table === 'galeria' && orderGaleriaInput) {
-                orderGaleriaInput.value = item.ordem || '';
-            }
-            if (table === 'academia' && orderAcademiaInput) {
-                orderAcademiaInput.value = item.ordem || '';
-            }
-            if (table === 'conexoes' && orderConexoesInput) {
-                orderConexoesInput.value = item.ordem || '';
-            }
-            if (table === 'galeria' || table === 'midia') {
-                if (table === 'galeria') {
-                    catSelectInput.innerHTML = `
-                        <option value="Grupo">Grupo</option>
-                        <option value="Retrato">Retrato</option>
-                        <option value="Militar">Militar</option>
-                    `;
-                    catSelectInput.value = item.categoria || 'Retrato';
-                } else if (table === 'midia') {
-                    catSelectInput.innerHTML = `
-                        <option value="Documentário">Documentário</option>
-                        <option value="Entrevista">Entrevista</option>
-                        <option value="Cultural">Cultural</option>
-                    `;
-                    catSelectInput.value = item.categoria || 'Documentário';
-                }
+                catTextInput.value = item.regiao || '';
+                if (orderCaminhosInput) orderCaminhosInput.value = item.ordem || '';
+            } else if (table === 'trajetoria_vida') {
+                document.getElementById('crud-titulo').value = item.titulo || '';
+                document.getElementById('crud-descricao').value = item.descricao || '';
+                catTextInput.value = item.periodo || '';
+                if (orderTrajetoriaInput) orderTrajetoriaInput.value = item.ordem || '';
             } else {
-                catTextInput.value = item.categoria || '';
+                document.getElementById('crud-titulo').value = item.titulo || '';
+                
+                if (table === 'academia') {
+                    let textoObra = '';
+                    let urlObra = '';
+                    try {
+                        const parsed = JSON.parse(item.url_midia);
+                        textoObra = parsed.texto || '';
+                        urlObra = parsed.url || '';
+                    } catch(e) {
+                        textoObra = item.descricao || '';
+                        urlObra = item.url_midia || '';
+                    }
+                    document.getElementById('crud-descricao').value = textoObra;
+                    document.getElementById('mediaUrl').value = urlObra;
+                    document.getElementById('crud-midia').value = item.url_midia || '';
+                    if (btnTextInput) btnTextInput.value = item.descricao || '';
+                } else {
+                    document.getElementById('crud-descricao').value = item.descricao || '';
+                    document.getElementById('crud-midia').value = item.url_midia || '';
+                }
+                
+                document.getElementById('crud-categoria').value = item.categoria || '';
+                
+                if (table === 'midia' && orderInput) {
+                    orderInput.value = item.ordem || '';
+                }
+                if (table === 'galeria' && orderGaleriaInput) {
+                    orderGaleriaInput.value = item.ordem || '';
+                }
+                if (table === 'academia' && orderAcademiaInput) {
+                    orderAcademiaInput.value = item.ordem || '';
+                }
+                if (table === 'conexoes' && orderConexoesInput) {
+                    orderConexoesInput.value = item.ordem || '';
+                }
+                if (table === 'galeria' || table === 'midia') {
+                    if (table === 'galeria') {
+                        catSelectInput.innerHTML = `
+                            <option value="Grupo">Grupo</option>
+                            <option value="Retrato">Retrato</option>
+                            <option value="Militar">Militar</option>
+                        `;
+                        catSelectInput.value = item.categoria || 'Retrato';
+                    } else if (table === 'midia') {
+                        catSelectInput.innerHTML = `
+                            <option value="Documentário">Documentário</option>
+                            <option value="Entrevista">Entrevista</option>
+                            <option value="Cultural">Cultural</option>
+                        `;
+                        catSelectInput.value = item.categoria || 'Documentário';
+                    }
+                } else {
+                    catTextInput.value = item.categoria || '';
+                }
             }
         } else {
             document.getElementById('crud-modal-title').innerText = 'Adicionar Novo Item';
@@ -2529,29 +2540,48 @@ Hoje vivo separado.`
                         finalUrlMidia = JSON.stringify({ texto: document.getElementById('crud-descricao').value, url: extUrl });
                     }
 
-                    let finalOrdem = null;
-                    if (table === 'midia') {
-                        const orderVal = document.getElementById('itemOrdem').value;
-                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
-                    } else if (table === 'galeria') {
-                        const orderVal = document.getElementById('itemOrdemGaleria').value;
-                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
-                    } else if (table === 'academia') {
-                        const orderVal = document.getElementById('itemOrdemAcademia').value;
-                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
-                    } else if (table === 'conexoes') {
-                        const orderVal = document.getElementById('itemOrdemConexoes').value;
-                        finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
-                    }
+                    let payload = {};
+                    if (table === 'caminhos_historia') {
+                        const orderVal = document.getElementById('itemOrdemCaminhos').value;
+                        payload = {
+                            local: document.getElementById('crud-titulo').value,
+                            descricao: document.getElementById('crud-descricao').value,
+                            regiao: document.getElementById('crud-categoria-text').value,
+                            ordem: orderVal !== '' ? parseInt(orderVal, 10) : 0
+                        };
+                    } else if (table === 'trajetoria_vida') {
+                        const orderVal = document.getElementById('itemOrdemTrajetoria').value;
+                        payload = {
+                            titulo: document.getElementById('crud-titulo').value,
+                            descricao: document.getElementById('crud-descricao').value,
+                            periodo: document.getElementById('crud-categoria-text').value,
+                            ordem: orderVal !== '' ? parseInt(orderVal, 10) : 0
+                        };
+                    } else {
+                        let finalOrdem = null;
+                        if (table === 'midia') {
+                            const orderVal = document.getElementById('itemOrdem').value;
+                            finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                        } else if (table === 'galeria') {
+                            const orderVal = document.getElementById('itemOrdemGaleria').value;
+                            finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                        } else if (table === 'academia') {
+                            const orderVal = document.getElementById('itemOrdemAcademia').value;
+                            finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                        } else if (table === 'conexoes') {
+                            const orderVal = document.getElementById('itemOrdemConexoes').value;
+                            finalOrdem = orderVal !== '' ? parseInt(orderVal, 10) : null;
+                        }
 
-                    const payload = {
-                        titulo: document.getElementById('crud-titulo').value,
-                        descricao: finalDescricao,
-                        categoria: finalCategoria,
-                        url_midia: finalUrlMidia,
-                    };
-                    if (table === 'midia' || table === 'galeria' || table === 'academia' || table === 'conexoes') {
-                        payload.ordem = finalOrdem;
+                        payload = {
+                            titulo: document.getElementById('crud-titulo').value,
+                            descricao: finalDescricao,
+                            categoria: finalCategoria,
+                            url_midia: finalUrlMidia,
+                        };
+                        if (table === 'midia' || table === 'galeria' || table === 'academia' || table === 'conexoes') {
+                            payload.ordem = finalOrdem;
+                        }
                     }
 
                     btn.innerText = "Salvando banco...";
