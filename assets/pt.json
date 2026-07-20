@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "inicio": "Início",
+    "biografia": "Biografia",
+    "preserve": "Preserve a Memória",
+    "conexoes": "Conexões",
+    "documentos": "Sala de Documentos",
+    "timeline": "Trajetória",
+    "mapa": "Caminhos",
+    "midia": "Acervo Multimídia",
+    "mitos": "A Lenda vs A História",
+    "genealogia": "Árvore Genealógica",
+    "admin": "Administrador"
+  },
+  "hero": {
+    "subtitle": "O CAPITÃO DA FRONTEIRA",
+    "title": "Arquivo Silvino Jacques",
+    "desc": "Entre o fole do acordeão e o cano do fuzil, a verdadeira história do afilhado de Getúlio Vargas no nosso acervo digital imersivo.",
+    "button": "Explorar Acervo",
+    "map_title": "Mapeamento da Fronteira",
+    "map_desc": "\"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história.\"",
+    "map_btn": "VER MAPA INTERATIVO"
+  },
+  "bio": {
+    "label": "Biografia",
+    "title": "O Último Gaudério da Fronteira",
+    "p1": "Silvino Hermiro Jacques nasceu em 17 de fevereiro de 1906, em São Borja, RS. Filho de Leão Pedro Jacques e Máxima de Sant'Anna, cresceu em uma família tradicional fronteiriça.",
+    "p2": "Ingressou na Brigada Militar, mas sua vida mudou radicalmente em 1929 após um incidente em Santo Ângelo que o tornou foragido. Fugindo para o Norte, serviu como Capitão legalista para seu padrinho, Getúlio Vargas, na Revolução de 1932.",
+    "p3": "Silvino era um homem de palavra e poesia. Suas \"Décimas\" registravam suas façanhas. Ele protegeu famílias e combateu rivais políticos, criando quase um estado paralelo na zona de fronteira entre o Brasil e o Paraguai.",
+    "p4": "Tombou em combate em maio de 1939 na Fazenda Aurora. Sua história permanece viva na memória oral como um herói popular, o último dos gaudérios da fronteira.",
+    "caption": "O Gaudério da Fronteira",
+    "dropcap": "S"
+  },
+  "vozes": {
+    "title": "Vozes & Ecos",
+    "radio": "Rádio Fronteira",
+    "track1": "▶ \"Décimas de Silvino\" (Declamação)",
+    "track1_sub": "Voz: Gerson Jacques",
+    "track2": "▶ Relato Popular: O Corpo Fechado",
+    "track2_sub": "Entrevista Oral (1992)",
+    "track3": "▶ Canção: O Último Gaudério",
+    "track3_sub": "Música Regional",
+    "quote": "Se algum dia por acaso, não possa eu cantar vitória, que meus inimigos me matem, e assim cheio de glória eu peço a meus amigos que leiam a minha história.",
+    "quote_sub": "— TRECHO DAS DÉCIMAS ORIGINAIS"
+  },
+  "preserve": {
+    "title": "A Memória Viva",
+    "title_form": "Preserve a Memória",
+    "subtitle_form": "Deixe seu depoimento, relato familiar ou documento relacionado a Silvino Jacques.",
+    "list_title": "Mural de Depoimentos",
+    "scroll_hint": "Deslize para ver os relatos",
+    "p_hint": "Passe o mouse (ou toque) para ampliar os registros originais.",
+    "legend_captain": "O Capitão"
+  },
+  "form": {
+    "name": "Nome Completo",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp (opcional)",
+    "relato": "Seu relato ou história de família",
+    "placeholder_name": "Ex: Euclides Jacques",
+    "placeholder_email": "Ex: euclides@email.com",
+    "placeholder_whatsapp": "Ex: (67) 99999-9999",
+    "placeholder_relato": "Escreva aqui as memórias que foram passadas pelas gerações...",
+    "submit": "Enviar para o Acervo"
+  },
+  "conexoes": {
+    "title": "Conexões Humanas",
+    "subtitle": "Navegue e clique nos cards para revelar a história de cada pessoa.",
+    "scroll_hint": "Arraste para o lado para ver mais"
+  },
+  "docs": {
+    "label": "ARQUIVO DIGITAL",
+    "title": "Sala de Documentos",
+    "hover_hint": "Passe o mouse (ou toque) para ampliar os registros originais.",
+    "zoom": "🔍 Ampliar"
+  },
+  "timeline": {
+    "title": "Trajetória de Vida",
+    "scroll_hint": "Arraste para o lado para ver mais",
+    "add_btn": "+ Adicionar Novo Item"
+  },
+  "mapa": {
+    "title": "Caminhos da História",
+    "scroll_hint": "Deslize para ver os locais",
+    "badge": "RELATO DE ACERVO",
+    "point_badge": "PONTO HISTÓRICO"
+  },
+  "midia": {
+    "title": "Acervo Multimídia",
+    "scroll_hint": "Navegue para ver mais"
+  },
+  "mitos": {
+    "title": "A Lenda vs. A História",
+    "scroll_hint": "Deslize para ver outros paralelos",
+    "badge_mito": "MITO",
+    "badge_fato": "FATO",
+    "m1": {
+      "mito_title": "✦ O Corpo Fechado",
+      "mito_desc": "Diz a lenda que Silvino tinha pacto. As balas batiam em seu peito e caíam no chão.",
+      "fato_title": "✒ A Realidade",
+      "fato_desc": "Documentos provam que ele foi ferido várias vezes. Sobrevivia por táticas militares e proteção."
+    },
+    "m2": {
+      "mito_title": "✦ O Tesouro Enterrado",
+      "mito_desc": "Relatos de que enterrava ouro das revoluções em locais secretos da fronteira.",
+      "fato_title": "✒ A Realidade",
+      "fato_desc": "Não há registros de fortuna. Morreu deixando poucos bens materiais para a família."
+    },
+    "m3": {
+      "mito_title": "✦ Robin Hood Gaúcho",
+      "mito_desc": "A ideia de que roubava apenas dos ricos para dar aos pobres da região.",
+      "fato_title": "✒ A Realidade",
+      "fato_desc": "Suas ações eram motivadas por disputas políticas locais e sobrevivência clandestina na fronteira."
+    }
+  },
+  "genealogia": {
+    "title": "Árvore Genealógica",
+    "subtitle": "Mapeamento da descendência de Silvino Jacques."
+  },
+  "footer": {
+    "desc": "PRESERVANDO A MEMÓRIA DA FRONTEIRA",
+    "rights": "TODOS OS DIREITOS RESERVADOS"
+  },
+  "admin_modal": {
+    "title": "Entrar na Área Restrita",
+    "email": "E-mail do Administrador",
+    "password": "Senha",
+    "btn_login": "Entrar"
+  }
+}

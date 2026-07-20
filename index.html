@@ -207,13 +207,20 @@
             </a>
             
             <nav class="hidden xl:flex gap-2 items-center">
-                <a href="#biografia" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">BIOGRAFIA</a>
-                <a href="#timeline" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">LINHA DO TEMPO</a>
-                <a href="#documentos" class="bg-[#5C1B1B] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">DOCUMENTOS</a>
-                <a href="#mitos" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MITOS</a>
-                <a href="#mapa" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MAPA</a>
-                <a href="#galeria" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">GALERIA</a>
+                <a href="#biografia" data-i18n="nav.biografia" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">BIOGRAFIA</a>
+                <a href="#timeline" data-i18n="nav.timeline" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">LINHA DO TEMPO</a>
+                <a href="#documentos" data-i18n="nav.documentos" class="bg-[#5C1B1B] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">DOCUMENTOS</a>
+                <a href="#mitos" data-i18n="nav.mitos" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MITOS</a>
+                <a href="#mapa" data-i18n="nav.mapa" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">MAPA</a>
+                <a href="#galeria" data-i18n="nav.midia" class="bg-[#0038A8] text-white px-3 py-2 text-[10px] font-black tracking-widest hover:brightness-110 transition-all rounded-sm font-display nav-link-special">GALERIA</a>
             </nav>
+            
+            <!-- Language Switcher -->
+            <div class="hidden xl:flex items-center gap-1.5 ml-4 border-l border-white/20 pl-4">
+                <button onclick="setLanguage('pt')" class="lang-btn px-2 py-1 text-[10px] font-black tracking-wider rounded bg-[#C5A059] text-black">PT</button>
+                <button onclick="setLanguage('en')" class="lang-btn px-2 py-1 text-[10px] font-black tracking-wider rounded hover:bg-white/10 text-white">EN</button>
+                <button onclick="setLanguage('es')" class="lang-btn px-2 py-1 text-[10px] font-black tracking-wider rounded hover:bg-white/10 text-white">ES</button>
+            </div>
 
             <button id="mobile-menu-btn" class="xl:hidden text-[#F4ECD8] focus:outline-none" onclick="toggleMobileMenu()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -224,15 +231,21 @@
     </header>
 
     <div id="mobile-menu" class="fixed inset-0 bg-[#4A0E0E] z-[90] flex flex-col justify-center items-center gap-6 closed xl:hidden overflow-y-auto py-10 pt-[120px]">
-        <a href="#biografia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">BIOGRAFIA</a>
-        <a href="#timeline" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">LINHA DO TEMPO</a>
-        <a href="#documentos" onclick="toggleMobileMenu()" class="text-[#C5A059] text-xl font-black tracking-widest font-display">DOCUMENTOS</a>
-        <a href="#vozes" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">ÁUDIOS & VOZES</a>
-        <a href="#mitos" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MITOS vs FATOS</a>
-        <a href="#mapa" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MAPA</a>
-        <a href="#galeria" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GALERIA</a>
-        <a href="#academia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">PESQUISA</a>
-        <a href="#genealogia" onclick="toggleMobileMenu()" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GENEALOGIA</a>
+        <a href="#biografia" onclick="toggleMobileMenu()" data-i18n="nav.biografia" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">BIOGRAFIA</a>
+        <a href="#timeline" onclick="toggleMobileMenu()" data-i18n="nav.timeline" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">LINHA DO TEMPO</a>
+        <a href="#documentos" onclick="toggleMobileMenu()" data-i18n="nav.documentos" class="text-[#C5A059] text-xl font-black tracking-widest font-display">DOCUMENTOS</a>
+        <a href="#vozes" onclick="toggleMobileMenu()" data-i18n="nav.preserve" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">ÁUDIOS & VOZES</a>
+        <a href="#mitos" onclick="toggleMobileMenu()" data-i18n="nav.mitos" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MITOS vs FATOS</a>
+        <a href="#mapa" onclick="toggleMobileMenu()" data-i18n="nav.mapa" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">MAPA</a>
+        <a href="#galeria" onclick="toggleMobileMenu()" data-i18n="nav.midia" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GALERIA</a>
+        <a href="#academia" onclick="toggleMobileMenu()" data-i18n="nav.admin" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">PESQUISA</a>
+        <a href="#genealogia" onclick="toggleMobileMenu()" data-i18n="nav.genealogia" class="text-[#F4ECD8] text-xl font-black tracking-widest font-display">GENEALOGIA</a>
+        
+        <div class="flex items-center gap-3 mt-4 text-sm font-black tracking-wider border-t border-white/10 pt-4 w-1/2 justify-center">
+            <button onclick="setLanguage('pt')" class="lang-btn px-3 py-1.5 rounded bg-[#C5A059] text-black">PT</button>
+            <button onclick="setLanguage('en')" class="lang-btn px-3 py-1.5 rounded hover:bg-white/10 text-white">EN</button>
+            <button onclick="setLanguage('es')" class="lang-btn px-3 py-1.5 rounded hover:bg-white/10 text-white">ES</button>
+        </div>
         <button onclick="toggleMobileMenu()" class="mt-8 text-white/50 text-sm uppercase tracking-widest">Fechar</button>
     </div>
 
@@ -268,12 +281,12 @@
               </div>
           </div>
 
-          <p class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">
+          <p data-i18n="hero.desc" class="font-body text-lg md:text-2xl mb-12 opacity-90 max-w-xl text-[#F4ECD8] mx-auto md:mx-0">
               O afilhado de Getúlio Vargas e lendário capitão da fronteira. Um acervo digital imersivo dedicado à preservação de sua história.
           </p>
 
           <div class="flex gap-4 justify-center md:justify-start w-full">
-              <a href="#biografia" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
+              <a href="#biografia" data-i18n="hero.button" class="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs no-underline flex items-center justify-center hover:bg-[#F4ECD8] transition-all shadow-xl hover:scale-105 border-2 border-transparent hover:border-[#5C1B1B]">
                   EXPLORAR ACERVO
               </a>
           </div>
@@ -282,9 +295,9 @@
       <!-- Coluna Direita: Card Mapeamento da Fronteira (Mantido Original) -->
       <div class="w-full lg:w-[450px] bg-[#4A0E0E]/90 backdrop-blur-md p-8 md:p-10 border border-white/10 shadow-2xl reveal-item rounded-sm hidden md:block place-self-end"> 
           <div class="flex items-center gap-2 text-[#C5A059] text-[10px] font-black uppercase mb-6 tracking-[0.4em]">REGISTRO HISTÓRICO <span class="text-red-500 animate-pulse">●</span></div>
-          <h3 class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
-          <p class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
-          <a href="#mapa" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
+          <h3 data-i18n="hero.map_title" class="font-display text-2xl md:text-3xl mb-6 text-white font-black leading-tight">Mapeamento da Fronteira</h3>
+          <p data-i18n="hero.map_desc" class="text-[#E6DABB] mb-10 font-body italic opacity-80 leading-relaxed">"Na fronteira não há lei que não seja a do respeito. Entre o fole do acordeão e o cano do fuzil, forjamos nossa história."</p>
+          <a href="#mapa" data-i18n="hero.map_btn" class="flex items-center justify-center bg-[#0038A8] text-white py-5 rounded-sm font-bold uppercase text-xs w-full no-underline tracking-[0.2em] shadow-lg hover:brightness-110 transition-all border border-white/20">VER MAPA INTERATIVO</a>
       </div>
   </div>
 </section>
@@ -292,16 +305,16 @@
     <section id="biografia" class="py-24 bg-[#F4ECD8] reveal-section relative">
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Breve Biografia</h2>
+                <h2 data-i18n="bio.label" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Breve Biografia</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
             <div class="max-w-4xl mx-auto md:columns-2 gap-12 text-justify font-body text-lg leading-relaxed reveal-item text-[#1A1A1A]">
-                <p class="mb-6 font-serif first-letter:text-7xl first-letter:font-western first-letter:text-[#5C1B1B] first-letter:mr-3 first-letter:float-left">
+                <p data-i18n="bio.p1" class="mb-6 font-serif first-letter:text-7xl first-letter:font-western first-letter:text-[#5C1B1B] first-letter:mr-3 first-letter:float-left">
                     Silvino Hermiro Jacques nasceu em 17 de fevereiro de 1906, em São Borja, RS. Filho de Leão Pedro Jacques e Máxima de Sant\'Anna, cresceu em uma família tradicional fronteiriça. 
                 </p>
-                <p class="mb-6">Ingressou na Brigada Militar, mas sua vida mudou radicalmente em 1929 após um incidente em Santo Ângelo que o tornou foragido. Fugindo para o Norte, serviu como Capitão legalista para seu padrinho, Getúlio Vargas, na Revolução de 1932.</p>
-                <p class="mb-6">Silvino era um homem de palavra e poesia. Suas "Décimas" registravam suas façanhas. Ele protegeu famílias e combateu rivais políticos, criando quase um estado paralelo na zona de fronteira entre o Brasil e o Paraguai.</p>
-                <p>Tombou em combate em maio de 1939 na Fazenda Aurora. Sua história permanece viva na memória oral como um herói popular, o último dos gaudérios da fronteira.</p>
+                <p data-i18n="bio.p2" class="mb-6">Ingressou na Brigada Militar, mas sua vida mudou radicalmente em 1929 após um incidente em Santo Ângelo que o tornou foragido. Fugindo para o Norte, serviu como Capitão legalista para seu padrinho, Getúlio Vargas, na Revolução de 1932.</p>
+                <p data-i18n="bio.p3" class="mb-6">Silvino era um homem de palavra e poesia. Suas "Décimas" registravam suas façanhas. Ele protegeu famílias e combateu rivais políticos, criando quase um estado paralelo na zona de fronteira entre o Brasil e o Paraguai.</p>
+                <p data-i18n="bio.p4">Tombou em combate em maio de 1939 na Fazenda Aurora. Sua história permanece viva na memória oral como um herói popular, o último dos gaudérios da fronteira.</p>
             </div>
         </div>
     </section>
@@ -314,7 +327,7 @@
             
             <!-- Legenda Estilizada sobre a Imagem -->
             <div class="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-md py-10 text-center z-20 border-t border-[#C5A059]/10">
-                <p class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Gaudério da Fronteira</p>
+                <p data-i18n="bio.caption" class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Gaudério da Fronteira</p>
                 <div class="w-16 h-0.5 bg-[#5C1B1B] mx-auto mt-4"></div>
             </div>
         </div>
@@ -326,32 +339,32 @@
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Vozes & Ecos</h2>
+                <h2 data-i18n="vozes.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Vozes & Ecos</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                 <div class="audio-player-container p-8 rounded-lg reveal-item">
                     <div class="flex items-center justify-between mb-6 border-b border-[#C5A059]/30 pb-4">
-                        <div class="text-[#C5A059] font-black tracking-widest text-xs uppercase">Rádio Fronteira</div>
+                        <div data-i18n="vozes.radio" class="text-[#C5A059] font-black tracking-widest text-xs uppercase">Rádio Fronteira</div>
                         <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_red]"></div>
                     </div>
                     
                     <div class="space-y-6">
                         <div id="track-decimas" class="group cursor-pointer" onclick="playAudio('audio/decimas-silvino.mp3', 'track-decimas')">
-                            <h4 id="track-decimas-icon" class="font-display text-xl text-white group-hover:text-[#C5A059] transition-colors">▶ "Décimas de Silvino" (Declamação)</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Voz: Gerson Jacques</p>
+                            <h4 id="track-decimas-icon" data-i18n="vozes.track1" class="font-display text-xl text-white group-hover:text-[#C5A059] transition-colors">▶ "Décimas de Silvino" (Declamação)</h4>
+                            <p data-i18n="vozes.track1_sub" class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Voz: Gerson Jacques</p>
                             <div class="w-full bg-gray-700 h-1 mt-3 rounded-full overflow-hidden">
                                 <div class="bg-[#C5A059] w-[45%] h-full"></div>
                             </div>
                         </div>
                         <div class="group cursor-pointer" onclick="alert('Este áudio está em produção e será adicionado em breve!')">
-                            <h4 class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Relato Popular: O Corpo Fechado</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Entrevista Oral (1992)</p>
+                            <h4 data-i18n="vozes.track2" class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Relato Popular: O Corpo Fechado</h4>
+                            <p data-i18n="vozes.track2_sub" class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Entrevista Oral (1992)</p>
                         </div>
                         <div class="group cursor-pointer" onclick="alert('Este áudio está em produção e será adicionado em breve!')">
-                            <h4 class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Canção: O Último Gaudério</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Música Regional</p>
+                            <h4 data-i18n="vozes.track3" class="font-display text-xl text-white/60 group-hover:text-[#C5A059] transition-colors">▶ Canção: O Último Gaudério</h4>
+                            <p data-i18n="vozes.track3_sub" class="text-xs text-gray-500 uppercase tracking-widest mt-1 ml-6">Música Regional</p>
                         </div>
                     </div>
 
@@ -364,10 +377,10 @@
 
                 <div class="text-center md:text-left reveal-item">
                     <div class="text-6xl text-[#C5A059] font-western opacity-50 mb-4">"</div>
-                    <blockquote class="font-display text-2xl md:text-4xl italic leading-relaxed text-white mb-6">
+                    <blockquote data-i18n="vozes.quote" class="font-display text-2xl md:text-4xl italic leading-relaxed text-white mb-6">
                         Se algum dia por acaso, não possa eu cantar vitória, que meus inimigos me matem, e assim cheio de glória eu peço a meus amigos que leiam a minha história.
                     </blockquote>
-                    <p class="font-black text-[#C5A059] tracking-[0.2em] text-sm">— TRECHO DAS DÉCIMAS ORIGINAIS</p>
+                    <p data-i18n="vozes.quote_sub" class="font-black text-[#C5A059] tracking-[0.2em] text-sm">— TRECHO DAS DÉCIMAS ORIGINAIS</p>
                 </div>
             </div>
         </div>
@@ -376,7 +389,7 @@
     <section id="memoria" class="py-24 bg-[#F4ECD8] reveal-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">A Memória Viva</h2>
+                <h2 data-i18n="preserve.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">A Memória Viva</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12" id="testimonials-grid">
@@ -387,8 +400,8 @@
     <section id="timeline" class="py-24 bg-white relative overflow-hidden reveal-section">
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Trajetória de Vida</h2>
-                <div id="admin-btn-trajetoria_vida" class="mt-4 hidden"><button onclick="openCrudModal('trajetoria_vida')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
+                <h2 data-i18n="timeline.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Trajetória de Vida</h2>
+                <div id="admin-btn-trajetoria_vida" class="mt-4 hidden"><button onclick="openCrudModal('trajetoria_vida')" data-i18n="timeline.add_btn" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
         <div class="md:hidden flex items-center justify-center gap-2 mb-6 mt-4 text-[#C5A059] opacity-80 animate-pulse">
@@ -419,7 +432,7 @@
     <section id="conexoes" class="py-24 bg-[#EFE6D0] reveal-section">
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Conexões Humanas</h2>
+                <h2 data-i18n="conexoes.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Conexões Humanas</h2>
                 <div id="admin-btn-conexoes" class="mt-4 hidden"><button onclick="openCrudModal('conexoes')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
@@ -571,52 +584,52 @@
                     
                     <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
                         <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
-                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Corpo Fechado</h3>
-                            <p class="font-body opacity-90">Diz a lenda que Silvino tinha pacto. As balas batiam em seu peito e caíam no chão.</p>
+                            <div data-i18n="mitos.badge_mito" class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 data-i18n="mitos.m1.mito_title" class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Corpo Fechado</h3>
+                            <p data-i18n="mitos.m1.mito_desc" class="font-body opacity-90">Diz a lenda que Silvino tinha pacto. As balas batiam em seu peito e caíam no chão.</p>
                         </div>
                         <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
-                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
-                            <p class="font-body">Documentos provam que ele foi ferido várias vezes. Sobrevivia por táticas militares e proteção.</p>
+                            <div data-i18n="mitos.badge_fato" class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 data-i18n="mitos.m1.fato_title" class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p data-i18n="mitos.m1.fato_desc" class="font-body">Documentos provam que ele foi ferido várias vezes. Sobrevivia por táticas militares e proteção.</p>
                         </div>
                     </div>
 
                     <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
                         <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
-                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Tesouro Enterrado</h3>
-                            <p class="font-body opacity-90">Relatos de que enterrava ouro das revoluções em locais secretos da fronteira.</p>
+                            <div data-i18n="mitos.badge_mito" class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 data-i18n="mitos.m2.mito_title" class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ O Tesouro Enterrado</h3>
+                            <p data-i18n="mitos.m2.mito_desc" class="font-body opacity-90">Relatos de que enterrava ouro das revoluções em locais secretos da fronteira.</p>
                         </div>
                         <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
-                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
-                            <p class="font-body">Não há registros de fortuna. Morreu deixando poucos bens materiais para a família.</p>
+                            <div data-i18n="mitos.badge_fato" class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 data-i18n="mitos.m1.fato_title" class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <p data-i18n="mitos.m2.fato_desc" class="font-body">Não há registros de fortuna. Morreu deixando poucos bens materiais para a família.</p>
                         </div>
                     </div>
 
                     <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
                         <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
-                            <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ Robin Hood Gaúcho</h3>
-                            <p class="font-body opacity-90">A ideia de que roubava apenas dos ricos para dar aos pobres da região.</p>
+                            <div data-i18n="mitos.badge_mito" class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <h3 data-i18n="mitos.m3.mito_title" class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ Robin Hood Gaúcho</h3>
+                            <p data-i18n="mitos.m3.mito_desc" class="font-body opacity-90">A ideia de que roubava apenas dos ricos para dar aos pobres da região.</p>
                         </div>
                         <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
-                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <div data-i18n="mitos.badge_fato" class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 data-i18n="mitos.m1.fato_title" class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
                             <p class="font-body">Atuava por interesses políticos e de clãs. Protegia seus aliados, mas cobrava caro dos rivais.</p>
                         </div>
                     </div>
 
                     <div class="flex-none w-[90vw] md:w-[800px] snap-center grid md:grid-cols-2 shadow-[10px_10px_0_rgba(0,0,0,0.2)] border-2 border-[#1A1A1A]">
                         <div class="bg-[#1A1A1A] text-[#F4ECD8] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
+                            <div data-i18n="mitos.badge_mito" class="absolute top-0 left-0 p-2 font-black text-4xl opacity-10 font-western">MITO</div>
                             <h3 class="font-display text-2xl text-[#C5A059] font-bold mb-4">✦ Imortalidade</h3>
                             <p class="font-body opacity-90">Boatos de que não morreu em 39 e fugiu para viver anônimo no Paraguai.</p>
                         </div>
                         <div class="bg-[#F4ECD8] text-[#1A1A1A] p-10 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
-                            <h3 class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
+                            <div data-i18n="mitos.badge_fato" class="absolute top-0 right-0 p-2 font-black text-4xl opacity-10 font-western">FATO</div>
+                            <h3 data-i18n="mitos.m1.fato_title" class="font-display text-2xl text-[#5C1B1B] font-bold mb-4">✒ A Realidade</h3>
                             <p class="font-body">O corpo foi identificado, fotografado e o óbito registrado oficialmente após o cerco na Aurora.</p>
                         </div>
                     </div>
@@ -837,24 +850,24 @@
     <section id="preserve" class="py-24 bg-[#FDFBF7] reveal-section">
         <div class="container mx-auto px-6 text-center">
             <div class="flex flex-col items-center mb-10 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Preserve a Memória</h2>
+                <h2 data-i18n="preserve.title_form" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Preserve a Memória</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
-            <p class="font-body text-xl md:text-2xl max-w-3xl mx-auto mb-12 text-gray-600 italic">"Sua família guarda algum objeto, fotografia ou relato oral sobre Silvino Jacques? Ajude-nos a manter viva a história da fronteira."</p>
+            <p data-i18n="preserve.subtitle_form" class="font-body text-xl md:text-2xl max-w-3xl mx-auto mb-12 text-gray-600 italic">"Sua família guarda algum objeto, fotografia ou relato oral sobre Silvino Jacques? Ajude-nos a manter viva a história da fronteira."</p>
 
             <!-- GRID 2 COLUNAS DESKTOP -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-start">
 
                 <!-- COLUNA ESQUERDA: Formulário Card -->
                 <div class="bg-[#F9F6F0] p-8 rounded-lg shadow-sm border border-[#E6DABB] text-left">
-                    <h3 class="font-display text-2xl font-black uppercase text-[#5C1B1B] mb-6 tracking-widest">Envie seu Relato</h3>
+                    <h3 data-i18n="preserve.title_form" class="font-display text-2xl font-black uppercase text-[#5C1B1B] mb-6 tracking-widest">Envie seu Relato</h3>
                     <form id="memory-form" class="space-y-4" onsubmit="event.preventDefault(); enviarMemoria();">
-                        <input type="text" id="memoria-nome" placeholder="Seu Nome Completo" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <input type="email" id="memoria-email" placeholder="E-mail de Contato" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <input type="tel" id="memoria-whatsapp" placeholder="WhatsApp (com DDD)" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
-                        <textarea id="memoria-relato" placeholder="Descreva aqui sua memória, história ou o objeto que possui..." class="w-full h-48 bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none rounded-md shadow-sm" required></textarea>
+                        <input type="text" id="memoria-nome" placeholder="Seu Nome Completo" data-i18n-placeholder="form.placeholder_name" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <input type="email" id="memoria-email" placeholder="E-mail de Contato" data-i18n-placeholder="form.placeholder_email" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <input type="tel" id="memoria-whatsapp" placeholder="WhatsApp (com DDD)" data-i18n-placeholder="form.placeholder_whatsapp" class="w-full bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors rounded-md shadow-sm" required>
+                        <textarea id="memoria-relato" placeholder="Descreva aqui sua memória, história ou o objeto que possui..." data-i18n-placeholder="form.placeholder_relato" class="w-full h-48 bg-white border border-[#E6DABB] p-4 text-gray-800 font-serif focus:outline-none focus:border-[#5C1B1B] transition-colors resize-none rounded-md shadow-sm" required></textarea>
                         <button type="submit" id="mem-btn" class="w-full bg-[#5C1B1B] text-white py-5 font-black uppercase tracking-[0.3em] text-sm hover:brightness-110 transition-all shadow-lg hover:shadow-xl flex justify-center items-center gap-2 rounded-md">
-                            <span id="mem-btn-text">SUBMETER RELATO PARA O ARQUIVO</span>
+                            <span id="mem-btn-text" data-i18n="form.submit">SUBMETER RELATO PARA O ARQUIVO</span>
                         </button>
                     </form>
                     <div id="mensagem-sucesso-memoria" class="hidden mt-6 p-5 bg-[#EFE6D0] border-l-4 border-[#5C1B1B] rounded-r-md">
@@ -865,7 +878,7 @@
 
                 <!-- COLUNA DIREITA: Feed de Relatos com Scroll Interno -->
                 <div class="text-left">
-                    <h3 class="font-display text-2xl font-black uppercase text-[#5C1B1B] mb-6 tracking-widest border-b-2 border-[#C5A059] pb-3">Relatos da Fronteira</h3>
+                    <h3 data-i18n="preserve.list_title" class="font-display text-2xl font-black uppercase text-[#5C1B1B] mb-6 tracking-widest border-b-2 border-[#C5A059] pb-3">Relatos da Fronteira</h3>
                     <div id="memory-list-container" class="max-h-[600px] overflow-y-auto pr-2 flex flex-col space-y-4 custom-scrollbar">
                         <!-- Javascript irá injetar os relatos aqui -->
                     </div>
@@ -901,9 +914,9 @@
                     <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
                 </svg>
             </span>
-            <span style="opacity: 0.3;">PRESERVANDO A MEMÓRIA DA FRONTEIRA</span>
+            <span data-i18n="footer.desc" style="opacity: 0.3;">PRESERVANDO A MEMÓRIA DA FRONTEIRA</span>
             <span class="hidden md:inline">|</span>
-            <span>TODOS OS DIREITOS RESERVADOS</span>
+            <span data-i18n="footer.rights">TODOS OS DIREITOS RESERVADOS</span>
         </div>
     </footer>
 
@@ -2608,6 +2621,75 @@ Hoje vivo separado.`
         }
     });
 
+
+
+    // --- i18n SYSTEM ---
+    async function setLanguage(lang) {
+        localStorage.setItem('lang', lang);
+        
+        // Update language selector active button styles (PT, EN, ES)
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.innerText.toLowerCase() === lang.toLowerCase()) {
+                btn.classList.add('bg-[#C5A059]', 'text-black');
+                btn.classList.remove('hover:bg-white/10', 'text-white');
+            } else {
+                btn.classList.remove('bg-[#C5A059]', 'text-black');
+                btn.classList.add('hover:bg-white/10', 'text-white');
+            }
+        });
+
+        try {
+            const response = await fetch(`assets/${lang}.json`);
+            if (!response.ok) throw new Error('Failed to load translations');
+            const translations = await response.json();
+            
+            // Translate all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const path = el.getAttribute('data-i18n');
+                const keys = path.split('.');
+                let value = translations;
+                for (const key of keys) {
+                    if (value) {
+                        value = value[key];
+                    }
+                }
+                if (value) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        if (el.placeholder) {
+                            el.placeholder = value;
+                        } else {
+                            el.value = value;
+                        }
+                    } else {
+                        el.textContent = value;
+                    }
+                }
+            });
+
+            // Translate placeholders explicitly
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const path = el.getAttribute('data-i18n-placeholder');
+                const keys = path.split('.');
+                let value = translations;
+                for (const key of keys) {
+                    if (value) {
+                        value = value[key];
+                    }
+                }
+                if (value) {
+                    el.placeholder = value;
+                }
+            });
+        } catch (e) {
+            console.error('Error loading language file:', e);
+        }
+    }
+
+    // Initialize Language Selector
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('lang') || 'pt';
+        setLanguage(savedLang);
+    });
 
     async function deleteCrudItem(table, id) {
         if(!confirm('Excluir este item?')) return;

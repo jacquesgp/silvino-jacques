@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "biografia": "Biography",
+    "preserve": "Preserve Memory",
+    "conexoes": "Connections",
+    "documentos": "Documents Room",
+    "timeline": "Timeline",
+    "mapa": "Pathways",
+    "midia": "Multimedia Archive",
+    "mitos": "Legend vs History",
+    "genealogia": "Family Tree",
+    "admin": "Administrator"
+  },
+  "hero": {
+    "subtitle": "THE FRONTIER CAPITÃO",
+    "title": "Silvino Jacques Archive",
+    "desc": "Between the bellows of the accordion and the barrel of the rifle, discover the digital memory of a living legend.",
+    "button": "Explore Archive",
+    "map_title": "Frontier Mapping",
+    "map_desc": "\"On the frontier, respect is the only law. Between the bellows of the accordion and the barrel of the rifle, we forge our history.\"",
+    "map_btn": "VIEW INTERACTIVE MAP"
+  },
+  "bio": {
+    "label": "Brief Biography",
+    "title": "The Last Gaudério of the Frontier",
+    "p1": "Silvino Hermiro Jacques was born on February 17, 1906, in São Borja, RS. Son of Leão Pedro Jacques and Máxima de Sant'Anna, he grew up in a traditional frontier family.",
+    "p2": "He joined the Brigada Militar, but his life changed radically in 1929 after an incident in Santo Ângelo that made him a fugitive. Fleeing North, he served as a loyalist Capitão for his godfather, Getúlio Vargas, in the Revolution of 1932.",
+    "p3": "Silvino was a man of his word and poetry. His \"Décimas\" recorded his deeds. He protected families and fought political rivals, establishing a near-parallel state along the border zone between Brazil and Paraguay.",
+    "p4": "He fell in battle in May 1939 at the Aurora Farm. His story remains alive in oral memory as a folk hero, the last of the frontier gaudérios.",
+    "caption": "The Gaudério of the Frontier",
+    "dropcap": "S"
+  },
+  "vozes": {
+    "title": "Voices & Ecos",
+    "radio": "Radio Fronteira",
+    "track1": "▶ \"Décimas de Silvino\" (Declamation)",
+    "track1_sub": "Voice: Gerson Jacques",
+    "track2": "▶ Popular Account: O Corpo Fechado",
+    "track2_sub": "Oral Interview (1992)",
+    "track3": "▶ Song: O Último Gaudério",
+    "track3_sub": "Regional Music",
+    "quote": "If by chance one day I cannot claim victory, let my enemies kill me, and thus full of glory I ask my friends to read my history.",
+    "quote_sub": "-- EXCERPT FROM THE ORIGINAL DÉCIMAS"
+  },
+  "preserve": {
+    "title": "Living Memory",
+    "title_form": "Preserve Memory",
+    "subtitle_form": "Leave your testimonial, family account, or document related to Silvino Jacques.",
+    "list_title": "Testimonials Wall",
+    "scroll_hint": "Swipe to view testimonials",
+    "p_hint": "Hover (or tap) to enlarge original records.",
+    "legend_captain": "The Capitão"
+  },
+  "form": {
+    "name": "Full Name",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp (optional)",
+    "relato": "Your story or family account",
+    "placeholder_name": "E.g., Euclides Jacques",
+    "placeholder_email": "E.g., euclides@email.com",
+    "placeholder_whatsapp": "E.g., +55 (67) 99999-9999",
+    "placeholder_relato": "Write here the memories passed down through generations...",
+    "submit": "Submit to Archive"
+  },
+  "conexoes": {
+    "title": "Human Connections",
+    "subtitle": "Browse and click on the cards to reveal each person's story.",
+    "scroll_hint": "Drag sideways to view more"
+  },
+  "docs": {
+    "label": "DIGITAL ARCHIVE",
+    "title": "Documents Room",
+    "hover_hint": "Hover (or tap) to enlarge original records.",
+    "zoom": "🔍 Zoom In"
+  },
+  "timeline": {
+    "title": "Timeline",
+    "scroll_hint": "Drag sideways to view more",
+    "add_btn": "+ Add New Item"
+  },
+  "mapa": {
+    "title": "Pathways of History",
+    "scroll_hint": "Swipe to view locations",
+    "badge": "ARCHIVE ACCOUNT",
+    "point_badge": "HISTORICAL POINT"
+  },
+  "midia": {
+    "title": "Multimedia Archive",
+    "scroll_hint": "Browse to see more"
+  },
+  "mitos": {
+    "title": "Legend vs. History",
+    "scroll_hint": "Swipe to view other parallels",
+    "badge_mito": "MYTH",
+    "badge_fato": "FACT",
+    "m1": {
+      "mito_title": "✦ The Corpo Fechado",
+      "mito_desc": "Legend says that Silvino had a pact. Bullets would hit his chest and fall to the ground.",
+      "fato_title": "✒ The Reality",
+      "fato_desc": "Documents prove he was wounded several times. He survived due to military tactics and local protection."
+    },
+    "m2": {
+      "mito_title": "✦ The Buried Treasure",
+      "mito_desc": "Accounts claim he buried revolution gold in secret locations along the border.",
+      "fato_title": "✒ The Reality",
+      "fato_desc": "There are no records of fortune. He died leaving very few material goods to his family."
+    },
+    "m3": {
+      "mito_title": "✦ The Gaucho Robin Hood",
+      "mito_desc": "The popular belief that he stole only from the rich to give to the poor of the region.",
+      "fato_title": "✒ The Reality",
+      "fato_desc": "His actions were driven by local political disputes and clandestine survival along the frontier."
+    }
+  },
+  "genealogia": {
+    "title": "Family Tree",
+    "subtitle": "Mapping the lineage of Silvino Jacques."
+  },
+  "footer": {
+    "desc": "PRESERVING THE MEMORY OF THE FRONTIER",
+    "rights": "ALL RIGHTS RESERVED"
+  },
+  "admin_modal": {
+    "title": "Enter Restricted Area",
+    "email": "Administrator E-mail",
+    "password": "Password",
+    "btn_login": "Login"
+  }
+}
