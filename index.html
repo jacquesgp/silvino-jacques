@@ -1464,7 +1464,7 @@ Hoje vivo separado.`
             const list = document.getElementById('academic-list');
             if(list) {
                 list.innerHTML = ACADEMIC.map(a => `
-                    <button onclick="window.setAcademic('${a.id}'); setTimeout(() => document.getElementById('area-de-leitura').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);" class="flex-none md:w-full text-left p-6 md:border-l-8 border border-gray-200 md:border-t-0 md:border-r-0 md:border-b-0 min-w-[280px] md:min-w-0 transition-all bg-[#FDFBF7] shadow-sm hover:shadow-md border-[#8B7E66] opacity-90 focus:opacity-100 focus:border-[#5C1B1B]">
+                    <button onclick="window.setAcademic('${a.id}'); setTimeout(() => document.getElementById('area-de-leitura').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);" class="academia-btn flex-none md:w-full text-left p-6 md:border-l-8 border border-gray-200 md:border-t-0 md:border-r-0 md:border-b-0 min-w-[280px] md:min-w-0 transition-all bg-[#FDFBF7] shadow-sm hover:shadow-md border-[#8B7E66] opacity-90 focus:opacity-100 focus:border-[#5C1B1B]">
                         <h4 class="font-display font-black text-lg md:text-xl mb-1 text-black">${a.title}</h4>
                         <span class="text-[10px] text-[#5C1B1B] uppercase font-black tracking-widest">${a.author}</span>
                     </button>
@@ -1478,29 +1478,61 @@ Hoje vivo separado.`
             // Highlight active button
             document.querySelectorAll('.academia-btn').forEach(b => b.classList.remove('border-[#5C1B1B]', 'opacity-100'));
 
+            let item = null;
             if (window.DYNAMIC_ACADEMIC) {
-                const item = window.DYNAMIC_ACADEMIC.find(a => String(a.id) === String(id));
-                if (item) {
-                    const detail = document.getElementById('academic-detail');
-                    if (detail) {
-                        let textoObra = getLangField(item, 'descricao') || '';
-                        let urlObra = 'https://api.whatsapp.com/send?phone=5567998909314&text=' + encodeURIComponent('Olá, gostaria de acessar a obra completa: ' + getLangField(item, 'titulo'));
-                        
-                        // If url_midia contains a direct link, use it
-                        if (item.url_midia && item.url_midia.trim().startsWith('http')) {
-                            urlObra = item.url_midia.trim();
-                        } else if (item.url_midia && item.url_midia.trim().startsWith('{')) {
-                            // JSON safety fallback in case database caching/offline sync has older records
-                            try {
-                                const parsed = JSON.parse(item.url_midia);
-                                if (parsed.url) urlObra = parsed.url;
-                            } catch(e) {}
+                item = window.DYNAMIC_ACADEMIC.find(a => String(a.id) === String(id));
+            }
+            
+            // Fallback to static ACADEMIC array if not found in dynamic data
+            if (!item) {
+                const staticItem = ACADEMIC.find(a => String(a.id) === String(id));
+                if (staticItem) {
+                    const lang = localStorage.getItem('lang') || 'pt';
+                    let title = staticItem.title;
+                    let text = staticItem.text;
+                    let author = staticItem.author;
+                    
+                    if (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.academic_items) {
+                        const translationKey = id === 'decimas' ? 'decimas' : (id === 'ibanh' ? 'ibanh' : 'tese');
+                        const trans = window.CURRENT_TRANSLATIONS.academic_items[translationKey];
+                        if (trans) {
+                            title = trans.title || title;
+                            text = trans.text || text;
+                            author = trans.author || author;
                         }
-                        
-                        const currentLang = localStorage.getItem('selectedLanguage') || 'pt';
-                        let textoBotao = 'Obra Completa';
-                        if (currentLang === 'en') textoBotao = 'Full Work';
-                        if (currentLang === 'es') textoBotao = 'Obra Completa';
+                    }
+                    
+                    item = {
+                        id: staticItem.id,
+                        titulo: title,
+                        descricao: text,
+                        categoria: author,
+                        url_midia: id === 'decimas' ? 'https://www.facebook.com/capitaosilvinojacques' : ''
+                    };
+                }
+            }
+
+            if (item) {
+                const detail = document.getElementById('academic-detail');
+                if (detail) {
+                    let textoObra = getLangField(item, 'descricao') || '';
+                    let urlObra = 'https://api.whatsapp.com/send?phone=5567998909314&text=' + encodeURIComponent('Olá, gostaria de acessar a obra completa: ' + getLangField(item, 'titulo'));
+                    
+                    // If url_midia contains a direct link, use it
+                    if (item.url_midia && item.url_midia.trim().startsWith('http')) {
+                        urlObra = item.url_midia.trim();
+                    } else if (item.url_midia && item.url_midia.trim().startsWith('{')) {
+                        // JSON safety fallback in case database caching/offline sync has older records
+                        try {
+                            const parsed = JSON.parse(item.url_midia);
+                            if (parsed.url) urlObra = parsed.url;
+                        } catch(e) {}
+                    }
+                    
+                    const currentLang = localStorage.getItem('lang') || 'pt';
+                    let textoBotao = 'Obra Completa';
+                    if (currentLang === 'en') textoBotao = 'Full Work';
+                    if (currentLang === 'es') textoBotao = 'Obra Completa';
 
                         detail.innerHTML = `
                             <div class="absolute top-0 left-0 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-6 py-2 tracking-[0.3em]">LEITURA PARCIAL</div>
@@ -2551,16 +2583,9 @@ Hoje vivo separado.`
                     let finalUrlMidia = urlMidia;
 
                     if (table === 'academia') {
-                        const ASSINATURA = 'Para acesso à Obra completa entre em contato com o administrador desse Site pelo Whatsapp: +55 67 998909314';
-                        if (!finalDescricao.includes(ASSINATURA)) {
-                            finalDescricao = finalDescricao.trim() + '\n\n' + ASSINATURA;
-                        }
-                        const buttonText = document.getElementById('itemTextoBotao').value || '';
                         const extUrl = document.getElementById('mediaUrl').value || '';
-                        
-                        // Save button text in descricao, and JSON payload {texto, url} in url_midia
-                        finalDescricao = buttonText;
-                        finalUrlMidia = JSON.stringify({ texto: document.getElementById('crud-descricao').value, url: extUrl });
+                        finalDescricao = document.getElementById('crud-descricao').value || '';
+                        finalUrlMidia = extUrl;
                     }
 
                     let payload = {};
@@ -2658,7 +2683,7 @@ Hoje vivo separado.`
             if (!response.ok) throw new Error('Failed to load translations');
             const translations = await response.json();
             window.CURRENT_TRANSLATIONS = translations;
-            if (typeof renderAcademic === 'function') {
+            if (typeof renderAcademic === 'function' && !(window.SUPABASE_DATA && window.SUPABASE_DATA.academia)) {
                 renderAcademic();
             }
             
