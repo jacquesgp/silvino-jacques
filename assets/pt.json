@@ -13,6 +13,7 @@
     "admin": "Pesquisa"
   },
   "hero": {
+    "title_logo": "ARQUIVO SILVINO",
     "subtitle": "O CAPITÃO DA FRONTEIRA",
     "title": "Arquivo Silvino Jacques",
     "desc": "Entre o fole do acordeão e o cano do fuzil, a verdadeira história do afilhado de Getúlio Vargas no nosso acervo digital imersivo.",
@@ -88,7 +89,11 @@
   },
   "midia": {
     "title": "Acervo Multimídia",
-    "scroll_hint": "Navegue para ver mais"
+    "scroll_hint": "Navegue para ver mais",
+    "cat_todos": "Todos",
+    "cat_documentario": "Documentário",
+    "cat_entrevista": "Entrevista",
+    "cat_cultural": "Cultural"
   },
   "mitos": {
     "title": "A Lenda vs. A História",
@@ -115,8 +120,17 @@
     }
   },
   "galeria": {
-    "title": "Arquivo Fotográfico"
+    "title": "Arquivo Fotográfico",
+    "cat_todos": "Todos",
+    "cat_grupo": "Grupo",
+    "cat_retrato": "Retrato",
+    "cat_militar": "Militar"
   },
+  "testimonials_static": [
+    { "text": "Minha avó contava que ele chegou na fazenda pedindo água, mas não desceu do cavalo. Seu olhar era penetrante", "source": "BELA VISTA" },
+    { "text": "Dizem que ele tinha o corpo fechado. A bala batia no peito e caía no chão.", "source": "LENDA POPULAR" },
+    { "text": "Ele era um homem de palavra. Se prometesse proteção, ninguém tocava naqueles colonos.", "source": "DESCENDENTE DE COLONO" }
+  ],
   "genealogia": {
     "title": "Histórico Genealógico",
     "subtitle": "Mapeamento da descendência de Silvino Jacques.",

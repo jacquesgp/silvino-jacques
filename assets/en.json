@@ -13,6 +13,7 @@
     "admin": "Research"
   },
   "hero": {
+    "title_logo": "SILVINO ARCHIVE",
     "subtitle": "THE FRONTIER CAPITÃO",
     "title": "Silvino Jacques Archive",
     "desc": "Between the bellows of the accordion and the barrel of the rifle, discover the digital memory of a living legend.",
@@ -88,7 +89,11 @@
   },
   "midia": {
     "title": "Multimedia Archive",
-    "scroll_hint": "Browse to see more"
+    "scroll_hint": "Browse to see more",
+    "cat_todos": "All",
+    "cat_documentario": "Documentary",
+    "cat_entrevista": "Interview",
+    "cat_cultural": "Cultural"
   },
   "mitos": {
     "title": "The Legend vs. The History",
@@ -115,8 +120,17 @@
     }
   },
   "galeria": {
-    "title": "Photographic Archive"
+    "title": "Photographic Archive",
+    "cat_todos": "All",
+    "cat_grupo": "Group",
+    "cat_retrato": "Portrait",
+    "cat_militar": "Military"
   },
+  "testimonials_static": [
+    { "text": "My grandmother used to tell me that he arrived at the farm asking for water, but didn't get off his horse. His gaze was piercing.", "source": "BELA VISTA" },
+    { "text": "They say his body was closed to bullets. The bullet would hit his chest and fall to the ground.", "source": "POPULAR LEGEND" },
+    { "text": "He was a man of his word. If he promised protection, no one touched those settlers.", "source": "DESCENDANT OF SETTLER" }
+  ],
   "genealogia": {
     "title": "Genealogical History",
     "subtitle": "Mapping the lineage of Silvino Jacques.",

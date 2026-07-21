@@ -13,6 +13,7 @@
     "admin": "Investigación"
   },
   "hero": {
+    "title_logo": "ARCHIVO SILVINO",
     "subtitle": "EL CAPITÁN DE LA FRONTERA",
     "title": "Archivo Silvino Jacques",
     "desc": "Entre el fuelle del acordeón y el cañón del fusil, descubra la memoria digital de una leyenda viva.",
@@ -88,7 +89,11 @@
   },
   "midia": {
     "title": "Archivo Multimedia",
-    "scroll_hint": "Navegue para ver más"
+    "scroll_hint": "Navegue para ver más",
+    "cat_todos": "Todos",
+    "cat_documentario": "Documental",
+    "cat_entrevista": "Entrevista",
+    "cat_cultural": "Cultural"
   },
   "mitos": {
     "title": "La Lenda vs. A História",
@@ -115,8 +120,17 @@
     }
   },
   "galeria": {
-    "title": "Archivo Fotográfico"
+    "title": "Archivo Fotográfico",
+    "cat_todos": "Todos",
+    "cat_grupo": "Grupo",
+    "cat_retrato": "Retrato",
+    "cat_militar": "Militar"
   },
+  "testimonials_static": [
+    { "text": "Mi abuela solía contar que él llegó a la hacienda pidiendo agua, pero no se bajó del caballo. Su mirada era penetrante.", "source": "BELA VISTA" },
+    { "text": "Dicen que tenía el cuerpo cerrado. La bala golpeaba su pecho y caía al suelo.", "source": "LEYENDA POPULAR" },
+    { "text": "Era un hombre de palabra. Si prometía protección, nadie tocaba a esos colonos.", "source": "DESCENDIENTE DE COLONO" }
+  ],
   "genealogia": {
     "title": "Historial Genealógico",
     "subtitle": "Mapeo de la descendencia de Silvino Jacques.",

@@ -202,7 +202,7 @@
     <header class="fixed top-0 left-0 w-full z-[100] bg-[#4A0E0E] shadow-xl border-b border-[#C5A059]/20">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center h-[90px] md:h-[110px]">
             <a href="#home" class="flex flex-col no-underline text-[#F4ECD8] hover:opacity-90 transition-opacity">
-                <span class="font-monument text-[10px] md:text-sm tracking-[0.2em] uppercase leading-tight">ARQUIVO SILVINO</span>
+                <span data-i18n="hero.title_logo" class="font-monument text-[10px] md:text-sm tracking-[0.2em] uppercase leading-tight">ARQUIVO SILVINO</span>
                 <span class="font-display text-2xl md:text-4xl font-black tracking-widest uppercase leading-none mt-1">JACQUES</span>
             </a>
             
@@ -1209,7 +1209,8 @@ Hoje vivo separado.`
         function renderTestimonials() {
             const container = document.getElementById('testimonials-grid');
             if(container) {
-                container.innerHTML = TESTIMONIALS.map(t => `
+                const list = (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
+                container.innerHTML = list.map(t => `
                     <div class="bg-white p-10 shadow-xl border-l-[6px] border-[#C5A059] transition-transform hover:-translate-y-2 reveal-item">
                         <p class="font-body text-lg italic leading-relaxed text-gray-800 mb-8">"${t.text}"</p>
                         <p class="font-display font-black text-[#5C1B1B] tracking-[0.2em] text-xs">— ${t.source}</p>
@@ -1384,11 +1385,20 @@ Hoje vivo separado.`
             const filtersContainer = document.getElementById('gallery-filters');
             if(filtersContainer) {
                 const cats = ['all', 'grupo', 'retrato', 'militar'];
-                filtersContainer.innerHTML = cats.map(c => `
-                    <button onclick="window.renderGallery('${c}')" class="px-8 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${filter === c ? 'bg-[#5C1B1B] text-white' : 'bg-white text-[#8B7E66] border border-[#E6DABB]'}">
-                        ${c === 'all' ? 'Todos' : c}
-                    </button>
-                `).join('');
+                filtersContainer.innerHTML = cats.map(c => {
+                    let label = c;
+                    if (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.galeria) {
+                        const key = 'cat_' + (c === 'all' ? 'todos' : c);
+                        label = window.CURRENT_TRANSLATIONS.galeria[key] || c;
+                    } else {
+                        if (c === 'all') label = 'Todos';
+                    }
+                    return `
+                        <button onclick="window.renderGallery('${c}')" class="px-8 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${filter === c ? 'bg-[#5C1B1B] text-white' : 'bg-white text-[#8B7E66] border border-[#E6DABB]'}">
+                            ${label}
+                        </button>
+                    `;
+                }).join('');
             }
 
             // DOM filtering approach
@@ -1412,11 +1422,20 @@ Hoje vivo separado.`
             const filtersContainer = document.getElementById('midia-filters');
             if(filtersContainer) {
                 const cats = ['todos', 'documentário', 'entrevista', 'cultural'];
-                filtersContainer.innerHTML = cats.map(c => `
-                    <button onclick="window.filtrarMidia('${c}')" class="px-8 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${categoria === c ? 'bg-[#5C1B1B] text-white' : 'bg-transparent text-[#C5A059] border border-[#C5A059] hover:bg-[#C5A059] hover:text-black'}">
-                        ${c === 'todos' ? 'Todos' : c}
-                    </button>
-                `).join('');
+                filtersContainer.innerHTML = cats.map(c => {
+                    let label = c;
+                    if (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.midia) {
+                        const key = 'cat_' + c.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                        label = window.CURRENT_TRANSLATIONS.midia[key] || c;
+                    } else {
+                        if (c === 'todos') label = 'Todos';
+                    }
+                    return `
+                        <button onclick="window.filtrarMidia('${c}')" class="px-8 py-2 text-[10px] font-bold uppercase tracking-widest transition-all ${categoria === c ? 'bg-[#5C1B1B] text-white' : 'bg-transparent text-[#C5A059] border border-[#C5A059] hover:bg-[#C5A059] hover:text-black'}">
+                            ${label}
+                        </button>
+                    `;
+                }).join('');
             }
 
             const videoItems = document.querySelectorAll('.video-item');
@@ -2783,6 +2802,9 @@ Hoje vivo separado.`
             if (typeof renderGenealogy === 'function') renderGenealogy();
             if (typeof carregarResultadosEnquete === 'function') carregarResultadosEnquete();
             if (typeof fetchRelatos === 'function') fetchRelatos();
+            if (typeof renderTestimonials === 'function') renderTestimonials();
+            if (typeof renderGallery === 'function') renderGallery(window.currentGalleryFilter || 'all');
+            if (typeof filtrarMidia === 'function') filtrarMidia(window.currentMidiaFilter || 'todos');
         } catch (e) {
             console.error('Error loading language file:', e);
         }
