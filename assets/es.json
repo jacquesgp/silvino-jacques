@@ -2,7 +2,7 @@
   "nav": {
     "inicio": "Inicio",
     "biografia": "Biografía",
-    "preserve": "Preserve la Memoria",
+    "preserve": "Audios & Voces",
     "conexoes": "Conexiones",
     "documentos": "Sala de Documentos",
     "timeline": "Trayectoria",
@@ -10,7 +10,7 @@
     "midia": "Acervo Multimedia",
     "mitos": "La Leyenda vs La Historia",
     "genealogia": "Árbol Genealógico",
-    "admin": "Administrador"
+    "admin": "Investigación"
   },
   "hero": {
     "subtitle": "EL CAPITÁN DE LA FRONTERA",
@@ -126,5 +126,22 @@
     "email": "Correo del Administrador",
     "password": "Contraseña",
     "btn_login": "Ingresar"
+  },
+  "academic_items": {
+    "decimas": {
+      "title": "Décimas Gaúchas",
+      "author": "Silvino Jacques",
+      "text": "Las \"Décimas\" fueron escritas por las manos del propio Silvino Jacques que era un eximio trovador. Aunque llamadas Décimas, fueron escritas en Sextinas (estrofas de seis versos). En ellas, narra hechos importantes de su vida, como un verdadero diario personal.\n\n1\nVoy a contar una historia,\nQue muchos deben saber,\nPero contada por quien no la vio\nEs justo no se debe creer.\nY para que todos sepan\nMuy bien lo voy a escribir.\n\n2\nMi nombre nunca negué,\nY no pretendo negar,\nMe llamo Sylvino Jacques,\nY nunca busco el mal\nÉl es quien me busca\nY siempre me ha de encontrar.\n\n3\nSiempre fui perseguido\npor un triste y mal destino,\nHasta llegar al punto\nDe ser un hombre feroz\nY mi nombre ser comentado\nCon fama de asesino.\n\n4\nEsta triste suerte, de lejos\nDe lejos me viene siguiendo,\nPues creo que es mi destino\nQue me anda persiguiendo,\nAunque lleno de dolores\nYo me muestro siempre sonriendo.\n\n[...Fragmento seleccionado para demostración...]\n\n112\nEl arma de un buen gaucho\nEs el caballo bueno y fuerte,\nPeleando se arriesga la vida,\nCorriendo se desvía la muerte,\nPor eso monté el de pura sangre\nY me fui tirando hacia el norte.\n\n221\nSoy un gaucho decente,\nPero nací predestinado\nA andar sufriendo siempre,\nEste ya fue mi fado,\nDe alegrías y placeres\nHoy vivo separado."
+    },
+    "ibanh": {
+      "title": "El Último de los Bandoleros",
+      "author": "Brígido Ibanhes",
+      "text": "Obra definitiva que explora la dualidad entre el héroe y el bandido. Ibanhes se sumerge en archivos policiales y memoria oral para reconstruir los pasos de Silvino."
+    },
+    "tese": {
+      "title": "Fronteras y Mitos",
+      "author": "Maria de Lourdes",
+      "text": "Estudio académico sobre el impacto cultural de la leyenda de Jacques en la formación de la identidad de Mato Grosso del Sur y la relación con el poder central durante la Era Vargas."
+    }
   }
 }

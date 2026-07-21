@@ -2,7 +2,7 @@
   "nav": {
     "inicio": "Home",
     "biografia": "Biography",
-    "preserve": "Preserve Memory",
+    "preserve": "Audios & Voices",
     "conexoes": "Connections",
     "documentos": "Documents Room",
     "timeline": "Timeline",
@@ -10,7 +10,7 @@
     "midia": "Multimedia Archive",
     "mitos": "Legend vs History",
     "genealogia": "Family Tree",
-    "admin": "Administrator"
+    "admin": "Research"
   },
   "hero": {
     "subtitle": "THE FRONTIER CAPITÃO",
@@ -126,5 +126,22 @@
     "email": "Administrator E-mail",
     "password": "Password",
     "btn_login": "Login"
+  },
+  "academic_items": {
+    "decimas": {
+      "title": "Décimas Gaúchas",
+      "author": "Silvino Jacques",
+      "text": "The \"Décimas\" were written by the hands of Silvino Jacques himself, who was an accomplished trovador. Although called Décimas, they were written in Sextilhas (six-line stanzas). In them, he narrates important facts of his life, like a true personal diary.\n\n1\nI will tell a story,\nThat many must know,\nBut told by someone who didn't see\nIt is fair one shouldn't believe.\nAnd so that everyone knows\nQuite surely I will write.\n\n2\nMy name I never denied,\nAnd I do not intend to deny,\nMy name is Sylvino Jacques,\nAnd I never seek evil\nIt is evil that seeks me\nAnd always shall find me.\n\n3\nI have always been pursued\nby a bad, sad destiny,\nTo the point of becoming\nA fierce man\nAnd my name being commented\nWith the reputation of a murderer.\n\n4\nThis sad fate, from afar\nFrom afar has been following me,\nFor I believe it is my destiny\nThat is pursuing me,\nAlthough full of sorrows\nI always show myself smiling.\n\n[...Selected excerpt for demonstration...]\n\n112\nThe weapon of a good gaúcho\nIs a good and strong horse,\nFighting risks one's life,\nRunning avoids death,\nThat's why I rode the purebred\nAnd headed towards the north.\n\n221\nI am a decent gaúcho,\nBut I was born predestined\nTo always walk in suffering,\nThis was already my fate,\nFrom joys and pleasures\nToday I live separated."
+    },
+    "ibanh": {
+      "title": "The Last of the Bandits",
+      "author": "Brígido Ibanhes",
+      "text": "Definitive work exploring the duality between the hero and the outlaw. Ibanhes dives into police archives and oral memory to reconstruct Silvino's steps."
+    },
+    "tese": {
+      "title": "Borders and Myths",
+      "author": "Maria de Lourdes",
+      "text": "Academic study on the cultural impact of the Jacques legend on the formation of the South-Mato-Grosso identity and the relationship with the central power during the Vargas Era."
+    }
   }
 }

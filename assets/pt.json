@@ -2,7 +2,7 @@
   "nav": {
     "inicio": "Início",
     "biografia": "Biografia",
-    "preserve": "Preserve a Memória",
+    "preserve": "Áudios & Vozes",
     "conexoes": "Conexões",
     "documentos": "Sala de Documentos",
     "timeline": "Trajetória",
@@ -10,7 +10,7 @@
     "midia": "Acervo Multimídia",
     "mitos": "A Lenda vs A História",
     "genealogia": "Árvore Genealógica",
-    "admin": "Administrador"
+    "admin": "Pesquisa"
   },
   "hero": {
     "subtitle": "O CAPITÃO DA FRONTEIRA",
@@ -126,5 +126,22 @@
     "email": "E-mail do Administrador",
     "password": "Senha",
     "btn_login": "Entrar"
+  },
+  "academic_items": {
+    "decimas": {
+      "title": "Décimas Gaúchas",
+      "author": "Silvino Jacques",
+      "text": "As \"Décimas\" foram escritas pelas mãos do próprio Silvino Jacques que era um exímio trovador. Embora chamada de Décimas, foi escrita em Sextilhas. Nelas, ele narra importantes fatos de sua vida, como um verdadeiro diário pessoal.\n\n1\nVou contar uma historia,\nQue muitos devem saber,\nMas contada por quem não viu\nÉ justo não deve crer.\nE para que todos saibam\nBem certo vou escrever.\n\n2\nMeu nome nunca neguei,\nE não pretendo negar,\nMe chamo Sylvino Jacques,\nE nunca procuro o mal\nEle é quem me procura\nE sempre há de me encontrar.\n\n3\nSempre fui perseguido\npor um ruim triste destino,\nAté chegar ao ponto\nDe ser um homem ferino\nE meu nome ser comentado\nCom fama de assassino.\n\n4\nEssa triste sorte, de longe\nDe longe vem me seguindo,\nPois creio que é o meu destino\nQue anda me perseguindo,\nEmbora cheio de mágoas\nEu mostro-me sempre rindo.\n\n[...Trecho selecionado para demonstração...]\n\n112\nA arma do bom gaúcho\nÉ o cavalo bom e forte,\nBrigando se arrisca a vida,\nCorrendo desvia a morte,\nPor isso montei o puro\nE fui pendendo para o norte.\n\n221\nSou um gaúcho decente,\nMas nasci predestinado\nSempre andar a sofrer,\nEste já foi o meu fado,\nDe alegrias e prazeres\nHoje vivo separado."
+    },
+    "ibanh": {
+      "title": "O Último dos Bandoleiros",
+      "author": "Brígido Ibanhes",
+      "text": "Obra definitiva que explora a dualidade entre o herói e o bandido. Ibanhes mergulha nos arquivos policiais e na memória oral para reconstruir os passos de Silvino."
+    },
+    "tese": {
+      "title": "Fronteiras e Mitos",
+      "author": "Maria de Lourdes",
+      "text": "Estudo acadêmico sobre o impacto cultural da lenda de Jacques na formação da identidade sul-mato-grossense e a relação com o poder central na Era Vargas."
+    }
   }
 }
