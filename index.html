@@ -1515,7 +1515,7 @@ Hoje vivo separado.`
             if (item) {
                 const detail = document.getElementById('academic-detail');
                 if (detail) {
-                    let textoObra = getLangField(item, 'descricao') || '';
+                    let textoObra = (getLangField(item, 'descricao') || '').replace(/(?:\r\n|\r|\n|\\n)/g, '<br>');
                     let urlObra = 'https://api.whatsapp.com/send?phone=5567998909314&text=' + encodeURIComponent('Olá, gostaria de acessar a obra completa: ' + getLangField(item, 'titulo'));
                     
                     // If url_midia contains a direct link, use it
