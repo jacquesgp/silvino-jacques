@@ -1483,24 +1483,24 @@ Hoje vivo separado.`
                 if (item) {
                     const detail = document.getElementById('academic-detail');
                     if (detail) {
-                        let textoObra = '';
+                        let textoObra = getLangField(item, 'descricao') || '';
                         let urlObra = 'https://api.whatsapp.com/send?phone=5567998909314&text=' + encodeURIComponent('Olá, gostaria de acessar a obra completa: ' + getLangField(item, 'titulo'));
-                        let textoBotao = getLangField(item, 'descricao') || 'Acessar Link Externo';
                         
-                        try {
-                            const parsed = JSON.parse(item.url_midia);
-                            textoObra = parsed.texto || '';
-                            if (parsed.url) {
-                                urlObra = parsed.url;
-                            }
-                        } catch(e) {
-                            // Legacy fallback
-                            textoObra = item.descricao || '';
-                            textoBotao = 'Acessar Link Externo';
-                            if (item.url_midia && item.url_midia.startsWith('http')) {
-                                urlObra = item.url_midia;
-                            }
+                        // If url_midia contains a direct link, use it
+                        if (item.url_midia && item.url_midia.trim().startsWith('http')) {
+                            urlObra = item.url_midia.trim();
+                        } else if (item.url_midia && item.url_midia.trim().startsWith('{')) {
+                            // JSON safety fallback in case database caching/offline sync has older records
+                            try {
+                                const parsed = JSON.parse(item.url_midia);
+                                if (parsed.url) urlObra = parsed.url;
+                            } catch(e) {}
                         }
+                        
+                        const currentLang = localStorage.getItem('selectedLanguage') || 'pt';
+                        let textoBotao = 'Obra Completa';
+                        if (currentLang === 'en') textoBotao = 'Full Work';
+                        if (currentLang === 'es') textoBotao = 'Obra Completa';
 
                         detail.innerHTML = `
                             <div class="absolute top-0 left-0 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-6 py-2 tracking-[0.3em]">LEITURA PARCIAL</div>
