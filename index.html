@@ -1209,7 +1209,10 @@ Hoje vivo separado.`
         function renderTestimonials() {
             const container = document.getElementById('testimonials-grid');
             if(container) {
-                const list = window.DYNAMIC_MEMORIAS || (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
+                let list = window.DYNAMIC_MEMORIAS || (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
+                if (!list || list.length === 0) {
+                    list = (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
+                }
                 container.innerHTML = list.map(t => {
                     const cleanText = (t.text || '')
                         .replace(/\\+n/g, '<br>')
