@@ -462,8 +462,8 @@
     <section id="documentos" class="py-24 bg-[#EFE6D0] reveal-section border-y-8 border-[#5C1B1B]">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <div class="bg-[#5C1B1B] text-white px-3 py-1 text-xs font-black uppercase tracking-widest mb-4">Arquivo Digital</div>
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Sala de Documentos</h2>
+                <div data-i18n="docs.label" class="bg-[#5C1B1B] text-white px-3 py-1 text-xs font-black uppercase tracking-widest mb-4">Arquivo Digital</div>
+                <h2 data-i18n="docs.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Sala de Documentos</h2>
                 <div id="admin-btn-documentos" class="mt-4 hidden"><button onclick="openCrudModal('documentos')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
@@ -499,7 +499,7 @@
             
             <!-- Legenda Estilizada sobre a Imagem -->
             <div class="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-md py-10 text-center z-20 border-t border-[#C5A059]/10">
-                <p class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Capitão</p>
+                <p data-i18n="preserve.legend_captain" class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Capitão</p>
                 <div class="w-16 h-0.5 bg-[#5C1B1B] mx-auto mt-4"></div>
             </div>
         </div>
@@ -509,7 +509,7 @@
     <section id="mapa" class="py-24 bg-white reveal-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Caminhos da História</h2>
+                <h2 data-i18n="mapa.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center">Caminhos da História</h2>
                 <div id="admin-btn-caminhos_historia" class="mt-4 hidden"><button onclick="openCrudModal('caminhos_historia')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
@@ -517,7 +517,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <span data-i18n="conexoes.scroll_hint" class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -544,7 +544,7 @@
     <section id="midia" class="py-24 bg-black text-white reveal-section">
         <div class="container mx-auto px-6 text-center relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Acervo Multimídia</h2>
+                <h2 data-i18n="midia.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-white">Acervo Multimídia</h2>
                 <div id="admin-btn-midia" class="mt-4 hidden"><button onclick="openCrudModal('midia')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 
                 <div id="midia-filters" class="flex flex-wrap justify-center gap-3 mt-8"></div>
@@ -555,13 +555,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <span data-i18n="conexoes.scroll_hint" class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
         </div>
         <!-- FIM DO AVISO -->
-                <p class="mt-4 text-sm font-bold text-[#C5A059] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+                <p data-i18n="midia.scroll_hint" class="mt-4 text-sm font-bold text-[#C5A059] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
             </div>
             <div class="relative px-0 md:px-12 group">
                 <button class="scroll-btn scroll-left" onclick="scrollContainer('multimedia-container', 'left')">&#8592;</button>
@@ -574,9 +574,9 @@
     <section id="mitos" class="py-24 bg-white reveal-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-black">A Lenda vs. A História</h2>
+                <h2 data-i18n="mitos.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-black">A Lenda vs. A História</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
-                <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest animate-pulse text-center">DESLIZE PARA VER OUTROS PARALELOS &rarr;</p>
+                <p data-i18n="mitos.scroll_hint" class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest animate-pulse text-center">DESLIZE PARA VER OUTROS PARALELOS &rarr;</p>
             </div>
 
             <div class="relative px-0 md:px-12 group">
@@ -643,52 +643,52 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div>
-                    <h3 class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Glossário da Fronteira</h3>
+                    <h3 data-i18n="contexto.glossary_title" class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Glossário da Fronteira</h3>
                     <ul class="space-y-6">
                         <li class="reveal-item">
-                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Coiteiro</span>
-                            <span class="font-body text-gray-700">Pessoa que dá abrigo, comida e proteção a perseguidos pela justiça ou bandoleiros em suas propriedades.</span>
+                            <span data-i18n="contexto.coiteiro_title" class="font-black text-black uppercase tracking-widest text-sm block mb-1">Coiteiro</span>
+                            <span data-i18n="contexto.coiteiro_desc" class="font-body text-gray-700">Pessoa que dá abrigo, comida e proteção a perseguidos pela justiça ou bandoleiros em suas propriedades.</span>
                         </li>
                         <li class="reveal-item">
-                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Invernada</span>
-                            <span class="font-body text-gray-700">Período de estadia prolongada em uma fazenda, geralmente durante o inverno ou chuvas, para recuperação.</span>
+                            <span data-i18n="contexto.invernada_title" class="font-black text-black uppercase tracking-widest text-sm block mb-1">Invernada</span>
+                            <span data-i18n="contexto.invernada_desc" class="font-body text-gray-700">Período de estadia prolongada em uma fazenda, geralmente durante o inverno ou chuvas, para recuperação.</span>
                         </li>
                         <li class="reveal-item">
-                            <span class="font-black text-black uppercase tracking-widest text-sm block mb-1">Gaudério</span>
-                            <span class="font-body text-gray-700">Termo regional para quem vive sem destino certo, muitas vezes associado à liberdade e à vida no campo, mas também ao banditismo.</span>
+                            <span data-i18n="contexto.gauderio_title" class="font-black text-black uppercase tracking-widest text-sm block mb-1">Gaudério</span>
+                            <span data-i18n="contexto.gauderio_desc" class="font-body text-gray-700">Termo regional para quem vive sem destino certo, muitas vezes associado à liberdade e à vida no campo, mas também ao banditismo.</span>
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Contexto Nacional</h3>
+                    <h3 data-i18n="contexto.national_title" class="font-western text-2xl text-[#5C1B1B] mb-8 border-b-2 border-[#5C1B1B] inline-block pb-2">Contexto Nacional</h3>
                     <div class="relative pl-8 border-l-2 border-[#C5A059] space-y-8">
                         
                         <div class="reveal-item relative">
                             <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
                             <h4 class="font-black text-lg">1906</h4>
-                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Nasce Silvino Jacques.</p>
-                            <p class="font-body text-sm text-gray-600 italic">Brasil: Presidente Rodrigues Alves consolida a República Velha e o Convênio de Taubaté valoriza o café.</p>
+                            <p data-i18n="contexto.y1906_title" class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Nasce Silvino Jacques.</p>
+                            <p data-i18n="contexto.y1906_desc" class="font-body text-sm text-gray-600 italic">Brasil: Presidente Rodrigues Alves consolida a República Velha e o Convênio de Taubaté valoriza o café.</p>
                         </div>
 
                         <div class="reveal-item relative">
                             <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
                             <h4 class="font-black text-lg">1929</h4>
-                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Fuga do RS após incidente em Santo Ângelo.</p>
-                            <p class="font-body text-sm text-gray-600 italic">Brasil: Crise econômica mundial (Quebra da Bolsa de NY) enfraquece a oligarquia cafeeira, preparando terreno para a Revolução de 30.</p>
+                            <p data-i18n="contexto.y1929_title" class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Fuga do RS após incidente em Santo Ângelo.</p>
+                            <p data-i18n="contexto.y1929_desc" class="font-body text-sm text-gray-600 italic">Brasil: Crise econômica mundial (Quebra da Bolsa de NY) enfraquece a oligarquia cafeeira, preparando terreno para a Revolução de 30.</p>
                         </div>
 
                         <div class="reveal-item relative">
                             <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
                             <h4 class="font-black text-lg">1932</h4>
-                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Capitão na Revolução Constitucionalista.</p>
-                            <p class="font-body text-sm text-gray-600 italic">Brasil: Guerra Civil em São Paulo contra o governo provisório de Vargas.</p>
+                            <p data-i18n="contexto.y1932_title" class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Capitão na Revolução Constitucionalista.</p>
+                            <p data-i18n="contexto.y1932_desc" class="font-body text-sm text-gray-600 italic">Brasil: Guerra Civil em São Paulo contra o governo provisório de Vargas.</p>
                         </div>
 
                         <div class="reveal-item relative">
                             <div class="absolute -left-[41px] top-1 w-6 h-6 bg-[#C5A059] rounded-full border-4 border-[#EFE6D0]"></div>
                             <h4 class="font-black text-lg">1939</h4>
-                            <p class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Morte na Fazenda Aurora.</p>
-                            <p class="font-body text-sm text-gray-600 italic">Brasil: Auge do Estado Novo (Ditadura Vargas). Fim do cangaço e banditismo rural. Mundo à beira da 2ª Guerra Mundial.</p>
+                            <p data-i18n="contexto.y1939_title" class="font-body text-sm font-bold text-[#5C1B1B] mt-1">Morte na Fazenda Aurora.</p>
+                            <p data-i18n="contexto.y1939_desc" class="font-body text-sm text-gray-600 italic">Brasil: Auge do Estado Novo (Ditadura Vargas). Fim do cangaço e banditismo rural. Mundo à beira da 2ª Guerra Mundial.</p>
                         </div>
 
                     </div>
@@ -706,7 +706,7 @@
             
             <!-- Legenda Estilizada sobre a Imagem -->
             <div class="absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-md py-10 text-center z-20 border-t border-[#C5A059]/10">
-                <p class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Afilhado de Getúlio</p>
+                <p data-i18n="preserve.legend_godson" class="text-[#C5A059] font-display italic text-xl md:text-2xl tracking-[0.2em] uppercase">O Afilhado de Getúlio</p>
                 <div class="w-16 h-0.5 bg-[#5C1B1B] mx-auto mt-4"></div>
             </div>
         </div>
@@ -715,7 +715,7 @@
 <section id="galeria" class="py-24 bg-[#F4ECD8] relative reveal-section">
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Arquivo Fotográfico</h2>
+                <h2 data-i18n="galeria.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Arquivo Fotográfico</h2>
                 <div id="admin-btn-galeria" class="mt-4 hidden"><button onclick="openCrudModal('galeria')" class="bg-[#5C1B1B] text-white px-4 py-2 text-xs font-bold uppercase hover:bg-black">+ Adicionar Novo Item</button></div>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
         <!-- Aviso Arraste Mobile -->
@@ -723,13 +723,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
+            <span data-i18n="conexoes.scroll_hint" class="text-[10px] uppercase tracking-widest font-bold">Arraste para o lado para ver mais</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
         </div>
         <!-- FIM DO AVISO -->
-                <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
+                <p data-i18n="genealogia.scroll_hint_desktop" class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block">NAVEGUE &rarr;</p>
             </div>
             <div class="flex flex-wrap justify-center gap-4 mb-16" id="gallery-filters"></div>
             
@@ -773,7 +773,7 @@
     <section id="genealogia" class="py-24 bg-[#F4ECD8] reveal-section">
         <div class="container mx-auto px-6 relative">
             <div class="flex flex-col items-center mb-16 reveal-item">
-                <h2 class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Histórico Genealógico</h2>
+                <h2 data-i18n="genealogia.title" class="font-display text-3xl md:text-6xl font-black uppercase tracking-tighter mb-4 text-center text-[#5C1B1B]">Histórico Genealógico</h2>
                 <div class="w-24 h-1.5 bg-[#C5A059]"></div>
             </div>
             
@@ -782,8 +782,8 @@
                 <iframe src="https://www.youtube-nocookie.com/embed/BbolC0kAklU?rel=0&modestbranding=1&playsinline=1" title="FAMÍLIA JACQUES - ONDE TUDO COMEÇOU" frameborder="0" class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
-            <p class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block text-center mb-4">NAVEGUE &rarr;</p>
-            <p class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse text-center mb-4">Deslize para ver de onde veio o Silvino &rarr;</p>
+            <p data-i18n="genealogia.scroll_hint_desktop" class="mt-4 text-sm font-bold text-[#5C1B1B] uppercase tracking-widest hidden md:block text-center mb-4">NAVEGUE &rarr;</p>
+            <p data-i18n="genealogia.scroll_hint_mobile" class="mt-4 text-xs font-bold text-[#5C1B1B] uppercase tracking-widest md:hidden animate-pulse text-center mb-4">Deslize para ver de onde veio o Silvino &rarr;</p>
 
             <div class="relative px-0 md:px-12 group">
                  <button class="scroll-btn scroll-left" onclick="scrollContainer('genealogy-container', 'left')">&#8592;</button>
@@ -803,39 +803,39 @@
             <div class="bg-[#FDFBF7] border-[1px] border-[#E6DABB] shadow-[10px_10px_0_#5C1B1B] md:shadow-[15px_15px_0_#5C1B1B] p-8 md:p-16 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cardboard-flat.png')] opacity-20"></div>
                 <div class="relative z-10">
-                    <h3 class="font-display text-2xl md:text-5xl font-black mb-16 uppercase leading-tight text-[#5C1B1B]">COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?</h3>
+                    <h3 data-i18n="enquete.title" class="font-display text-2xl md:text-5xl font-black mb-16 uppercase leading-tight text-[#5C1B1B]">COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?</h3>
                     <div class="space-y-6 max-w-2xl mx-auto" id="poll-container">
                         <!-- Botões de Voto -->
                         <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Longa-Metragem')">
-                            <span class="font-display font-bold text-lg text-left">LONGA-METRAGEM<br>PARA O CINEMA</span>
-                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                            <span data-i18n="enquete.option1" class="font-display font-bold text-lg text-left">LONGA-METRAGEM<br>PARA O CINEMA</span>
+                            <span data-i18n="enquete.vote" class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
                         <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Minissérie')">
-                            <span class="font-display font-bold text-lg text-left">MINISSÉRIE DO<br>NETFLIX</span>
-                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                            <span data-i18n="enquete.option2" class="font-display font-bold text-lg text-left">MINISSÉRIE DO<br>NETFLIX</span>
+                            <span data-i18n="enquete.vote" class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
                         <div class="poll-option bg-white border border-[#E6DABB] p-4 flex justify-between items-center cursor-pointer hover:bg-[#F4ECD8] transition-colors" onclick="votarEnquete('Documentário')">
-                            <span class="font-display font-bold text-lg text-left">DOCUMENTÁRIO PARA<br>O NETFLIX</span>
-                            <span class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
+                            <span data-i18n="enquete.option3" class="font-display font-bold text-lg text-left">DOCUMENTÁRIO PARA<br>O NETFLIX</span>
+                            <span data-i18n="enquete.vote" class="font-bold text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity">VOTAR</span>
                         </div>
                     </div>
 
                     <!-- Resultados (Escondidos inicialmente) -->
                     <div class="space-y-6 max-w-2xl mx-auto hidden mt-8" id="poll-results">
-                        <h4 class="font-display font-bold text-[#C5A059] text-xl mb-4">RESULTADOS PARCIAIS</h4>
+                        <h4 data-i18n="enquete.results_title" class="font-display font-bold text-[#C5A059] text-xl mb-4">RESULTADOS PARCIAIS</h4>
                         <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
                             <div id="bar-longa" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
-                            <span class="relative z-10 font-bold text-sm uppercase">Longa-Metragem</span>
+                            <span data-i18n="enquete.r_option1" class="relative z-10 font-bold text-sm uppercase">Longa-Metragem</span>
                             <span id="perc-longa" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
                         </div>
                         <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
                             <div id="bar-mini" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
-                            <span class="relative z-10 font-bold text-sm uppercase">Minissérie Netflix</span>
+                            <span data-i18n="enquete.r_option2" class="relative z-10 font-bold text-sm uppercase">Minissérie Netflix</span>
                             <span id="perc-mini" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
                         </div>
                         <div class="relative w-full bg-gray-200 h-12 flex items-center px-4 overflow-hidden border border-[#E6DABB]">
                             <div id="bar-doc" class="absolute left-0 top-0 h-full bg-[#5C1B1B]/20 transition-all duration-1000" style="width: 0%"></div>
-                            <span class="relative z-10 font-bold text-sm uppercase">Documentário Netflix</span>
+                            <span data-i18n="enquete.r_option3" class="relative z-10 font-bold text-sm uppercase">Documentário Netflix</span>
                             <span id="perc-doc" class="relative z-10 ml-auto font-black text-[#5C1B1B]">0%</span>
                         </div>
                         <p class="text-xs text-gray-500 mt-4 uppercase tracking-widest" id="total-votes">Total de Votos: 0</p>
@@ -1566,16 +1566,61 @@ Hoje vivo separado.`
         function renderGenealogy() {
             const container = document.getElementById('genealogy-container').querySelector('.flex');
             if(container) {
+                const lang = localStorage.getItem('lang') || 'pt';
+                const trans = {
+                    en: {
+                        "1ª Geração": "1st Generation",
+                        "2ª Geração": "2nd Generation",
+                        "3ª Geração": "3rd Generation",
+                        "4ª Geração": "4th Generation",
+                        "5ª Geração": "5th Generation",
+                        "6ª Geração": "6th Generation",
+                        "Pai": "Father",
+                        "Mãe": "Mother",
+                        "Avô Paterno": "Paternal Grandfather",
+                        "Avô Materno": "Maternal Grandfather",
+                        "Bisavô Paterno": "Paternal Great-Grandfather",
+                        "Bisavô Materno": "Maternal Great-Grandfather",
+                        "Trisavô Paterno": "Paternal Great-Great-Grandfather",
+                        "Tetravô Paterno": "Paternal Great-Great-Great-Grandfather",
+                        "Ilha dos Açores - Portugal": "Azores Island - Portugal",
+                        "Falecido": "Deceased"
+                    },
+                    es: {
+                        "1ª Geração": "1ª Generación",
+                        "2ª Geração": "2ª Generación",
+                        "3ª Geração": "3ª Generación",
+                        "4ª Geração": "4ª Generación",
+                        "5ª Geração": "5ª Generación",
+                        "6ª Geração": "6ª Generación",
+                        "Pai": "Padre",
+                        "Mãe": "Madre",
+                        "Avô Paterno": "Abuelo Paterno",
+                        "Avô Materno": "Abuelo Materno",
+                        "Bisavô Paterno": "Bisabuelo Paterno",
+                        "Bisavô Materno": "Bisabuelo Materno",
+                        "Trisavô Paterno": "Tatarabuelo Paterno",
+                        "Tetravô Paterno": "Chozno Paterno",
+                        "Ilha dos Açores - Portugal": "Isla de Azores - Portugal",
+                        "Falecido": "Fallecido"
+                    }
+                };
+
+                const t = (txt) => {
+                    if (lang === 'pt' || !trans[lang] || !trans[lang][txt]) return txt;
+                    return trans[lang][txt];
+                };
+
                 container.innerHTML = GENEALOGY.map(col => `
                     <div class="flex flex-col gap-12">
-                        <div class="text-[10px] uppercase font-black text-[#C5A059] mb-4 tracking-[0.4em] text-center border-b border-[#C5A059]/20 pb-2">${col.col}</div>
+                        <div class="text-[10px] uppercase font-black text-[#C5A059] mb-4 tracking-[0.4em] text-center border-b border-[#C5A059]/20 pb-2">${t(col.col)}</div>
                         <div class="flex flex-col gap-8">
                             ${col.items.map(item => `
                                 <div class="bg-[#FDFBF7] border-l-[12px] p-6 shadow-xl w-72 md:w-80 min-h-[140px] flex flex-col relative border-[#8B7E66] hover:scale-105 transition-transform">
                                     <h4 class="font-display font-black text-lg uppercase text-black mb-2">${item.name}</h4>
-                                    <p class="text-[10px] text-gray-500 font-bold">${item.dates}</p>
-                                    ${item.extraInfo ? `<p class="mt-auto text-[9px] uppercase tracking-widest text-[#C5A059]">${item.extraInfo}</p>` : ''}
-                                    ${item.highlight ? `<div class="mt-2 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-2 py-1 tracking-widest rounded-sm border border-[#C5A059] shadow-lg animate-pulse">${item.highlight}</div>` : ''}
+                                    <p class="text-[10px] text-gray-500 font-bold">${(item.dates || '').replace('Falecido', t('Falecido'))}</p>
+                                    ${item.extraInfo ? `<p class="mt-auto text-[9px] uppercase tracking-widest text-[#C5A059]">${t(item.extraInfo)}</p>` : ''}
+                                    ${item.highlight ? `<div class="mt-2 bg-[#5C1B1B] text-white text-[10px] font-black uppercase px-2 py-1 tracking-widest rounded-sm border border-[#C5A059] shadow-lg animate-pulse">${t(item.highlight)}</div>` : ''}
                                 </div>
                             `).join('')}
                         </div>
@@ -1796,7 +1841,8 @@ Hoje vivo separado.`
                 document.getElementById('bar-doc').style.width = pDoc + '%';
                 document.getElementById('perc-doc').innerText = pDoc + '%';
 
-                document.getElementById('total-votes').innerText = `Total de Votos: ${total}`;
+                const totalLabel = (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.enquete && window.CURRENT_TRANSLATIONS.enquete.total_votes) || 'Total de Votos';
+                document.getElementById('total-votes').innerText = `${totalLabel}: ${total}`;
 
                 if (localStorage.getItem('jaVotou')) {
                     document.getElementById('poll-container').style.display = 'none';
@@ -2059,20 +2105,26 @@ Hoje vivo separado.`
             const container = document.getElementById('memory-list-container');
             if (!container) return; // Se houver um container no HTML
 
-            container.innerHTML = data.map(r => `
-                <div class="p-5 bg-white shadow border ${!r.aprovado ? 'border-yellow-500 opacity-90' : 'border-gray-100'} relative">
-                    <div class="admin-only hidden absolute top-0 right-0 bg-yellow-500 text-white text-[10px] font-bold px-2 py-1 uppercase">
-                        ${!r.aprovado ? 'Pendente' : ''}
+            container.innerHTML = data.map(r => {
+                const relatoTexto = (getLangField(r, 'relato') || '')
+                    .replace(/\\+n/g, '<br>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/\r/g, '<br>');
+                return `
+                    <div class="p-5 bg-white shadow border ${!r.aprovado ? 'border-yellow-500 opacity-90' : 'border-gray-100'} relative">
+                        <div class="admin-only hidden absolute top-0 right-0 bg-yellow-500 text-white text-[10px] font-bold px-2 py-1 uppercase">
+                            ${!r.aprovado ? 'Pendente' : ''}
+                        </div>
+                        <p class="text-gray-800 font-body italic mb-4">"${relatoTexto}"</p>
+                        <p class="text-sm font-bold text-[#5C1B1B] uppercase tracking-wider">— ${r.nome}</p>
+                        
+                        <div class="admin-only hidden mt-4 flex gap-3 pt-3 border-t border-yellow-100">
+                          ${!r.aprovado ? `<button onclick="approveRelato('${r.id}')" class="text-xs bg-green-600 text-white px-3 py-1 font-bold uppercase hover:bg-green-700">Aprovar</button>` : ''}
+                          <button onclick="deleteRelato('${r.id}')" class="text-xs bg-red-600 text-white px-3 py-1 font-bold uppercase hover:bg-red-700">Excluir</button>
+                        </div>
                     </div>
-                    <p class="text-gray-800 font-body italic mb-4 whitespace-pre-wrap">"${r.relato}"</p>
-                    <p class="text-sm font-bold text-[#5C1B1B] uppercase tracking-wider">— ${r.nome}</p>
-                    
-                    <div class="admin-only hidden mt-4 flex gap-3 pt-3 border-t border-yellow-100">
-                      ${!r.aprovado ? `<button onclick="approveRelato('${r.id}')" class="text-xs bg-green-600 text-white px-3 py-1 font-bold uppercase hover:bg-green-700">Aprovar</button>` : ''}
-                      <button onclick="deleteRelato('${r.id}')" class="text-xs bg-red-600 text-white px-3 py-1 font-bold uppercase hover:bg-red-700">Excluir</button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
             checkAdminUI();
         }
     }
@@ -2727,6 +2779,10 @@ Hoje vivo separado.`
                     el.placeholder = value;
                 }
             });
+
+            if (typeof renderGenealogy === 'function') renderGenealogy();
+            if (typeof carregarResultadosEnquete === 'function') carregarResultadosEnquete();
+            if (typeof fetchRelatos === 'function') fetchRelatos();
         } catch (e) {
             console.error('Error loading language file:', e);
         }

@@ -50,7 +50,8 @@
     "list_title": "Mural de Depoimentos",
     "scroll_hint": "Deslize para ver os relatos",
     "p_hint": "Passe o mouse (ou toque) para ampliar os registros originais.",
-    "legend_captain": "O Capitão"
+    "legend_captain": "O Capitão",
+    "legend_godson": "O Afilhado de Getúlio"
   },
   "form": {
     "name": "Nome Completo",
@@ -91,7 +92,7 @@
   },
   "mitos": {
     "title": "A Lenda vs. A História",
-    "scroll_hint": "Deslize para ver outros paralelos",
+    "scroll_hint": "DESLIZE PARA VER OUTROS PARALELOS &rarr;",
     "badge_mito": "MITO",
     "badge_fato": "FATO",
     "m1": {
@@ -113,9 +114,44 @@
       "fato_desc": "Suas ações eram motivadas por disputas políticas locais e sobrevivência clandestina na fronteira."
     }
   },
+  "galeria": {
+    "title": "Arquivo Fotográfico"
+  },
   "genealogia": {
-    "title": "Árvore Genealógica",
-    "subtitle": "Mapeamento da descendência de Silvino Jacques."
+    "title": "Histórico Genealógico",
+    "subtitle": "Mapeamento da descendência de Silvino Jacques.",
+    "scroll_hint_desktop": "NAVEGUE &rarr;",
+    "scroll_hint_mobile": "Deslize para ver de onde veio o Silvino &rarr;"
+  },
+  "contexto": {
+    "glossary_title": "Glossário da Fronteira",
+    "national_title": "Contexto Nacional",
+    "coiteiro_title": "Coiteiro",
+    "coiteiro_desc": "Pessoa que dá abrigo, comida e proteção a perseguidos pela justiça ou bandoleiros em suas propriedades.",
+    "invernada_title": "Invernada",
+    "invernada_desc": "Período de estadia prolongada em uma fazenda, geralmente durante o inverno ou chuvas, para recuperação.",
+    "gauderio_title": "Gaudério",
+    "gauderio_desc": "Termo regional para quem vive sem destino certo, muitas vezes associado à liberdade e à vida no campo, mas também ao banditismo.",
+    "y1906_title": "Nasce Silvino Jacques.",
+    "y1906_desc": "Brasil: Presidente Rodrigues Alves consolida a República Velha e o Convênio de Taubaté valoriza o café.",
+    "y1929_title": "Fuga do RS após incidente em Santo Ângelo.",
+    "y1929_desc": "Brasil: Crise econômica mundial (Quebra da Bolsa de NY) enfraquece a oligarquia cafeeira, preparando terreno para a Revolução de 30.",
+    "y1932_title": "Capitão na Revolução Constitucionalista.",
+    "y1932_desc": "Brasil: Guerra Civil em São Paulo contra o governo provisório de Vargas.",
+    "y1939_title": "Morte na Fazenda Aurora.",
+    "y1939_desc": "Brasil: Auge do Estado Novo (Ditadura Vargas). Fim do cangaço e banditismo rural. Mundo à beira da 2ª Guerra Mundial."
+  },
+  "enquete": {
+    "title": "COMO VOCÊ GOSTARIA DE VER ESTA HISTÓRIA CONTADA NO FUTURO?",
+    "option1": "LONGA-METRAGEM<br>PARA O CINEMA",
+    "option2": "MINISSÉRIE DO<br>NETFLIX",
+    "option3": "DOCUMENTÁRIO PARA<br>O NETFLIX",
+    "vote": "VOTAR",
+    "results_title": "RESULTADOS PARCIAIS",
+    "r_option1": "Longa-Metragem",
+    "r_option2": "Minissérie Netflix",
+    "r_option3": "Documentário Netflix",
+    "total_votes": "Total de Votos"
   },
   "footer": {
     "desc": "PRESERVANDO A MEMÓRIA DA FRONTEIRA",

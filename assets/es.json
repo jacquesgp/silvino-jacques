@@ -50,59 +50,60 @@
     "list_title": "Muro de Testimonios",
     "scroll_hint": "Deslice para ver testimonios",
     "p_hint": "Pase el cursor (o toque) para ampliar los registros originales.",
-    "legend_captain": "El Capitão"
+    "legend_captain": "El Capitán",
+    "legend_godson": "El Ahijado de Getúlio"
   },
   "form": {
     "name": "Nombre Completo",
-    "email": "Correo Electrónico",
+    "email": "E-mail",
     "whatsapp": "WhatsApp (opcional)",
-    "relato": "Su historia o relato familiar",
+    "relato": "Su relato o historia familiar",
     "placeholder_name": "Ej: Euclides Jacques",
     "placeholder_email": "Ej: euclides@email.com",
-    "placeholder_whatsapp": "Ej: +55 (67) 99999-9999",
-    "placeholder_relato": "Escriba aquí las memorias transmitidas por generaciones...",
+    "placeholder_whatsapp": "Ej: (67) 99999-9999",
+    "placeholder_relato": "Escriba aquí los recuerdos que pasaron por generaciones...",
     "submit": "Enviar al Archivo"
   },
   "conexoes": {
     "title": "Conexiones Humanas",
     "subtitle": "Navegue y haga clic en las tarjetas para revelar la historia de cada persona.",
-    "scroll_hint": "Arrastre hacia el lado para ver más"
+    "scroll_hint": "Arrastre hacia un lado para ver más"
   },
   "docs": {
     "label": "ARCHIVO DIGITAL",
     "title": "Sala de Documentos",
-    "hover_hint": "Pase el cursor (o toque) para ampliar los registros originales.",
+    "hover_hint": "Pase el mouse (o toque) para ampliar los registros originales.",
     "zoom": "🔍 Ampliar"
   },
   "timeline": {
-    "title": "Trayectoria",
-    "scroll_hint": "Arrastre hacia el lado para ver más",
-    "add_btn": "+ Agregar Nuevo Item"
+    "title": "Trayectoria de Vida",
+    "scroll_hint": "Arrastre hacia un lado para ver más",
+    "add_btn": "+ Añadir Nuevo Item"
   },
   "mapa": {
     "title": "Caminos de la Historia",
-    "scroll_hint": "Deslice para ver lugares",
+    "scroll_hint": "Deslice para ver los lugares",
     "badge": "RELATO DE ARCHIVO",
     "point_badge": "PUNTO HISTÓRICO"
   },
   "midia": {
-    "title": "Acervo Multimedia",
+    "title": "Archivo Multimedia",
     "scroll_hint": "Navegue para ver más"
   },
   "mitos": {
-    "title": "La Leyenda vs. La Historia",
-    "scroll_hint": "Deslice para ver otros paralelos",
+    "title": "La Lenda vs. A História",
+    "scroll_hint": "DESLICE PARA VER OTROS PARALELOS &rarr;",
     "badge_mito": "MITO",
-    "badge_fato": "HECHO",
+    "badge_fato": "FACTO",
     "m1": {
-      "mito_title": "✦ El Corpo Fechado",
-      "mito_desc": "Dice la leyenda que Silvino tenía un pacto. Las balas golpeaban su pecho y caían al suelo.",
+      "mito_title": "✦ El Cuerpo Cerrado",
+      "mito_desc": "La leyenda dice que Silvino tenía pacto. Las balas daban en su pecho y caían al suelo.",
       "fato_title": "✒ La Realidad",
-      "fato_desc": "Los documentos prueban que fue herido varias veces. Sobrevivió gracias a tácticas militares y protección local."
+      "fato_desc": "Documentos prueban que fue herido varias veces. Sobrevivía por tácticas militares y protección."
     },
     "m2": {
       "mito_title": "✦ El Tesoro Enterrado",
-      "mito_desc": "Relatos de que enterraba oro de las revoluciones en lugares secretos de la frontera.",
+      "mito_desc": "Relatos de que enterraba oro de las revolucciones en lugares secretos de la frontera.",
       "fato_title": "✒ La Realidad",
       "fato_desc": "No hay registros de fortuna. Murió dejando muy pocos bienes materiales a su familia."
     },
@@ -113,9 +114,44 @@
       "fato_desc": "Sus acciones fueron motivadas por disputas políticas locales y supervivencia clandestina en la frontera."
     }
   },
+  "galeria": {
+    "title": "Archivo Fotográfico"
+  },
   "genealogia": {
-    "title": "Árbol Genealógico",
-    "subtitle": "Mapeo de la descendencia de Silvino Jacques."
+    "title": "Historial Genealógico",
+    "subtitle": "Mapeo de la descendencia de Silvino Jacques.",
+    "scroll_hint_desktop": "NAVEGUE &rarr;",
+    "scroll_hint_mobile": "Deslice para ver de dónde vino Silvino &rarr;"
+  },
+  "contexto": {
+    "glossary_title": "Glosario de la Frontera",
+    "national_title": "Contexto Nacional",
+    "coiteiro_title": "Coiteiro",
+    "coiteiro_desc": "Persona que brinda refugio, comida y protección en sus propiedades a perseguidos por la justicia o bandoleros.",
+    "invernada_title": "Invernada",
+    "invernada_desc": "Período de estadía prolongada en una hacienda, generalmente durante el invierno o las lluvias, para recuperación.",
+    "gauderio_title": "Gaudério",
+    "gauderio_desc": "Término regional para quien vive sin rumbo fijo, a menudo asociado a la libertad y a la vida de campo, pero también al bandidaje.",
+    "y1906_title": "Nace Silvino Jacques.",
+    "y1906_desc": "Brasil: El presidente Rodrigues Alves consolida la República Vieja y el Convenio de Taubaté valoriza el café.",
+    "y1929_title": "Fuga de RS tras incidente en Santo Ângelo.",
+    "y1929_desc": "Brasil: La crisis económica mundial (Crack del 29) debilita a la oligarquía cafetera, preparando el terreno para la Revolución de 1930.",
+    "y1932_title": "Capitán en la Revolución Constitucionalista.",
+    "y1932_desc": "Brasil: Guerra Civil en São Paulo contra el gobierno provisional de Vargas.",
+    "y1939_title": "Muerte en la Hacienda Aurora.",
+    "y1939_desc": "Brasil: Auge del Estado Novo (Dictadura de Vargas). Fin del cangaço y bandidaje rural. El mundo al borde de la Segunda Guerra Mundial."
+  },
+  "enquete": {
+    "title": "¿CÓMO LE GUSTARÍA QUE SE CONTARA ESTA HISTORIA EN EL FUTURO?",
+    "option1": "LARGOMETRAJE<br>PARA EL CINE",
+    "option2": "MINISERIE DE<br>NETFLIX",
+    "option3": "DOCUMENTAL PARA<br>NETFLIX",
+    "vote": "VOTAR",
+    "results_title": "RESULTADOS PARCIAIS",
+    "r_option1": "Largometraje",
+    "r_option2": "Miniserie Netflix",
+    "r_option3": "Documental Netflix",
+    "total_votes": "Total de Votos"
   },
   "footer": {
     "desc": "PRESERVANDO LA MEMORIA DE LA FRONTERA",

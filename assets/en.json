@@ -50,38 +50,39 @@
     "list_title": "Testimonials Wall",
     "scroll_hint": "Swipe to view testimonials",
     "p_hint": "Hover (or tap) to enlarge original records.",
-    "legend_captain": "The Capitão"
+    "legend_captain": "The Captain",
+    "legend_godson": "Getúlio's Godson"
   },
   "form": {
     "name": "Full Name",
     "email": "E-mail",
     "whatsapp": "WhatsApp (optional)",
-    "relato": "Your story or family account",
-    "placeholder_name": "E.g., Euclides Jacques",
-    "placeholder_email": "E.g., euclides@email.com",
-    "placeholder_whatsapp": "E.g., +55 (67) 99999-9999",
+    "relato": "Your story or family history",
+    "placeholder_name": "Ex: Euclides Jacques",
+    "placeholder_email": "Ex: euclides@email.com",
+    "placeholder_whatsapp": "Ex: (67) 99999-9999",
     "placeholder_relato": "Write here the memories passed down through generations...",
-    "submit": "Submit to Archive"
+    "submit": "Send to Archive"
   },
   "conexoes": {
     "title": "Human Connections",
     "subtitle": "Browse and click on the cards to reveal each person's story.",
-    "scroll_hint": "Drag sideways to view more"
+    "scroll_hint": "Drag to the side to see more"
   },
   "docs": {
     "label": "DIGITAL ARCHIVE",
     "title": "Documents Room",
-    "hover_hint": "Hover (or tap) to enlarge original records.",
+    "hover_hint": "Hover (or tap) to enlarge the original records.",
     "zoom": "🔍 Zoom In"
   },
   "timeline": {
-    "title": "Timeline",
-    "scroll_hint": "Drag sideways to view more",
+    "title": "Life Path",
+    "scroll_hint": "Drag to the side to see more",
     "add_btn": "+ Add New Item"
   },
   "mapa": {
     "title": "Pathways of History",
-    "scroll_hint": "Swipe to view locations",
+    "scroll_hint": "Scroll to see locations",
     "badge": "ARCHIVE ACCOUNT",
     "point_badge": "HISTORICAL POINT"
   },
@@ -90,15 +91,15 @@
     "scroll_hint": "Browse to see more"
   },
   "mitos": {
-    "title": "Legend vs. History",
-    "scroll_hint": "Swipe to view other parallels",
+    "title": "The Legend vs. The History",
+    "scroll_hint": "SWIPE TO SEE OTHER PARALLELS &rarr;",
     "badge_mito": "MYTH",
     "badge_fato": "FACT",
     "m1": {
-      "mito_title": "✦ The Corpo Fechado",
-      "mito_desc": "Legend says that Silvino had a pact. Bullets would hit his chest and fall to the ground.",
+      "mito_title": "✦ The Closed Body",
+      "mito_desc": "Legend says Silvino had a pact. Bullets hit his chest and fell to the ground.",
       "fato_title": "✒ The Reality",
-      "fato_desc": "Documents prove he was wounded several times. He survived due to military tactics and local protection."
+      "fato_desc": "Documents prove he was wounded several times. He survived by military tactics and protection."
     },
     "m2": {
       "mito_title": "✦ The Buried Treasure",
@@ -113,9 +114,44 @@
       "fato_desc": "His actions were driven by local political disputes and clandestine survival along the frontier."
     }
   },
+  "galeria": {
+    "title": "Photographic Archive"
+  },
   "genealogia": {
-    "title": "Family Tree",
-    "subtitle": "Mapping the lineage of Silvino Jacques."
+    "title": "Genealogical History",
+    "subtitle": "Mapping the lineage of Silvino Jacques.",
+    "scroll_hint_desktop": "NAVIGATE &rarr;",
+    "scroll_hint_mobile": "Swipe to see where Silvino came from &rarr;"
+  },
+  "contexto": {
+    "glossary_title": "Frontier Glossary",
+    "national_title": "National Context",
+    "coiteiro_title": "Coiteiro",
+    "coiteiro_desc": "A person who provides shelter, food, and protection on their property to individuals pursued by the law or outlaws.",
+    "invernada_title": "Invernada",
+    "invernada_desc": "A period of prolonged stay at a farm, typically during winter or the rainy season, for recovery or staging.",
+    "gauderio_title": "Gaudério",
+    "gauderio_desc": "A regional term for someone who lives without a fixed destination, often associated with freedom and country life, but sometimes with banditry.",
+    "y1906_title": "Silvino Jacques is born.",
+    "y1906_desc": "Brazil: President Rodrigues Alves consolidates the Old Republic, and the Taubaté Agreement boosts coffee prices.",
+    "y1929_title": "Fleeing Rio Grande do Sul after the Santo Ângelo incident.",
+    "y1929_desc": "Brazil: The global economic crisis (Wall Street Crash) weakens the coffee oligarchy, paving the way for the 1930 Revolution.",
+    "y1932_title": "Captain in the Constitutionalist Revolution.",
+    "y1932_desc": "Brazil: Civil war in São Paulo against the provisional government of Getúlio Vargas.",
+    "y1939_title": "Death at Fazenda Aurora.",
+    "y1939_desc": "Brazil: Peak of the Estado Novo (Vargas dictatorship). End of the cangaço and rural banditry. World on the brink of World War II."
+  },
+  "enquete": {
+    "title": "HOW WOULD YOU LIKE TO SEE THIS STORY TOLD IN THE FUTURE?",
+    "option1": "FEATURE-LENGTH FILM<br>FOR CINEMA",
+    "option2": "NETFLIX<br>MINISERIES",
+    "option3": "NETFLIX<br>DOCUMENTARY",
+    "vote": "VOTE",
+    "results_title": "PARTIAL RESULTS",
+    "r_option1": "Feature-Length Film",
+    "r_option2": "Netflix Miniseries",
+    "r_option3": "Netflix Documentary",
+    "total_votes": "Total Votes"
   },
   "footer": {
     "desc": "PRESERVING THE MEMORY OF THE FRONTIER",
