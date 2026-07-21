@@ -1209,13 +1209,19 @@ Hoje vivo separado.`
         function renderTestimonials() {
             const container = document.getElementById('testimonials-grid');
             if(container) {
-                const list = (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
-                container.innerHTML = list.map(t => `
-                    <div class="bg-white p-10 shadow-xl border-l-[6px] border-[#C5A059] transition-transform hover:-translate-y-2 reveal-item">
-                        <p class="font-body text-lg italic leading-relaxed text-gray-800 mb-8">"${t.text}"</p>
-                        <p class="font-display font-black text-[#5C1B1B] tracking-[0.2em] text-xs">— ${t.source}</p>
-                    </div>
-                `).join('');
+                const list = window.DYNAMIC_MEMORIAS || (window.CURRENT_TRANSLATIONS && window.CURRENT_TRANSLATIONS.testimonials_static) || TESTIMONIALS;
+                container.innerHTML = list.map(t => {
+                    const cleanText = (t.text || '')
+                        .replace(/\\+n/g, '<br>')
+                        .replace(/\n/g, '<br>')
+                        .replace(/\r/g, '<br>');
+                    return `
+                        <div class="bg-white p-10 shadow-xl border-l-[6px] border-[#C5A059] transition-transform hover:-translate-y-2 reveal-item">
+                            <p class="font-body text-lg italic leading-relaxed text-gray-800 mb-8">"${cleanText}"</p>
+                            <p class="font-display font-black text-[#5C1B1B] tracking-[0.2em] text-xs">— ${t.source}</p>
+                        </div>
+                    `;
+                }).join('');
             }
         }
 
@@ -2027,7 +2033,7 @@ Hoje vivo separado.`
         const val = item[`${field}_${lang}`];
         return (val && val.trim() !== '') ? val : item[field];
     }
-    const TABLES = ['conexoes', 'documentos', 'midia', 'galeria', 'academia', 'caminhos_historia', 'trajetoria_vida'];
+    const TABLES = ['conexoes', 'documentos', 'midia', 'galeria', 'academia', 'caminhos_historia', 'trajetoria_vida', 'memorias'];
 
     function checkAdminUI() {
         const adminMode = window.AppState ? window.AppState.checkIsAdmin() : false;
@@ -2164,6 +2170,14 @@ Hoje vivo separado.`
 
     // Render Genérico das Seções
     function renderSectionCards(table, data) {
+        if (table === 'memorias') {
+            window.DYNAMIC_MEMORIAS = data.map(item => ({
+                text: getLangField(item, 'relato'),
+                source: item.nome
+            }));
+            renderTestimonials();
+            return;
+        }
         if (table === 'caminhos_historia') {
             MAP_POINTS = data.map(item => ({
                 id: item.id,
