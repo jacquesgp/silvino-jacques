@@ -890,20 +890,20 @@
 
 
     <footer id="rodape" class="bg-black py-20 text-center flex flex-col items-center reveal-section border-t border-white/10 relative">
-        <div class="font-display text-[#F4ECD8] text-2xl md:text-4xl font-black tracking-[0.3em] uppercase mb-8 px-4 font-monument">ARQUIVO SILVINO JACQUES</div>
+        <div data-i18n="footer.title" class="font-display text-[#F4ECD8] text-2xl md:text-4xl font-black tracking-[0.3em] uppercase mb-8 px-4 font-monument">ARQUIVO SILVINO JACQUES</div>
         <div class="flex flex-wrap justify-center gap-6 md:gap-12 mb-10 font-black uppercase tracking-[0.2em] text-[#F4ECD8]/60 text-[10px] md:text-xs px-6">
-            <a href="#biografia" class="hover:text-white transition-colors no-underline nav-link-special">BIO</a>
-            <a href="#mapa" class="hover:text-white transition-colors no-underline nav-link-special">MAPA</a>
-            <a href="#galeria" class="hover:text-white transition-colors no-underline nav-link-special">GALERIA</a>
-            <a href="#timeline" class="hover:text-white transition-colors no-underline nav-link-special">LINHA DO TEMPO</a>
-            <a href="#conexoes" class="hover:text-white transition-colors no-underline nav-link-special">CONEXÕES</a>
+            <a href="#biografia" data-i18n="nav.biografia" class="hover:text-white transition-colors no-underline nav-link-special">BIO</a>
+            <a href="#mapa" data-i18n="nav.mapa" class="hover:text-white transition-colors no-underline nav-link-special">MAPA</a>
+            <a href="#galeria" data-i18n="nav.midia" class="hover:text-white transition-colors no-underline nav-link-special">GALERIA</a>
+            <a href="#timeline" data-i18n="nav.timeline" class="hover:text-white transition-colors no-underline nav-link-special">LINHA DO TEMPO</a>
+            <a href="#conexoes" data-i18n="nav.conexoes" class="hover:text-white transition-colors no-underline nav-link-special">CONEXÕES</a>
         </div>
         <div class="text-[#F4ECD8]/80 font-body text-sm mb-4">
-            Contato: <span class="font-bold">+55 67 (998909314)</span>
+            <span data-i18n="footer.contact">Contato</span>: <span class="font-bold">+55 67 (998909314)</span>
         </div>
         <div class="mt-4 mb-12 flex justify-center">
             <div class="inline-block bg-[#1a1a1a] text-white px-5 py-2 rounded-md text-sm font-mono font-bold tracking-widest border border-gray-700 shadow-lg">
-                VISITANTES: <span id="contador-visitas">...</span>
+                <span data-i18n="footer.visitors">VISITANTES</span>: <span id="contador-visitas">...</span>
             </div>
         </div>
         <div class="flex flex-col md:flex-row items-center gap-4 text-[9px] font-black uppercase tracking-[0.3em] text-[#F4ECD8] text-center px-4" style="opacity: 0.6;">
@@ -2749,14 +2749,15 @@ Hoje vivo separado.`
 
         try {
             const response = await fetch(`assets/${lang}.json`);
-            if (response.ok && window.SUPABASE_DATA) {
+            if (!response.ok) throw new Error('Failed to load translations');
+            const translations = await response.json();
+            window.CURRENT_TRANSLATIONS = translations;
+
+            if (window.SUPABASE_DATA) {
                 Object.keys(window.SUPABASE_DATA).forEach(table => {
                     renderSectionCards(table, window.SUPABASE_DATA[table]);
                 });
             }
-            if (!response.ok) throw new Error('Failed to load translations');
-            const translations = await response.json();
-            window.CURRENT_TRANSLATIONS = translations;
             if (typeof renderAcademic === 'function' && !(window.SUPABASE_DATA && window.SUPABASE_DATA.academia)) {
                 renderAcademic();
             }
