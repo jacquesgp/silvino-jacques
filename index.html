@@ -1225,6 +1225,9 @@ Hoje vivo separado.`
                         </div>
                     `;
                 }).join('');
+                if (typeof setupReveals === 'function') {
+                    setupReveals();
+                }
             }
         }
 
