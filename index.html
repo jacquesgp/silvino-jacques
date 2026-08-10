@@ -172,29 +172,135 @@
         .snap-strict { scroll-snap-type: x mandatory; }
         .snap-strict > * { scroll-snap-align: center; scroll-snap-stop: always; }
     
-        /* Proteção de Imagens e Conteúdo */
-        img {
-            -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
-            user-drag: none;
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none; /* Previne clique direito na maioria dos casos (Atenção: desabilita clique para modal. Faremos exceção para imagens clicáveis) */
+        /* ==========================================
+           PROTEÇÃO DE CONTEÚDO E MITIGAÇÃO DE PRINTS
+           ========================================== */
+
+        /* 1. Bloqueio de Seleção de Texto Global */
+        html, body, html *, body * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
         }
 
-        /* Exceção: Imagens que precisam ser clicadas (como no Modal ou Galeria) mantêm pointer-events mas bloqueiam clique direito via JS */
-        .clickable-img, .doc-zoom-container img, #gallery-container img {
+        /* Permite interatividade/seleção apenas em campos de formulário editáveis */
+        input, textarea, input *, textarea * {
+            -webkit-user-select: auto !important;
+            -moz-user-select: auto !important;
+            -ms-user-select: auto !important;
+            user-select: auto !important;
+        }
+
+        /* Proteção de Imagens e Recursos Visuais */
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            pointer-events: none; /* Previne clique e arraste */
+        }
+
+        /* Exceção: Imagens interativas mantêm pointer-events mas bloqueiam clique direito via JS */
+        .clickable-img, .doc-zoom-container img, #gallery-container img, modal img {
             pointer-events: auto !important;
         }
 
-        body {
-            -webkit-touch-callout: none; /* Desabilita o menu que aparece ao segurar no iOS */
+        /* 2. Proteção Contra Impressão e PDF */
+        @media print {
+            html, body {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                width: 0 !important;
+                overflow: hidden !important;
+            }
         }
 
+        /* 3. Efeito Embaçado Inteligente (AutoBlur) */
+        body.content-blurred > *:not(#protection-overlay):not(#protection-toast) {
+            filter: blur(15px) grayscale(30%);
+            transition: filter 0.2s ease-in-out;
+            pointer-events: none !important;
+        }
+
+        /* Overlay do AutoBlur */
+        #protection-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 999999;
+            background: rgba(20, 10, 10, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #F0EAD6;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        #protection-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #protection-overlay .shield-icon {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 20px;
+            color: #C5A059;
+            animation: pulse-shield 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-shield {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.08); opacity: 1; }
+        }
+
+        /* Toast Discreto de Alerta de Proteção */
+        #protection-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999999;
+            background: linear-gradient(135deg, #4A0E0E 0%, #2A0808 100%);
+            color: #F0EAD6;
+            border: 1px solid #C5A059;
+            padding: 14px 22px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(120px);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        #protection-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="selection:bg-[#0038A8] selection:text-white overflow-x-hidden">
@@ -2842,6 +2948,251 @@ Hoje vivo separado.`
         await supabaseClient.from(table).delete().eq('id', id);
         fetchAllSections();
     }
+</script>
+
+<!-- ==========================================
+     ELEMENTOS DOM DE PROTEÇÃO E SEGURANÇA
+     ========================================== -->
+
+<!-- Overlay do AutoBlur (Desfoque inteligente ao perder o foco) -->
+<div id="protection-overlay" title="Clique para retornar ao site">
+    <svg class="shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M12 8v4"/>
+        <path d="M12 16h.01"/>
+    </svg>
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-[#C5A059] mb-2 tracking-wide">PROTEÇÃO DE CONTEÚDO ATIVADA</h2>
+    <p class="font-body text-sm md:text-base max-w-md text-[#F0EAD6]/80 mb-4">
+        O acervo histórico do Silvino Jacques está protegido contra cópias e capturas. Clique na tela para visualizar o conteúdo novamente.
+    </p>
+    <span class="inline-block px-4 py-2 bg-[#C5A059]/20 border border-[#C5A059] text-[#C5A059] rounded text-xs font-bold tracking-widest uppercase shadow-md">
+        Clique para retornar
+    </span>
+</div>
+
+<!-- Toast Discreto de Alerta -->
+<div id="protection-toast">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#C5A059] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+    </svg>
+    <span id="protection-toast-message">Conteúdo protegido contra cópia e captura.</span>
+</div>
+
+<!-- Script de Execução do Sistema de Proteção -->
+<script>
+    /* ==========================================================
+       SISTEMA ROBUSTO DE PROTEÇÃO E MITIGAÇÃO DE CÓPIAS / PRINTS
+       ========================================================== */
+    console.log('🛡️ Proteções de segurança inicializadas!');
+
+    (function() {
+        let overlay = null;
+        let toast = null;
+        let toastMsg = null;
+        let toastTimeout = null;
+
+        function initDOMReferences() {
+            overlay = document.getElementById('protection-overlay');
+            toast = document.getElementById('protection-toast');
+            toastMsg = document.getElementById('protection-toast-message');
+            
+            if (overlay) {
+                overlay.addEventListener('click', disableBlur, true);
+            }
+            applyNoDragToImages();
+        }
+
+        function showToast(msg) {
+            if (!toast || !toastMsg) return;
+            toastMsg.textContent = msg || 'Conteúdo protegido contra cópia e captura.';
+            toast.classList.add('show');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3200);
+        }
+
+        // 1. Efeito Embaçado Inteligente (AutoBlur)
+        function enableBlur() {
+            document.body.classList.add('content-blurred');
+            if (overlay) overlay.classList.add('active');
+        }
+
+        function disableBlur() {
+            document.body.classList.remove('content-blurred');
+            if (overlay) overlay.classList.remove('active');
+        }
+
+        // Eventos de janela / foco / visibilidade / saída do mouse (Fase de Captura = true)
+        window.addEventListener('blur', enableBlur, true);
+        window.addEventListener('focus', disableBlur, true);
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                enableBlur();
+            } else {
+                disableBlur();
+            }
+        }, true);
+
+        window.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+                enableBlur();
+            }
+        }, true);
+
+        window.addEventListener('mouseenter', disableBlur, true);
+
+        // 2. Bloqueio de Seleção e Cópia (Fase de Captura = true)
+        function isInputTarget(target) {
+            if (!target) return false;
+            const tag = target.tagName ? target.tagName.toUpperCase() : '';
+            return tag === 'INPUT' || tag === 'TEXTAREA' || target.isContentEditable;
+        }
+
+        window.addEventListener('selectstart', function(e) {
+            if (!isInputTarget(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                return false;
+            }
+        }, true);
+
+        window.addEventListener('copy', function(e) {
+            if (!isInputTarget(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('A cópia de textos e acervo é bloqueada.');
+                return false;
+            }
+        }, true);
+
+        window.addEventListener('cut', function(e) {
+            if (!isInputTarget(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('Recortar conteúdo é bloqueado.');
+                return false;
+            }
+        }, true);
+
+        // 3. Bloqueio de Clique Direito (Context Menu - Fase de Captura = true)
+        const preventContextMenu = function(e) {
+            if (!isInputTarget(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('O clique com botão direito está desativado para proteger o acervo.');
+                return false;
+            }
+        };
+
+        window.addEventListener('contextmenu', preventContextMenu, true);
+        document.addEventListener('contextmenu', preventContextMenu, true);
+
+        // 4. Bloqueio de Arraste de Imagens (Fase de Captura = true)
+        const preventDrag = function(e) {
+            if (e.target && e.target.tagName === 'IMG') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('O download e arraste de imagens foi desativado.');
+                return false;
+            }
+        };
+
+        window.addEventListener('dragstart', preventDrag, true);
+        document.addEventListener('dragstart', preventDrag, true);
+
+        function applyNoDragToImages() {
+            document.querySelectorAll('img').forEach(function(img) {
+                img.setAttribute('draggable', 'false');
+                img.oncontextmenu = function() { return false; };
+                img.ondragstart = function() { return false; };
+            });
+        }
+
+        // 5. Bloqueio de Atalhos de Teclado (Fase de Captura = true)
+        const handleKeyDown = function(e) {
+            const key = e.key ? e.key.toLowerCase() : '';
+            const code = e.code ? e.code.toLowerCase() : '';
+            const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+            // Bloquear Ctrl+S / Cmd+S (Salvar Página)
+            if (isCtrlOrCmd && key === 's') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('Salvar a página foi bloqueado.');
+                return false;
+            }
+
+            // Bloquear Ctrl+P / Cmd+P (Imprimir)
+            if (isCtrlOrCmd && key === 'p') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('A impressão e gravação em PDF foram desativadas.');
+                return false;
+            }
+
+            // Bloquear Ctrl+U / Cmd+U (Ver Código Fonte)
+            if (isCtrlOrCmd && key === 'u') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('Visualização do código fonte desativada.');
+                return false;
+            }
+
+            // Bloquear DevTools: F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+            if (
+                key === 'f12' ||
+                (isCtrlOrCmd && e.shiftKey && (key === 'i' || key === 'j' || key === 'c'))
+            ) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                showToast('As ferramentas de desenvolvedor foram bloqueadas.');
+                return false;
+            }
+
+            // Interceptação de Teclas de PrintScreen / Snapping Tool
+            if (key === 'printscreen' || code === 'printscreen' || key === 'snapshot') {
+                enableBlur();
+                showToast('Captura de tela detectada. Conteúdo temporariamente embaçado.');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText('').catch(function() {});
+                }
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown, true);
+        document.addEventListener('keydown', handleKeyDown, true);
+
+        window.addEventListener('keyup', function(e) {
+            const key = e.key ? e.key.toLowerCase() : '';
+            const code = e.code ? e.code.toLowerCase() : '';
+            if (key === 'printscreen' || code === 'printscreen' || key === 'snapshot') {
+                enableBlur();
+                showToast('Captura de tela detectada. Conteúdo temporariamente embaçado.');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText('').catch(function() {});
+                }
+            }
+        }, true);
+
+        // Inicialização nos eventos de ciclo de vida do DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDOMReferences);
+        } else {
+            initDOMReferences();
+        }
+        window.addEventListener('load', initDOMReferences);
+    })();
 </script>
 
 </body>
