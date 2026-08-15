@@ -2951,15 +2951,24 @@ Hoje vivo separado.`
                 }
             });
 
-            // Bloqueio de arrastar (dragstart) EXCLUSIVO para imagens do Arquivo Fotográfico
-            galleryContainer.addEventListener('dragstart', function(e) {
-                if (e.target && e.target.tagName === 'IMG') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showToast('O download e arraste de fotos do Arquivo Fotográfico foi desativado.');
-                    return false;
+            // Interceptação da tecla PrintScreen (PrtSc / Snipping Tool) focada na Galeria
+            const handlePrintScreen = function(e) {
+                const key = e.key ? e.key.toLowerCase() : '';
+                const code = e.code ? e.code.toLowerCase() : '';
+                if (key === 'printscreen' || code === 'printscreen' || key === 'snapshot') {
+                    galeriaSec.classList.add('galeria-blurred');
+                    showToast('Captura de tela detectada. Fotos do Arquivo Fotográfico temporariamente embaçadas.');
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText('').catch(function() {});
+                    }
+                    setTimeout(function() {
+                        galeriaSec.classList.remove('galeria-blurred');
+                    }, 3000);
                 }
-            });
+            };
+
+            window.addEventListener('keydown', handlePrintScreen, true);
+            window.addEventListener('keyup', handlePrintScreen, true);
         }
 
         // Inicialização nos eventos de ciclo de vida do DOM
