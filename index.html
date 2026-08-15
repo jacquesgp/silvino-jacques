@@ -195,15 +195,16 @@
             user-select: none !important;
         }
 
-        /* 3. Efeito Embaçado Localizado (AutoBlur no Arquivo Fotográfico) */
+        /* 3. Efeito Embaçado Localizado (AutoBlur no Arquivo Fotográfico e Modal de Ampliação) */
         #galeria.galeria-blurred #gallery-container img,
-        #galeria.galeria-blurred .gallery-img {
-            filter: blur(15px) grayscale(30%);
-            transition: filter 0.3s ease-in-out;
+        #galeria.galeria-blurred .gallery-img,
+        #image-modal.galeria-blurred #modal-img {
+            filter: blur(25px) grayscale(50%) !important;
+            transition: filter 0.1s ease-in-out;
         }
 
-        #galeria #gallery-container img {
-            transition: filter 0.3s ease-in-out;
+        #galeria #gallery-container img, #modal-img {
+            transition: filter 0.1s ease-in-out;
         }
 
         /* Toast Discreto de Alerta de Proteção */
@@ -2951,18 +2952,20 @@ Hoje vivo separado.`
                 }
             });
 
-            // Interceptação da tecla PrintScreen (PrtSc / Snipping Tool) focada na Galeria
+            // Interceptação da tecla PrintScreen (PrtSc / Snipping Tool) no Arquivo Fotográfico e Modal
+            const imageModal = document.getElementById('image-modal');
+
             const handlePrintScreen = function(e) {
                 const key = e.key ? e.key.toLowerCase() : '';
                 const code = e.code ? e.code.toLowerCase() : '';
                 if (key === 'printscreen' || code === 'printscreen' || key === 'snapshot') {
                     galeriaSec.classList.add('galeria-blurred');
-                    showToast('Captura de tela detectada. Fotos do Arquivo Fotográfico temporariamente embaçadas.');
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText('').catch(function() {});
-                    }
+                    if (imageModal) imageModal.classList.add('galeria-blurred');
+                    showToast('Captura de tela detectada. Imagem temporariamente embaçada.');
+
                     setTimeout(function() {
                         galeriaSec.classList.remove('galeria-blurred');
+                        if (imageModal) imageModal.classList.remove('galeria-blurred');
                     }, 3000);
                 }
             };
