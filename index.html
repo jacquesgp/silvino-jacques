@@ -2933,14 +2933,18 @@ Hoje vivo separado.`
             const galleryContainer = document.getElementById('gallery-container');
             if (!galeriaSec || !galleryContainer) return;
 
-            // Blur localizado via detecção de movimento do mouse EXCLUSIVAMENTE na área de fotos (#gallery-container)
-            galleryContainer.addEventListener('mouseleave', function() {
-                galeriaSec.classList.add('galeria-blurred');
-            });
+            // Blur localizado via detecção de movimento do mouse EXCLUSIVAMENTE para dispositivos com ponteiro fino (Desktop/Mouse)
+            const isDesktopPointer = window.matchMedia('(pointer: fine)').matches;
 
-            galleryContainer.addEventListener('mouseenter', function() {
-                galeriaSec.classList.remove('galeria-blurred');
-            });
+            if (isDesktopPointer) {
+                galleryContainer.addEventListener('mouseleave', function() {
+                    galeriaSec.classList.add('galeria-blurred');
+                });
+
+                galleryContainer.addEventListener('mouseenter', function() {
+                    galeriaSec.classList.remove('galeria-blurred');
+                });
+            }
 
             // Bloqueio de clique com o botão direito (contextmenu) EXCLUSIVO para imagens do Arquivo Fotográfico
             galleryContainer.addEventListener('contextmenu', function(e) {
