@@ -2190,9 +2190,13 @@ Hoje vivo separado.`
         }
 
         setTimeout(() => {
-            const academiaSection = document.getElementById('academia');
-            if (academiaSection) {
-                academiaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const isMobile = window.innerWidth < 768;
+            const targetEl = isMobile
+                ? (document.getElementById('area-de-leitura') || document.getElementById('academic-detail') || document.getElementById('academia'))
+                : (document.getElementById('academia') || document.getElementById('area-de-leitura'));
+
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }, 50);
     }
